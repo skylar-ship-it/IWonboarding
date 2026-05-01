@@ -480,6 +480,98 @@
   .vs-card.winner .vs-card-image {
     background: linear-gradient(135deg, #f7eed4 0%, #fdfaf3 100%);
   }
+
+  /* Top row: % result + variant letter */
+  .vs-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .vs-pct-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .vs-pct-block .pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .vs-card.winner .vs-pct-block .pct {
+    color: var(--gold-deep);
+  }
+  .vs-pct-block .votes-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.55;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+  }
+  .vs-card.winner .vs-pct-block .votes-meta {
+    color: var(--gold-deep);
+    opacity: 0.85;
+  }
+  .vs-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+  .vs-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--espresso);
+    line-height: 1.25;
+    margin-bottom: 1rem;
+    letter-spacing: -0.005em;
+    /* Override prior caps/letter-spacing if present */
+    text-transform: none;
+  }
+  .vs-card.winner .vs-title {
+    color: var(--espresso);
+  }
+  .vs-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    opacity: 0.78;
+    line-height: 1.55;
+    padding-left: 1rem;
+    border-left: 2px solid rgba(201, 169, 110, 0.35);
+    margin-bottom: 1rem;
+  }
+  .vs-card.winner .vs-quote {
+    border-left-color: var(--gold);
+  }
+  .vs-themes {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.15);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.55;
+    line-height: 1.5;
+  }
+  .vs-card.winner .vs-themes {
+    color: var(--gold-deep);
+    opacity: 0.85;
+  }
   .vs-card.winner {
     border-color: var(--gold);
     background: linear-gradient(180deg, var(--white) 0%, #fdfaf3 100%);
@@ -499,49 +591,6 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 700;
-  }
-  .vs-letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 2.5rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  .vs-title {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--gold-deep);
-    margin-bottom: 1rem;
-  }
-  .vs-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--espresso);
-    line-height: 1.5;
-    flex: 1;
-    margin-bottom: 1.5rem;
-  }
-  .vs-result {
-    padding-top: 1rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.25);
-  }
-  .vs-result .pct {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 500;
-    color: var(--espresso);
-    line-height: 1;
-  }
-  .vs-card.winner .vs-result .pct { color: var(--gold-deep); }
-  .vs-result .votes {
-    font-size: 0.85rem;
-    color: var(--ink);
-    opacity: 0.7;
-    margin-top: 0.25rem;
   }
   .vs-divider {
     display: flex;
@@ -1224,6 +1273,9 @@
     .vs-card { padding: 1.5rem; }
     .vs-card-image { margin: -1.5rem -1.5rem 1.25rem -1.5rem; padding: 1rem; }
     .vs-card-image img { max-height: 220px; }
+    .vs-pct-block .pct { font-size: 2.4rem; }
+    .vs-title { font-size: 1.2rem; }
+    .vs-quote { font-size: 0.98rem; }
     .vs-quote { font-size: 1.05rem; }
     .key-statement { padding: 1.75rem 1.5rem; }
     .key-statement p { font-size: 1.4rem; }
@@ -1358,23 +1410,29 @@
 
       <div class="vs-grid">
         <div class="vs-card winner">
-          <div class="vs-letter">A.</div>
-          <div class="vs-title">"The Home Feeling"</div>
-          <p class="vs-quote">"He chose me because it felt like home. Championship-level care isn't just precision — it's how you treat people."</p>
-          <div class="vs-result">
-            <div class="pct">60%</div>
-            <div class="votes">45 votes · warmth, relatability, trust</div>
+          <div class="vs-card-top">
+            <div class="vs-pct-block">
+              <span class="pct">60%</span>
+              <span class="votes-meta">45 votes · winner</span>
+            </div>
+            <span class="vs-letter">A</span>
           </div>
+          <h4 class="vs-title">The Home Feeling</h4>
+          <p class="vs-quote">"He chose me because it felt like home. Championship-level care isn't just precision — it's how you treat people."</p>
+          <div class="vs-themes">Warmth · Relatability · Trust</div>
         </div>
         <div class="vs-divider">vs.</div>
         <div class="vs-card">
-          <div class="vs-letter">B.</div>
-          <div class="vs-title">"NHL Focus"</div>
-          <p class="vs-quote">"When the Chicago Blackhawks needed a surgeon they could trust with their players' careers, they chose me."</p>
-          <div class="vs-result">
-            <div class="pct">40%</div>
-            <div class="votes">30 votes · authority, prestige</div>
+          <div class="vs-card-top">
+            <div class="vs-pct-block">
+              <span class="pct">40%</span>
+              <span class="votes-meta">30 votes</span>
+            </div>
+            <span class="vs-letter">B</span>
           </div>
+          <h4 class="vs-title">NHL Focus</h4>
+          <p class="vs-quote">"When the Chicago Blackhawks needed a surgeon they could trust with their players' careers, they chose me."</p>
+          <div class="vs-themes">Authority · Prestige</div>
         </div>
       </div>
 
@@ -1411,13 +1469,16 @@
                  alt="Landing page version A — AI-Powered Precision (shown in PickFu poll)"
                  loading="lazy">
           </div>
-          <div class="vs-letter">A.</div>
-          <div class="vs-title">"AI-Powered Precision"</div>
-          <p class="vs-quote">"The first surgeon to bring AI into full-spectrum implant planning for an unmatched, precise fit."</p>
-          <div class="vs-result">
-            <div class="pct">13%</div>
-            <div class="votes">10 votes · innovation, precision</div>
+          <div class="vs-card-top">
+            <div class="vs-pct-block">
+              <span class="pct">13%</span>
+              <span class="votes-meta">10 votes</span>
+            </div>
+            <span class="vs-letter">A</span>
           </div>
+          <h4 class="vs-title">AI-Powered Precision</h4>
+          <p class="vs-quote">"The first surgeon to bring AI into full-spectrum implant planning for an unmatched, precise fit."</p>
+          <div class="vs-themes">Innovation · Precision</div>
         </div>
         <div class="vs-divider">vs.</div>
         <div class="vs-card winner">
@@ -1426,13 +1487,16 @@
                  alt="Landing page version B — One Surgeon, No Handoffs (shown in PickFu poll)"
                  loading="lazy">
           </div>
-          <div class="vs-letter">B.</div>
-          <div class="vs-title">"One Surgeon, No Handoffs"</div>
-          <p class="vs-quote">"One surgeon. Every step. No handoffs. From consultation to placement to follow-up — the same hands."</p>
-          <div class="vs-result">
-            <div class="pct">87%</div>
-            <div class="votes">65 votes · continuity, trust, accountability</div>
+          <div class="vs-card-top">
+            <div class="vs-pct-block">
+              <span class="pct">87%</span>
+              <span class="votes-meta">65 votes · winner</span>
+            </div>
+            <span class="vs-letter">B</span>
           </div>
+          <h4 class="vs-title">One Surgeon, No Handoffs</h4>
+          <p class="vs-quote">"One surgeon. Every step. No handoffs. From consultation to placement to follow-up — the same hands."</p>
+          <div class="vs-themes">Continuity · Trust · Accountability</div>
         </div>
       </div>
 

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purple Cow · Implanted Wisdom Differentiator Workshop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Courier+Prime:wght@400;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1E1612;
+    --espresso: #2D241F;
+    --gold: #C9A96E;
+    --gold-soft: #E2CFA6;
+    --gold-deep: #A8884F;
+    --teal: #245C5C;
+    --teal-soft: #3A7878;
+    --cream: #F7F2EC;
+    --cream-deep: #EFE7DA;
+    --white: #FFFFFF;
+    --shadow-sm: 0 2px 8px rgba(30, 22, 18, 0.04), 0 1px 2px rgba(30, 22, 18, 0.06);
+    --shadow-md: 0 8px 24px rgba(30, 22, 18, 0.06), 0 2px 6px rgba(30, 22, 18, 0.04);
+    --shadow-lg: 0 24px 60px rgba(30, 22, 18, 0.10), 0 4px 12px rgba(30, 22, 18, 0.05);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---------- Typography ---------- */
+  .display { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.08; letter-spacing: -0.01em; }
+  .display-italic { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold-deep); font-weight: 500; }
+  .label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+  }
+  .section-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Navigation ---------- */
+  nav.top {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 242, 236, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .monogram {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--espresso);
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--espresso);
+  }
+  .brand-name span {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-deep);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+  .brand-cluster { display: flex; align-items: center; gap: 0.85rem; }
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    font-size: 0.82rem;
+    color: var(--espresso);
+  }
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--gold-deep); }
+  .nav-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+  @media (max-width: 980px) { .nav-links { display: none; } }
+
+  /* ---------- Layout ---------- */
+  section { padding: 7rem 2rem; position: relative; }
+  .container { max-width: 1180px; margin: 0 auto; }
+  .narrow { max-width: 880px; margin: 0 auto; }
+
+  .section-header { margin-bottom: 4rem; max-width: 820px; }
+  .section-header h2 {
+    font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+    margin-top: 0.5rem;
+    color: var(--espresso);
+  }
+  .section-header p.lede {
+    font-size: 1.12rem;
+    color: var(--ink);
+    opacity: 0.78;
+    margin-top: 1.25rem;
+    max-width: 680px;
+    line-height: 1.65;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: linear-gradient(140deg, var(--espresso) 0%, var(--ink) 100%);
+    color: var(--cream);
+    padding: 9rem 2rem 8rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 50%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(201, 169, 110, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 50%;
+    height: 70%;
+    background: radial-gradient(circle, rgba(36, 92, 92, 0.22) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero .label {
+    color: var(--gold-soft);
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(201, 169, 110, 0.45);
+    border-radius: 999px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5.8rem);
+    color: var(--cream);
+    max-width: 14ch;
+    margin-bottom: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    line-height: 0.98;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .hero .subhead {
+    max-width: 620px;
+    font-size: 1.15rem;
+    color: rgba(247, 242, 236, 0.78);
+    line-height: 1.7;
+  }
+
+  /* ---------- The Concept ---------- */
+  .concept-section { background: var(--cream); }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .concept-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+  }
+  .concept-card.brown {
+    background: var(--cream-deep);
+    border: 1px solid rgba(168, 136, 79, 0.18);
+  }
+  .concept-card .icon-circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+  }
+  .concept-card.brown .icon-circle {
+    background: rgba(168, 136, 79, 0.35);
+    color: var(--gold-deep);
+  }
+  .concept-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.85rem;
+    color: var(--espresso);
+    margin-bottom: 1rem;
+  }
+  .concept-card p { font-size: 1rem; line-height: 1.7; color: var(--ink); opacity: 0.82; }
+  .concept-card .examples {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .concept-card .examples strong {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .concept-card .examples em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--espresso);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    display: block;
+  }
+  @media (max-width: 800px) { .concept-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  .key-statement {
+    margin-top: 4rem;
+    padding: 2.5rem 3rem;
+    background: var(--espresso);
+    color: var(--cream);
+    border-radius: 16px;
+    text-align: center;
+    border-left: 4px solid var(--gold);
+  }
+  .key-statement p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.85rem;
+    line-height: 1.4;
+    color: var(--cream);
+  }
+  .key-statement p em { color: var(--gold); font-style: italic; }
+
+  /* ---------- PickFu Results ---------- */
+  .pickfu-section { background: var(--white); }
+
+  .pickfu-block {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: var(--cream);
+    border-radius: 18px;
+    border: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .pickfu-block + .pickfu-block { margin-top: 2rem; }
+  .pickfu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .pickfu-header h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.85rem;
+    color: var(--espresso);
+    line-height: 1.2;
+  }
+  .pickfu-header h3 em { color: var(--gold-deep); font-style: italic; }
+  .pickfu-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  @media (max-width: 800px) {
+    .vs-grid { grid-template-columns: 1fr; }
+  }
+  .vs-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid rgba(201, 169, 110, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+  .vs-card.winner {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, var(--white) 0%, #fdfaf3 100%);
+    position: relative;
+  }
+  .vs-card.winner::before {
+    content: '★ Winner';
+    position: absolute;
+    top: -12px;
+    left: 1.5rem;
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .vs-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.5rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .vs-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 1rem;
+  }
+  .vs-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--espresso);
+    line-height: 1.5;
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+  .vs-result {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .vs-result .pct {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: var(--espresso);
+    line-height: 1;
+  }
+  .vs-card.winner .vs-result .pct { color: var(--gold-deep); }
+  .vs-result .votes {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+  }
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold-deep);
+  }
+  @media (max-width: 800px) {
+    .vs-divider { padding: 0.5rem; }
+  }
+
+  .insight-strip {
+    margin-top: 2rem;
+    padding: 1.75rem 2rem;
+    background: var(--teal);
+    color: var(--cream);
+    border-radius: 12px;
+  }
+  .insight-strip .label {
+    color: var(--gold-soft);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .insight-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+  .insight-strip p em { color: var(--gold); font-style: italic; }
+
+  .quote-wall {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .quote-card {
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 10px 10px 0;
+    font-size: 0.93rem;
+    color: var(--ink);
+    opacity: 0.85;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .quote-card .qm {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--gold-deep);
+    font-style: italic;
+    line-height: 0;
+    vertical-align: -8px;
+    margin-right: 4px;
+  }
+
+  /* ---------- The Synthesis ---------- */
+  .synthesis-section { background: var(--cream); }
+  .synthesis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 800px) { .synthesis-grid { grid-template-columns: 1fr; } }
+  .synth-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .synth-card .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.6rem;
+    color: var(--gold);
+    line-height: 0.9;
+    margin-bottom: 0.75rem;
+  }
+  .synth-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--espresso);
+    margin-bottom: 0.75rem;
+  }
+  .synth-card p {
+    font-size: 0.96rem;
+    color: var(--ink);
+    opacity: 0.78;
+    line-height: 1.6;
+  }
+
+  /* ---------- The Brainstorm Activity (interactive) ---------- */
+  .brainstorm-section {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+  .brainstorm-section .section-num,
+  .brainstorm-section .label { color: var(--gold-soft); }
+  .brainstorm-section .section-header h2 { color: var(--cream); }
+  .brainstorm-section .section-header p.lede {
+    color: rgba(247, 242, 236, 0.78);
+    opacity: 1;
+  }
+
+  .activity-instructions {
+    background: rgba(201, 169, 110, 0.08);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+    border-radius: 14px;
+    padding: 2rem;
+    margin: 3rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 800px) { .activity-instructions { grid-template-columns: 1fr; } }
+  .activity-step .step-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .activity-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    color: var(--cream);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+  .activity-step p {
+    color: rgba(247, 242, 236, 0.75);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  /* Cow cards */
+  .cow-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .cow-card {
+    background: rgba(247, 242, 236, 0.04);
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    position: relative;
+  }
+  .cow-card.shortlisted {
+    border-color: var(--gold);
+    background: rgba(201, 169, 110, 0.08);
+    box-shadow: 0 0 0 1px var(--gold), 0 8px 32px rgba(201, 169, 110, 0.15);
+  }
+  .cow-card.eliminated {
+    opacity: 0.4;
+    background: rgba(247, 242, 236, 0.02);
+  }
+  .cow-card .cow-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .cow-card .cow-id {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .cow-card .cow-tag {
+    background: rgba(36, 92, 92, 0.5);
+    color: var(--gold-soft);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .cow-card .cow-tag.bold { background: rgba(201, 169, 110, 0.25); color: var(--gold); }
+  .cow-card .cow-tag.safe { background: rgba(247, 242, 236, 0.1); color: var(--cream); }
+  .cow-card .cow-tag.spicy { background: rgba(168, 88, 78, 0.4); color: #f0c4a8; }
+
+  .cow-claim {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .cow-claim em { font-style: italic; color: var(--gold); }
+  .cow-rationale {
+    color: rgba(247, 242, 236, 0.78);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    font-size: 0.98rem;
+  }
+
+  .cow-tests {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.18);
+    border-radius: 10px;
+  }
+  @media (max-width: 600px) { .cow-tests { grid-template-columns: 1fr 1fr; } }
+  .test-pip {
+    text-align: center;
+  }
+  .test-pip .test-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 236, 0.6);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+  .test-pip .test-rating {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--gold-soft);
+  }
+  .test-pip .test-rating .filled { color: var(--gold); }
+  .test-pip .test-rating .empty { color: rgba(247, 242, 236, 0.18); }
+
+  .cow-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .cow-btn {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    padding: 0.7rem 1.25rem;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .cow-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .cow-btn.shortlist-btn.active {
+    background: var(--gold);
+    color: var(--espresso);
+    border-color: var(--gold);
+  }
+  .cow-btn.eliminate-btn.active {
+    background: rgba(168, 88, 78, 0.3);
+    color: #f0c4a8;
+    border-color: rgba(168, 88, 78, 0.5);
+  }
+  .cow-btn.notes-btn { margin-left: auto; }
+
+  .cow-notes {
+    margin-top: 1rem;
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    resize: vertical;
+    min-height: 80px;
+    display: none;
+  }
+  .cow-notes:focus { outline: none; border-color: var(--gold); }
+  .cow-notes.visible { display: block; }
+
+  /* ---------- Builder ---------- */
+  .builder-section { background: var(--cream); }
+  .builder-card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 3rem;
+    box-shadow: var(--shadow-md);
+    margin-top: 3rem;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .builder-template {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+    line-height: 1.7;
+    color: var(--espresso);
+    margin-bottom: 2rem;
+  }
+  .builder-template input {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: inherit;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--gold);
+    color: var(--gold-deep);
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem;
+    min-width: 200px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  .builder-template input:focus { border-bottom-color: var(--teal); }
+  .builder-template input::placeholder {
+    color: rgba(168, 136, 79, 0.4);
+    font-style: italic;
+  }
+
+  .builder-tests {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  @media (max-width: 700px) { .builder-tests { grid-template-columns: 1fr; } }
+  .builder-test {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .builder-test .test-name {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .builder-test .test-q {
+    font-size: 0.92rem;
+    color: var(--ink);
+    opacity: 0.78;
+    line-height: 1.5;
+  }
+  .builder-test .test-toggle {
+    margin-top: 0.85rem;
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  .toggle-btn {
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn.yes.active { background: var(--teal); color: var(--cream); border-color: var(--teal); }
+  .toggle-btn.no.active { background: #b85542; color: var(--white); border-color: #b85542; }
+
+  .builder-output {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: var(--espresso);
+    border-radius: 14px;
+    color: var(--cream);
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .builder-output p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.5;
+  }
+  .builder-output.empty p {
+    color: rgba(247, 242, 236, 0.4);
+  }
+
+  .builder-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .control-btn {
+    background: var(--gold);
+    color: var(--espresso);
+    border: none;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .control-btn:hover { background: var(--gold-deep); color: var(--white); transform: translateY(-1px); }
+  .control-btn.secondary { background: transparent; color: var(--espresso); border: 1px solid var(--gold); }
+  .control-btn.secondary:hover { background: var(--cream-deep); }
+
+  /* ---------- Saved Status / Sticky bar ---------- */
+  .save-status {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background: var(--teal);
+    color: var(--cream);
+    padding: 0.75rem 1.25rem;
+    border-radius: 999px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    z-index: 200;
+  }
+  .save-status.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(247, 242, 236, 0.6);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer .gold { color: var(--gold); }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * { animation: fadeUp 0.9s ease-out backwards; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 700px) {
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 5rem 1.25rem 4rem; }
+    .nav-inner { padding: 0.85rem 1.25rem; gap: 0.75rem; }
+    .nav-meta { display: none; }
+    .brand-name { font-size: 1rem; }
+    .brand-name span { font-size: 0.6rem; }
+    .monogram { width: 36px; height: 36px; font-size: 0.95rem; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+    .section-header { margin-bottom: 2.5rem; }
+    .pickfu-block { padding: 1.5rem; }
+    .pickfu-header h3 { font-size: 1.4rem; }
+    .pickfu-meta { text-align: left; }
+    .vs-card { padding: 1.5rem; }
+    .vs-quote { font-size: 1.05rem; }
+    .key-statement { padding: 1.75rem 1.5rem; }
+    .key-statement p { font-size: 1.4rem; }
+    .insight-strip { padding: 1.25rem 1.5rem; }
+    .insight-strip p { font-size: 1.1rem; }
+    .cow-card { padding: 1.5rem; }
+    .cow-claim { font-size: 1.5rem; }
+    .builder-card { padding: 1.75rem 1.5rem; }
+    .builder-template { font-size: 1.15rem; line-height: 1.9; }
+    .builder-template input { min-width: 140px; font-size: 1.05rem; }
+    .builder-output p { font-size: 1.15rem; }
+    .save-status { bottom: 1rem; right: 1rem; font-size: 0.62rem; padding: 0.6rem 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    section { padding: 3.5rem 1rem; }
+    .hero { padding: 4.5rem 1rem 3.5rem; }
+    .brand-name span { display: none; }
+    .cow-claim { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="top">
+  <div class="nav-inner">
+    <div class="brand-cluster">
+      <div class="monogram">IW</div>
+      <div class="brand-name">
+        Implanted Wisdom
+        <span>Purple Cow Workshop</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#concept">The Concept</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#synthesis">Synthesis</a></li>
+      <li><a href="#brainstorm">Brainstorm</a></li>
+      <li><a href="#builder">Builder</a></li>
+      <li><a href="iw-strategy.html">← Back to Strategy</a></li>
+    </ul>
+    <div class="nav-meta">PART II · v1</div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="label">Internal Workshop · Differentiator Brainstorm</span>
+    <h1>Finding Our <em>Purple Cow.</em></h1>
+    <p class="subhead">If a patient Googled every full-arch surgeon in the Midwest tonight — could they tell us apart? This is the workshop where we find the answer. Built on Seth Godin's framework and 150 PickFu respondents.</p>
+  </div>
+</header>
+
+<!-- ============ THE CONCEPT ============ -->
+<section id="concept" class="concept-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">01 · The Framework</span>
+      <h2 class="display">Two Kinds <em class="display-italic">of Cow.</em></h2>
+      <p class="lede">Seth Godin's idea: in a field of brown cows, only a purple one is remarkable. Most full-arch practices say the same six things — specialists, in-house lab, zirconia, same-day teeth, transparent pricing, lifetime warranty. If everyone says it, it isn't different.</p>
+    </div>
+
+    <div class="concept-grid">
+      <div class="concept-card brown">
+        <div class="icon-circle">B</div>
+        <h3>The Brown Cow</h3>
+        <p>Better. Faster. Cheaper. These are improvements — not differentiation. Every claim that competitors can also make is a brown cow, no matter how true it is for you.</p>
+        <div class="examples">
+          <strong>What Brown Cows Sound Like</strong>
+          <em>"Same-day teeth." "Specialists on staff." "Lifetime warranty." "Transparent pricing."</em>
+        </div>
+      </div>
+      <div class="concept-card">
+        <div class="icon-circle">P</div>
+        <h3>The Purple Cow</h3>
+        <p>Different. Testable, defensible, owned. A claim that's specific enough to be falsifiable, structurally protected by your operations, and not something every competitor can credibly say.</p>
+        <div class="examples">
+          <strong>What Purple Cows Sound Like</strong>
+          <em>Nuvia: "Permanent teeth in 24 hours." New Life: "$9,990 per arch. Why pay $40,000?"</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-statement">
+      <p>The only word that matters is <em>different.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH / PICKFU ============ -->
+<section id="research" class="pickfu-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02 · Market Research</span>
+      <h2 class="display">What 150 Patients <em class="display-italic">Just Told Us.</em></h2>
+      <p class="lede">Two PickFu polls run with US-based 35–65+ respondents — exactly the demographic that books full-arch consults. The results were both clear and statistically significant.</p>
+    </div>
+
+    <!-- PICKFU 1 -->
+    <div class="pickfu-block">
+      <div class="pickfu-header">
+        <div>
+          <h3>PickFu #1 · <em>Ad Copy Test</em></h3>
+        </div>
+        <div class="pickfu-meta">
+          75 respondents<br>
+          April 20, 2026<br>
+          Statistically significant
+        </div>
+      </div>
+
+      <div class="vs-grid">
+        <div class="vs-card winner">
+          <div class="vs-letter">A.</div>
+          <div class="vs-title">"The Home Feeling"</div>
+          <p class="vs-quote">"He chose me because it felt like home. Championship-level care isn't just precision — it's how you treat people."</p>
+          <div class="vs-result">
+            <div class="pct">60%</div>
+            <div class="votes">45 votes · warmth, relatability, trust</div>
+          </div>
+        </div>
+        <div class="vs-divider">vs.</div>
+        <div class="vs-card">
+          <div class="vs-letter">B.</div>
+          <div class="vs-title">"NHL Focus"</div>
+          <p class="vs-quote">"When the Chicago Blackhawks needed a surgeon they could trust with their players' careers, they chose me."</p>
+          <div class="vs-result">
+            <div class="pct">40%</div>
+            <div class="votes">30 votes · authority, prestige</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-strip">
+        <span class="label">What Patients Said</span>
+        <p>The pro-hockey credential reads as <em>intimidating, niche, and possibly expensive.</em> Warmth and "treated like family" beat authority. Sports credibility belongs as proof — not the lead.</p>
+      </div>
+
+      <div class="quote-wall">
+        <div class="quote-card"><span class="qm">"</span>I like the regular-person story versus the athlete-focused framing.</div>
+        <div class="quote-card"><span class="qm">"</span>The hockey angle made it feel less accessible. Like it'd be too expensive for me.</div>
+        <div class="quote-card"><span class="qm">"</span>Comfort and trust matter more to me than credentials when it's surgery.</div>
+        <div class="quote-card"><span class="qm">"</span>Several found "home feeling" warm but unclear — needs concrete patient-benefit language.</div>
+      </div>
+    </div>
+
+    <!-- PICKFU 2 -->
+    <div class="pickfu-block">
+      <div class="pickfu-header">
+        <div>
+          <h3>PickFu #2 · <em>Landing Page Test</em></h3>
+        </div>
+        <div class="pickfu-meta">
+          75 respondents<br>
+          April 29, 2026<br>
+          Statistically significant
+        </div>
+      </div>
+
+      <div class="vs-grid">
+        <div class="vs-card">
+          <div class="vs-letter">A.</div>
+          <div class="vs-title">"AI-Powered Precision"</div>
+          <p class="vs-quote">"The first surgeon to bring AI into full-spectrum implant planning for an unmatched, precise fit."</p>
+          <div class="vs-result">
+            <div class="pct">13%</div>
+            <div class="votes">10 votes · innovation, precision</div>
+          </div>
+        </div>
+        <div class="vs-divider">vs.</div>
+        <div class="vs-card winner">
+          <div class="vs-letter">B.</div>
+          <div class="vs-title">"One Surgeon, No Handoffs"</div>
+          <p class="vs-quote">"One surgeon. Every step. No handoffs. From consultation to placement to follow-up — the same hands."</p>
+          <div class="vs-result">
+            <div class="pct">87%</div>
+            <div class="votes">65 votes · continuity, trust, accountability</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-strip">
+        <span class="label">What Patients Said</span>
+        <p>Continuity of care was the <em>single most-mentioned theme</em> — "one surgeon, no handoffs" emerged as the strongest trust signal we tested. AI in healthcare actively repels this demographic.</p>
+      </div>
+
+      <div class="quote-wall">
+        <div class="quote-card"><span class="qm">"</span>The promise of one surgeon is big. I don't want to be juggled between doctors.</div>
+        <div class="quote-card"><span class="qm">"</span>One surgeon, no handoffs is great — no contest at all.</div>
+        <div class="quote-card"><span class="qm">"</span>I want a relationship with a provider who's there for me through the entire process.</div>
+        <div class="quote-card"><span class="qm">"</span>It feels more accountable and meticulous. I would be more trusting.</div>
+        <div class="quote-card"><span class="qm">"</span>I'd rather see the dental surgeon who handles the process than one who uses AI to assist.</div>
+        <div class="quote-card"><span class="qm">"</span>I want my dentist there the whole process — my teeth are unique.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYNTHESIS ============ -->
+<section id="synthesis" class="synthesis-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03 · Synthesis</span>
+      <h2 class="display">Three Truths <em class="display-italic">That Survived.</em></h2>
+      <p class="lede">Across both polls, three signals emerged consistently — each one a candidate raw material for our purple cow. The challenge: most competitors could borrow any of them. Our job is to make them ownable.</p>
+    </div>
+
+    <div class="synthesis-grid">
+      <div class="synth-card">
+        <div class="num">i.</div>
+        <h4>Continuity Wins</h4>
+        <p>"One surgeon, no handoffs" was the highest-conviction theme across all 150 respondents. Patients are afraid of being passed between specialists. They want a single, accountable human from consult to year-five follow-up.</p>
+      </div>
+      <div class="synth-card">
+        <div class="num">ii.</div>
+        <h4>Warmth Beats Status</h4>
+        <p>Family treatment, long-term relationship, "feels like home" out-converted championship-level credentials 60/40. Authority belongs as proof, not as the lead message. Soften credentials — don't lean on them.</p>
+      </div>
+      <div class="synth-card">
+        <div class="num">iii.</div>
+        <h4>Tech Repels — Unless Surgeon-Led</h4>
+        <p>AI as a hero message lost 87/13. Patients want a person, not a system. Technology is welcome only when framed as a tool the surgeon uses — never as a co-author of their care.</p>
+      </div>
+    </div>
+
+    <div class="key-statement" style="margin-top: 4rem;">
+      <p>The opportunity: take "one surgeon, no handoffs" — and make it <em>uncopyable.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAINSTORM ACTIVITY ============ -->
+<section id="brainstorm" class="brainstorm-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04 · Workshop Activity</span>
+      <h2 class="display">Eight Candidate <em class="display-italic">Purple Cows.</em></h2>
+      <p class="lede">Below are eight differentiator concepts ranging from safe to bold, each built from the research above and stress-tested against the workshop's three criteria: testable, defensible, owned. Shortlist the strongest. Eliminate the weakest. Add your own notes. Your selections save automatically.</p>
+    </div>
+
+    <div class="activity-instructions">
+      <div class="activity-step">
+        <div class="step-letter">i.</div>
+        <h4>Read</h4>
+        <p>Each card is a candidate claim with a rationale and three test scores (testable, defensible, ownable).</p>
+      </div>
+      <div class="activity-step">
+        <div class="step-letter">ii.</div>
+        <h4>Rate</h4>
+        <p>Tap <em>Shortlist</em> on the strongest 2–3 contenders. Tap <em>Eliminate</em> on the ones that don't pass the test.</p>
+      </div>
+      <div class="activity-step">
+        <div class="step-letter">iii.</div>
+        <h4>Refine</h4>
+        <p>Open <em>Notes</em> on any card to capture Dr. Pulver's reaction. Then move to the Builder below.</p>
+      </div>
+    </div>
+
+    <div class="cow-grid" id="cowGrid">
+      <!-- Cards generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILDER ============ -->
+<section id="builder" class="builder-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05 · Sentence Builder</span>
+      <h2 class="display">Write Our <em class="display-italic">Sentence.</em></h2>
+      <p class="lede">Once a direction emerges, draft the actual claim. The template is from Dr. Baker's workshop deck. Type your version below — you'll see it formatted as a homepage hero might read.</p>
+    </div>
+
+    <div class="builder-card">
+      <div class="builder-template">
+        We are the only full-arch practice that
+        <input type="text" id="blank1" placeholder="distinctive activity or offer" maxlength="120">
+        ,&nbsp; for
+        <input type="text" id="blank2" placeholder="specific patient segment" maxlength="80">
+        ,&nbsp; because
+        <input type="text" id="blank3" placeholder="structural reason others can't copy" maxlength="120">.
+      </div>
+
+      <div class="builder-tests">
+        <div class="builder-test">
+          <span class="test-name">Test 01 · Value Chain</span>
+          <p class="test-q">Does our operation actually support this — today?</p>
+          <div class="test-toggle">
+            <button class="toggle-btn yes" data-test="1" data-val="yes">Yes</button>
+            <button class="toggle-btn no" data-test="1" data-val="no">No</button>
+          </div>
+        </div>
+        <div class="builder-test">
+          <span class="test-name">Test 02 · Evidence</span>
+          <p class="test-q">Can we prove it to a skeptical patient?</p>
+          <div class="test-toggle">
+            <button class="toggle-btn yes" data-test="2" data-val="yes">Yes</button>
+            <button class="toggle-btn no" data-test="2" data-val="no">No</button>
+          </div>
+        </div>
+        <div class="builder-test">
+          <span class="test-name">Test 03 · Repeat</span>
+          <p class="test-q">Does it hold on patient 100, not just our best day?</p>
+          <div class="test-toggle">
+            <button class="toggle-btn yes" data-test="3" data-val="yes">Yes</button>
+            <button class="toggle-btn no" data-test="3" data-val="no">No</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="builder-output empty" id="builderOutput">
+        <p>Your sentence will preview here as you type…</p>
+      </div>
+
+      <div class="builder-controls">
+        <button class="control-btn" id="copyBtn">Copy Sentence</button>
+        <button class="control-btn secondary" id="clearBtn">Clear All</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div>Implanted Wisdom <span class="gold">·</span> Pulver Oral Surgery <span class="gold">·</span> Purple Cow Workshop <span class="gold">·</span> Internal</div>
+</footer>
+
+<div class="save-status" id="saveStatus">✓ Saved</div>
+
+<script>
+  // ====== CANDIDATE PURPLE COWS ======
+  // Each card: claim, rationale, tests (testable/defensible/ownable, 1-4), tag
+  const cows = [
+    {
+      id: '01',
+      tag: 'safe',
+      tagLabel: 'Safe',
+      claim: '<em>One surgeon. Every step. Every year. Forever.</em>',
+      rationale: "The PickFu #2 winner taken further. Most solo surgeons can claim 'one surgeon for the procedure.' Pulver can claim something stronger — that the same surgeon is reachable for life. This isn't concierge talk; it's a structural truth of a small, owner-operated practice.",
+      tests: { testable: 4, defensible: 3, ownable: 2 },
+      note: "Strongest research-backed direction. Risk: any small practice can copy the claim. Need a proof element competitors can't match — see Cards 03, 05, 07."
+    },
+    {
+      id: '02',
+      tag: 'safe',
+      tagLabel: 'Safe',
+      claim: '<em>Treated like family — by an actual family practice.</em>',
+      rationale: "Leans into PickFu #1's 'home feeling' winner and the literal Pulver family operation (Dr. Eric, Skylar, Dylan). 'Family-owned' is a structural fact ClearChoice and corporate roll-ups can never claim. Anti-corporate positioning at a moment when ClearChoice is closing locations.",
+      tests: { testable: 2, defensible: 4, ownable: 3 },
+      note: "Easy to defend — the family ownership is real. Weakness: hard to make 'testable' in the Godin sense. Pairs powerfully with a more concrete claim from another card."
+    },
+    {
+      id: '03',
+      tag: 'bold',
+      tagLabel: 'Bold',
+      claim: 'The only full-arch practice where you have <em>your surgeon\'s personal cell.</em>',
+      rationale: "Takes 'one surgeon, no handoffs' and makes it operationally impossible for ClearChoice or any multi-doctor center to copy. A national chain literally cannot give you the surgeon's number. This is testable (you either get the number or you don't), defensible (rooted in practice scale), and uniquely ownable.",
+      tests: { testable: 4, defensible: 4, ownable: 4 },
+      note: "Highest-scoring on all three Godin tests. Will Dr. Pulver actually give patients his cell? That's the question — but if yes, this is genuinely purple."
+    },
+    {
+      id: '04',
+      tag: 'bold',
+      tagLabel: 'Bold',
+      claim: '<em>The 35-year promise.</em> Same surgeon when you book. Same surgeon when you call in 2040.',
+      rationale: "Reframes Dr. Pulver's 35+ year career not as a credential but as a future commitment. Most competitors are mid-career; many are at corporate centers where staff turn over. Pulver has practiced long enough to make a believable claim about being there for the long haul of a patient's restoration.",
+      tests: { testable: 3, defensible: 4, ownable: 3 },
+      note: "Anchors continuity in time and turns experience into a guarantee. Strong against ClearChoice (high turnover) and younger surgeons (less track record)."
+    },
+    {
+      id: '05',
+      tag: 'bold',
+      tagLabel: 'Bold',
+      claim: '<em>The Pulver Protocol</em> — our published, documented full-arch standard.',
+      rationale: "Taking a page from medical research: name the protocol after the practice. Document it. Publish it. Patients see a named, repeatable system instead of generic 'experience.' Competitors who try to copy it advertise our brand for us. This is how Mayo Clinic, Cleveland Clinic, and elite specialists differentiate.",
+      tests: { testable: 4, defensible: 3, ownable: 4 },
+      note: "Requires real documentation work upfront. Massive long-term moat. Could be the signature on every consult, every social post, every ad."
+    },
+    {
+      id: '06',
+      tag: 'bold',
+      tagLabel: 'Bold',
+      claim: 'A second opinion <em>from the surgeon who placed your implants</em> — for life.',
+      rationale: "A specific, ownable promise that flips the typical pain point. Patients who get implants elsewhere and develop issues struggle to get the original surgeon back on the phone. Pulver makes a guarantee: you can always come back. Costs almost nothing operationally; means everything emotionally.",
+      tests: { testable: 4, defensible: 4, ownable: 3 },
+      note: "Cheap to deliver, expensive to copy at scale. ClearChoice cannot promise this — their original surgeon often left the network."
+    },
+    {
+      id: '07',
+      tag: 'spicy',
+      tagLabel: 'Spicy',
+      claim: 'The full-arch practice that <em>refuses to franchise.</em>',
+      rationale: "Direct anti-positioning against ClearChoice and the wave of PE-backed roll-ups. Make 'we will never have a second location' a feature, not a limitation. Markets are already turning on franchised dental. Take advantage of the moment ClearChoice is closing centers and corporate dentistry is in retreat.",
+      tests: { testable: 4, defensible: 4, ownable: 4 },
+      note: "Polarizing on purpose. Aligns with research findings (warmth > prestige). Risk: closes the door on the satellite expansion plan in Section 9 of the strategy doc — needs reconciliation."
+    },
+    {
+      id: '08',
+      tag: 'spicy',
+      tagLabel: 'Spicy',
+      claim: '<em>Implanted Wisdom.</em> The brand named for the only thing that actually matters: 35 years of doing this surgery.',
+      rationale: "Stops trying to differentiate on features and makes the brand name itself the differentiator. The name 'Implanted Wisdom' becomes the claim — wisdom you can't fake, can't buy, and can't compress into a residency program. Lean fully into experience as the only thing competitors literally cannot acquire.",
+      tests: { testable: 2, defensible: 4, ownable: 4 },
+      note: "Beautiful copy. Weakness: experience alone is what every surgeon claims (PickFu #1 showed credential-leading underperforms). Probably stronger as a tagline than as the core differentiator."
+    },
+    {
+      id: '09',
+      tag: 'bold',
+      tagLabel: 'Bold',
+      claim: 'The only oral surgeon <em>who\'ll make you laugh</em> through the most serious decision of your life.',
+      rationale: "Look at every full-arch website in the audit. They are all the same tone: solemn, clinical, reassuring-but-stiff. None of them are funny. Dr. Pulver actually is — and humor isn't just personality, it's a clinical asset. Patients who laugh are less anxious, more honest in consults, and trust faster. The category leaves this entire emotional register wide open. It's also the one thing on this list that genuinely cannot be hired, trained, scaled, or franchised. ClearChoice has a brand voice committee. Dr. Pulver has a sense of humor.",
+      tests: { testable: 4, defensible: 4, ownable: 4 },
+      note: "Authentically true to who Dr. Pulver actually is, which makes it impossible to fake. Pairs naturally with PickFu #1's 'home feeling' winner — humor is how warmth shows up in real life. Caveat: requires letting him be himself in ads and on the site instead of polishing him into a generic surgeon. The real test is whether we'll give the camera time to capture it."
+    }
+  ];
+
+  // ====== STATE (persisted to localStorage) ======
+  // Note: localStorage is unavailable in some sandboxed contexts — fall back to in-memory only
+  const STORAGE_KEY = 'purpleCowState_v1';
+  let state = {
+    cardStates: {}, // { cardId: { status: 'shortlist'|'eliminate'|'neutral', notes: '' } }
+    builder: { blank1: '', blank2: '', blank3: '', tests: { 1: null, 2: null, 3: null } }
+  };
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) state = JSON.parse(raw);
+    } catch (e) { /* in-memory only */ }
+  }
+
+  function saveState() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      showSaveStatus();
+    } catch (e) { /* in-memory only */ }
+  }
+
+  let saveTimer = null;
+  function showSaveStatus() {
+    const el = document.getElementById('saveStatus');
+    el.classList.add('visible');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => el.classList.remove('visible'), 1400);
+  }
+
+  // ====== RENDER COW CARDS ======
+  function renderTests(tests) {
+    const fields = [
+      { key: 'testable', label: 'Testable' },
+      { key: 'defensible', label: 'Defensible' },
+      { key: 'ownable', label: 'Ownable' }
+    ];
+    return fields.map(f => {
+      const val = tests[f.key];
+      const dots = '●'.repeat(val) + '○'.repeat(4 - val);
+      return `
+        <div class="test-pip">
+          <span class="test-label">${f.label}</span>
+          <div class="test-rating">
+            <span class="filled">${'●'.repeat(val)}</span><span class="empty">${'○'.repeat(4 - val)}</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function renderCowCards() {
+    const grid = document.getElementById('cowGrid');
+    grid.innerHTML = cows.map(cow => {
+      const cs = state.cardStates[cow.id] || { status: 'neutral', notes: '' };
+      const cardClass = cs.status === 'shortlist' ? 'shortlisted'
+                      : cs.status === 'eliminate' ? 'eliminated' : '';
+      const shortlistActive = cs.status === 'shortlist' ? 'active' : '';
+      const eliminateActive = cs.status === 'eliminate' ? 'active' : '';
+      return `
+        <div class="cow-card ${cardClass}" data-id="${cow.id}">
+          <div class="cow-header">
+            <span class="cow-id">Cow · ${cow.id}</span>
+            <span class="cow-tag ${cow.tag}">${cow.tagLabel}</span>
+          </div>
+          <div class="cow-claim">${cow.claim}</div>
+          <p class="cow-rationale">${cow.rationale}</p>
+          <div class="cow-tests">${renderTests(cow.tests)}</div>
+          <div class="cow-rationale" style="font-size: 0.88rem; opacity: 0.65; font-style: italic; margin-bottom: 1rem;">
+            <strong style="font-style: normal; color: var(--gold-soft); font-family: 'Courier Prime', monospace; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;">Strategist Note · </strong>${cow.note}
+          </div>
+          <div class="cow-actions">
+            <button class="cow-btn shortlist-btn ${shortlistActive}" data-action="shortlist" data-id="${cow.id}">★ Shortlist</button>
+            <button class="cow-btn eliminate-btn ${eliminateActive}" data-action="eliminate" data-id="${cow.id}">✕ Eliminate</button>
+            <button class="cow-btn notes-btn" data-action="toggle-notes" data-id="${cow.id}">＋ Notes</button>
+          </div>
+          <textarea class="cow-notes ${cs.notes ? 'visible' : ''}" data-id="${cow.id}" placeholder="Dr. Pulver's reaction, refinements, what to test next…">${cs.notes || ''}</textarea>
+        </div>
+      `;
+    }).join('');
+    bindCowEvents();
+  }
+
+  function bindCowEvents() {
+    document.querySelectorAll('.cow-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const action = btn.dataset.action;
+        if (!state.cardStates[id]) state.cardStates[id] = { status: 'neutral', notes: '' };
+        if (action === 'shortlist') {
+          state.cardStates[id].status = state.cardStates[id].status === 'shortlist' ? 'neutral' : 'shortlist';
+        } else if (action === 'eliminate') {
+          state.cardStates[id].status = state.cardStates[id].status === 'eliminate' ? 'neutral' : 'eliminate';
+        } else if (action === 'toggle-notes') {
+          const ta = document.querySelector(`textarea.cow-notes[data-id="${id}"]`);
+          ta.classList.toggle('visible');
+          if (ta.classList.contains('visible')) ta.focus();
+          return;
+        }
+        saveState();
+        renderCowCards();
+      });
+    });
+    document.querySelectorAll('.cow-notes').forEach(ta => {
+      ta.addEventListener('input', () => {
+        const id = ta.dataset.id;
+        if (!state.cardStates[id]) state.cardStates[id] = { status: 'neutral', notes: '' };
+        state.cardStates[id].notes = ta.value;
+        saveState();
+      });
+    });
+  }
+
+  // ====== BUILDER ======
+  function renderBuilder() {
+    document.getElementById('blank1').value = state.builder.blank1;
+    document.getElementById('blank2').value = state.builder.blank2;
+    document.getElementById('blank3').value = state.builder.blank3;
+    updateBuilderOutput();
+    updateBuilderToggles();
+  }
+
+  function updateBuilderOutput() {
+    const b1 = state.builder.blank1.trim();
+    const b2 = state.builder.blank2.trim();
+    const b3 = state.builder.blank3.trim();
+    const out = document.getElementById('builderOutput');
+    if (!b1 && !b2 && !b3) {
+      out.classList.add('empty');
+      out.innerHTML = '<p>Your sentence will preview here as you type…</p>';
+      return;
+    }
+    out.classList.remove('empty');
+    out.innerHTML = `<p>"We are the only full-arch practice that <strong style="color:var(--cream)">${b1 || '___'}</strong>, for <strong style="color:var(--cream)">${b2 || '___'}</strong>, because <strong style="color:var(--cream)">${b3 || '___'}</strong>."</p>`;
+  }
+
+  function updateBuilderToggles() {
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      const test = btn.dataset.test;
+      const val = btn.dataset.val;
+      btn.classList.toggle('active', state.builder.tests[test] === val);
+    });
+  }
+
+  ['blank1', 'blank2', 'blank3'].forEach(id => {
+    document.getElementById(id).addEventListener('input', e => {
+      state.builder[id] = e.target.value;
+      updateBuilderOutput();
+      saveState();
+    });
+  });
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const test = btn.dataset.test;
+      const val = btn.dataset.val;
+      state.builder.tests[test] = state.builder.tests[test] === val ? null : val;
+      updateBuilderToggles();
+      saveState();
+    });
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const b1 = state.builder.blank1.trim() || '___';
+    const b2 = state.builder.blank2.trim() || '___';
+    const b3 = state.builder.blank3.trim() || '___';
+    const sentence = `We are the only full-arch practice that ${b1}, for ${b2}, because ${b3}.`;
+    navigator.clipboard.writeText(sentence).then(() => {
+      const btn = document.getElementById('copyBtn');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied';
+      setTimeout(() => { btn.textContent = orig; }, 1600);
+    }).catch(() => {
+      alert('Copy failed — please select and copy the sentence manually.');
+    });
+  });
+
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    if (!confirm('Clear all builder fields and test answers?')) return;
+    state.builder = { blank1: '', blank2: '', blank3: '', tests: { 1: null, 2: null, 3: null } };
+    saveState();
+    renderBuilder();
+  });
+
+  // ====== INIT ======
+  loadState();
+  renderCowCards();
+  renderBuilder();
+</script>
+
+</body>
+</html>

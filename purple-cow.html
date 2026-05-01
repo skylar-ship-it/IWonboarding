@@ -572,6 +572,37 @@
     color: var(--gold-deep);
     opacity: 0.85;
   }
+
+  /* Respondent quote — voice-of-customer attached to a vs-card */
+  .vs-respondent {
+    margin-top: 1rem;
+    padding: 0.9rem 1rem 0.9rem 1.1rem;
+    background: rgba(247, 242, 236, 0.6);
+    border-left: 2px solid rgba(168, 136, 79, 0.4);
+    border-radius: 0 8px 8px 0;
+  }
+  .vs-respondent-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    opacity: 0.85;
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .vs-respondent-text {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.85;
+    font-style: italic;
+  }
+  .vs-card.winner .vs-respondent {
+    background: rgba(255, 248, 230, 0.7);
+    border-left-color: var(--gold);
+  }
   .vs-card.winner {
     border-color: var(--gold);
     background: linear-gradient(180deg, var(--white) 0%, #fdfaf3 100%);
@@ -1420,6 +1451,10 @@
           <h4 class="vs-title">The Home Feeling</h4>
           <p class="vs-quote">"He chose me because it felt like home. Championship-level care isn't just precision — it's how you treat people."</p>
           <div class="vs-themes">Warmth · Relatability · Trust</div>
+          <div class="vs-respondent">
+            <span class="vs-respondent-label">Respondent · in their own words</span>
+            <p class="vs-respondent-text">"I think this one will resonate more with the average consumer, myself included. When I hear teeth and professional hockey as the main storyline, I glaze over and assume I can't afford it, and I'd also assume the dental surgeon wasn't accessible to the average person either."</p>
+          </div>
         </div>
         <div class="vs-divider">vs.</div>
         <div class="vs-card">

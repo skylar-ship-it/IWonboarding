@@ -276,76 +276,121 @@
 
   /* ---------- Section: Funnel ---------- */
   .funnel-section { background: var(--cream); }
-  .funnel-flow {
+  .funnel-diagram {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .funnel-row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
-    margin-top: 3rem;
-    position: relative;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
   }
-  .funnel-stage {
-    background: var(--white);
-    border-radius: 14px;
-    padding: 2rem 1.5rem;
+  .funnel-shape {
+    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+    color: var(--espresso);
+    padding: 1.5rem 2rem;
+    text-align: center;
     box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(201, 169, 110, 0.15);
-    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    position: relative;
   }
-  .funnel-stage:hover {
-    transform: translateY(-4px);
+  .funnel-shape:hover {
+    transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
-  .funnel-stage .step {
+  .funnel-shape .step {
     font-family: 'Courier Prime', monospace;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
-    color: var(--gold-deep);
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    color: var(--espresso);
+    opacity: 0.65;
     display: block;
+    margin-bottom: 0.4rem;
   }
-  .funnel-stage h3 {
+  .funnel-shape h3 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    font-size: 1.55rem;
+    font-size: 1.5rem;
     color: var(--espresso);
-    margin-bottom: 0.6rem;
+    line-height: 1.1;
   }
-  .funnel-stage p {
-    font-size: 0.92rem;
+
+  /* Tapering widths via clip-path trapezoids */
+  .funnel-row-1 .funnel-shape { width: 100%; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); padding: 1.75rem 2rem; }
+  .funnel-row-2 .funnel-shape { width: 88%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%); color: var(--white); }
+  .funnel-row-2 .funnel-shape h3, .funnel-row-2 .funnel-shape .step { color: var(--white); }
+  .funnel-row-2 .funnel-shape .step { opacity: 0.75; }
+  .funnel-row-3 .funnel-shape { width: 76%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%); background: linear-gradient(135deg, var(--gold-deep) 0%, var(--teal-soft) 100%); color: var(--white); }
+  .funnel-row-3 .funnel-shape h3, .funnel-row-3 .funnel-shape .step { color: var(--white); }
+  .funnel-row-3 .funnel-shape .step { opacity: 0.78; }
+  .funnel-row-4 .funnel-shape { width: 62%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--teal) 100%); color: var(--white); }
+  .funnel-row-4 .funnel-shape h3, .funnel-row-4 .funnel-shape .step { color: var(--white); }
+  .funnel-row-4 .funnel-shape .step { opacity: 0.78; }
+  .funnel-row-5 .funnel-shape { width: 46%; margin: 0 auto; background: var(--espresso); color: var(--cream); border-radius: 0 0 50% 50% / 0 0 100% 100%; padding: 2rem 1.5rem 2.5rem; }
+  .funnel-row-5 .funnel-shape h3, .funnel-row-5 .funnel-shape .step { color: var(--cream); }
+  .funnel-row-5 .funnel-shape .step { color: var(--gold-soft); opacity: 1; }
+
+  .funnel-desc {
+    font-size: 0.85rem;
     color: var(--ink);
     opacity: 0.72;
-    line-height: 1.55;
+    line-height: 1.5;
+    padding: 0 0.5rem;
   }
-  .funnel-stage:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: -0.85rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0.7rem;
-    height: 1px;
-    background: var(--gold);
-    z-index: 2;
+  .funnel-desc.left { text-align: right; }
+  .funnel-desc.right { text-align: left; }
+  .funnel-desc strong {
+    display: block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
   }
-  .funnel-stage:not(:last-child)::before {
-    content: '';
-    position: absolute;
-    right: -1rem;
-    top: 50%;
-    transform: translateY(-50%) rotate(45deg);
-    width: 8px;
-    height: 8px;
-    border-top: 1px solid var(--gold);
-    border-right: 1px solid var(--gold);
-    z-index: 3;
+
+  @media (max-width: 768px) {
+    .funnel-diagram { gap: 0.4rem; }
+    .funnel-row {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    .funnel-desc { display: none; }
+    .funnel-row-1 .funnel-shape,
+    .funnel-row-2 .funnel-shape,
+    .funnel-row-3 .funnel-shape,
+    .funnel-row-4 .funnel-shape {
+      width: 100%;
+      clip-path: none;
+      border-radius: 8px;
+    }
+    .funnel-row-5 .funnel-shape {
+      width: 100%;
+      border-radius: 0 0 16px 16px;
+    }
+    .funnel-shape { padding: 1.2rem 1.25rem; }
+    .funnel-shape h3 { font-size: 1.25rem; }
+    /* Show descriptions inside the shape on mobile */
+    .funnel-shape .mobile-desc {
+      display: block;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      opacity: 0.85;
+      line-height: 1.45;
+    }
   }
-  @media (max-width: 900px) {
-    .funnel-flow { grid-template-columns: 1fr; }
-    .funnel-stage:not(:last-child)::after,
-    .funnel-stage:not(:last-child)::before { display: none; }
-  }
+  .funnel-shape .mobile-desc { display: none; }
 
   /* ---------- Two column layout ---------- */
   .two-col {
@@ -947,9 +992,112 @@
   .hero-inner > *:nth-child(4) { animation-delay: 0.55s; }
 
   @media (max-width: 700px) {
-    section { padding: 5rem 1.5rem; }
-    .hero { padding: 6rem 1.5rem 5rem; }
-    .nav-inner { padding: 1rem 1.5rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 5rem 1.25rem 4rem; }
+    .nav-inner { padding: 0.85rem 1.25rem; gap: 0.75rem; }
+    .container { padding: 0; }
+
+    /* Nav adjustments */
+    .nav-meta { display: none; }
+    .brand-name { font-size: 1rem; }
+    .brand-name span { font-size: 0.6rem; }
+    .monogram { width: 36px; height: 36px; font-size: 0.95rem; }
+
+    /* Hero adjustments */
+    .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+    .hero .subhead { font-size: 1rem; }
+    .hero-meta-row { gap: 1.5rem; padding-top: 2rem; margin-top: 2rem; }
+    .hero-meta-item { min-width: 100%; }
+    .hero-meta-item .value { font-size: 1.15rem; }
+    .hero .label { font-size: 0.65rem; padding: 0.45rem 0.9rem; }
+
+    /* Section headers */
+    .section-header { margin-bottom: 2.5rem; }
+    .section-header h2 { font-size: clamp(1.85rem, 7vw, 2.4rem); }
+    .section-header p.lede { font-size: 1rem; }
+
+    /* Cards + spacing */
+    .card, .card-cream { padding: 1.5rem; }
+    .card h3, .card-cream h3 { font-size: 1.35rem; }
+    .relationship-card { padding: 2rem 1.5rem; }
+    .relationship-card h3 { font-size: 1.5rem; }
+
+    /* Pipeline bar - stack vertically on mobile */
+    .pipeline-bar {
+      flex-direction: column;
+      border-radius: 12px;
+    }
+    .pipeline-stage {
+      border-right: none;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
+      padding: 0.85rem 1rem;
+      font-size: 0.68rem;
+    }
+    .pipeline-stage:last-child { border-bottom: none; }
+
+    /* Flow steps - stack to single column */
+    .flow-steps { grid-template-columns: 1fr; gap: 1rem; }
+    .flow-step { padding: 1.5rem 1.25rem; }
+
+    /* Key insight + highlight boxes */
+    .key-insight { padding: 1.5rem; }
+    .key-insight .quote { font-size: 1.25rem; }
+    .insight-banner { padding: 1.75rem 1.5rem; }
+    .insight-banner h3 { font-size: 1.45rem; }
+    .highlight-box { padding: 2rem 1.5rem; }
+    .highlight-box p { font-size: 1.35rem; }
+
+    /* Positioning line */
+    .positioning-line { padding: 1.5rem 0.5rem; margin-top: 2rem; }
+    .positioning-line p { font-size: 1.2rem; }
+
+    /* Question card */
+    .question-card { padding: 1.5rem; }
+    .question-card li { font-size: 0.92rem; }
+
+    /* Pillars */
+    .pillar { padding: 1.75rem 1.5rem; }
+    .pillar h3 { font-size: 1.4rem; }
+
+    /* Next list */
+    .next-list li {
+      font-size: 1.15rem;
+      padding: 1.25rem 0 1.25rem 3rem;
+    }
+    .next-list li::before { top: 1.45rem; font-size: 0.7rem; }
+
+    /* Two-col layouts */
+    .two-col { gap: 2rem; }
+
+    /* Placeholder boxes */
+    .placeholder-box { aspect-ratio: 4 / 3; padding: 1.5rem; }
+    .placeholder-box .placeholder-title { font-size: 1.15rem; }
+
+    /* Creative grid */
+    .creative-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+
+    /* Satellite */
+    .satellite-visual { padding: 2.5rem 1.5rem; }
+    .satellite-grid { gap: 1.5rem; }
+
+    /* Clean lists */
+    .clean-list li { font-size: 0.95rem; padding: 0.7rem 0 0.7rem 1.4rem; }
+    .clean-list li::before { top: 1.2rem; }
+
+    /* Footer */
+    footer { padding: 2rem 1.25rem; font-size: 0.65rem; letter-spacing: 0.14em; }
+  }
+
+  @media (max-width: 420px) {
+    section { padding: 3.5rem 1rem; }
+    .hero { padding: 4.5rem 1rem 3.5rem; }
+    .nav-inner { padding: 0.75rem 1rem; }
+    .brand-name span { display: none; }
+    .hero h1 { font-size: 2rem; }
+    .section-header h2 { font-size: 1.75rem; }
+    .insight-banner h3 { font-size: 1.25rem; }
+    .highlight-box p { font-size: 1.2rem; }
+    .next-list li { font-size: 1.05rem; }
   }
 </style>
 </head>
@@ -1010,31 +1158,55 @@
       <p class="lede">A connected system from cold ad impression to confirmed surgery. Each stage exists to qualify deeper, reduce friction, and protect the value of the next.</p>
     </div>
 
-    <div class="funnel-flow">
-      <div class="funnel-stage">
-        <span class="step">Stage 01 · Traffic</span>
-        <h3>Traffic</h3>
-        <p>Meta Ads driving interest from cold and warm audiences.</p>
+    <div class="funnel-diagram">
+      <div class="funnel-row funnel-row-1">
+        <div class="funnel-desc left"><strong>Top of Funnel</strong>Cold reach across Facebook + Instagram</div>
+        <div class="funnel-shape">
+          <span class="step">Stage 01</span>
+          <h3>Traffic</h3>
+          <p class="mobile-desc">Meta Ads driving interest from cold and warm audiences.</p>
+        </div>
+        <div class="funnel-desc right">Meta Ads · cold + warm audiences driving interest</div>
       </div>
-      <div class="funnel-stage">
-        <span class="step">Stage 02 · Conversion</span>
-        <h3>Conversion</h3>
-        <p>Landing page converts visitors with trust + clarity.</p>
+
+      <div class="funnel-row funnel-row-2">
+        <div class="funnel-desc left"><strong>Click-Through</strong>Landing page does the persuading</div>
+        <div class="funnel-shape">
+          <span class="step">Stage 02</span>
+          <h3>Conversion</h3>
+          <p class="mobile-desc">Landing page converts visitors with trust + clarity.</p>
+        </div>
+        <div class="funnel-desc right">Trust + clarity convert scrollers into form-fillers</div>
       </div>
-      <div class="funnel-stage">
-        <span class="step">Stage 03 · Capture</span>
-        <h3>Capture</h3>
-        <p>Survey form pushes qualified leads into Go High Level.</p>
+
+      <div class="funnel-row funnel-row-3">
+        <div class="funnel-desc left"><strong>Lead Capture</strong>Survey form filters intent</div>
+        <div class="funnel-shape">
+          <span class="step">Stage 03</span>
+          <h3>Capture</h3>
+          <p class="mobile-desc">Survey form pushes qualified leads into Go High Level.</p>
+        </div>
+        <div class="funnel-desc right">Form submissions push qualified leads into GHL</div>
       </div>
-      <div class="funnel-stage">
-        <span class="step">Stage 04 · Nurture</span>
-        <h3>Nurture</h3>
-        <p>Automations + human follow-up keep leads warm and moving.</p>
+
+      <div class="funnel-row funnel-row-4">
+        <div class="funnel-desc left"><strong>Mid-Funnel</strong>Automated + human follow-up</div>
+        <div class="funnel-shape">
+          <span class="step">Stage 04</span>
+          <h3>Nurture</h3>
+          <p class="mobile-desc">Automations + human follow-up keep leads warm and moving.</p>
+        </div>
+        <div class="funnel-desc right">SMS, email, tasks — keep leads warm and moving</div>
       </div>
-      <div class="funnel-stage">
-        <span class="step">Stage 05 · Close</span>
-        <h3>Close</h3>
-        <p>Consultation books surgery — the moment that defines ROI.</p>
+
+      <div class="funnel-row funnel-row-5">
+        <div class="funnel-desc left"><strong>Bottom of Funnel</strong>Consult → surgery</div>
+        <div class="funnel-shape">
+          <span class="step">Stage 05</span>
+          <h3>Close</h3>
+          <p class="mobile-desc">Consultation books surgery — the moment that defines ROI.</p>
+        </div>
+        <div class="funnel-desc right">The moment that defines ROI for the entire system</div>
       </div>
     </div>
   </div>

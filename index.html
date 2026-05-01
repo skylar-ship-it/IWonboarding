@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Implanted Wisdom · Internal Strategy Overview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Courier+Prime:wght@400;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1E1612;
+    --espresso: #2D241F;
+    --gold: #C9A96E;
+    --gold-soft: #E2CFA6;
+    --gold-deep: #A8884F;
+    --teal: #245C5C;
+    --teal-soft: #3A7878;
+    --cream: #F7F2EC;
+    --cream-deep: #EFE7DA;
+    --white: #FFFFFF;
+    --shadow-sm: 0 2px 8px rgba(30, 22, 18, 0.04), 0 1px 2px rgba(30, 22, 18, 0.06);
+    --shadow-md: 0 8px 24px rgba(30, 22, 18, 0.06), 0 2px 6px rgba(30, 22, 18, 0.04);
+    --shadow-lg: 0 24px 60px rgba(30, 22, 18, 0.10), 0 4px 12px rgba(30, 22, 18, 0.05);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ---------- Typography ---------- */
+  .display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .display-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+  }
+  .eyebrow {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: inline-block;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gold-soft);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ---------- Navigation ---------- */
+  nav.top {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 242, 236, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .monogram {
+    width: 42px;
+    height: 42px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--espresso);
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--espresso);
+    letter-spacing: 0.02em;
+  }
+  .brand-name span {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-deep);
+    letter-spacing: 0.2em;
+    display: block;
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+  .brand-cluster { display: flex; align-items: center; gap: 0.85rem; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--espresso);
+  }
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--gold-deep); }
+  .nav-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- Layout primitives ---------- */
+  section {
+    padding: 7rem 2rem;
+    position: relative;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  .narrow {
+    max-width: 920px;
+  }
+
+  .section-header {
+    margin-bottom: 4rem;
+    max-width: 780px;
+  }
+  .section-header h2 {
+    font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+    margin-top: 0.5rem;
+    color: var(--espresso);
+  }
+  .section-header p.lede {
+    font-size: 1.12rem;
+    color: var(--ink);
+    opacity: 0.78;
+    margin-top: 1.25rem;
+    max-width: 640px;
+    line-height: 1.65;
+  }
+
+  .section-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 9rem 2rem 8rem;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle at center, rgba(201, 169, 110, 0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 50%;
+    height: 70%;
+    background: radial-gradient(circle at center, rgba(36, 92, 92, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero .label {
+    color: var(--gold-soft);
+    margin-bottom: 2rem;
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid rgba(201, 169, 110, 0.45);
+    border-radius: 999px;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 5.2rem);
+    color: var(--cream);
+    max-width: 18ch;
+    margin-bottom: 2rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .hero .subhead {
+    max-width: 620px;
+    font-size: 1.15rem;
+    color: rgba(247, 242, 236, 0.78);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+  .hero-meta-row {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+    margin-top: 3rem;
+  }
+  .hero-meta-item {
+    flex: 1;
+    min-width: 180px;
+  }
+  .hero-meta-item .label {
+    color: var(--gold-soft);
+    border: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    border-radius: 0;
+    display: block;
+  }
+  .hero-meta-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  /* ---------- Section: Funnel ---------- */
+  .funnel-section { background: var(--cream); }
+  .funnel-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+  }
+  .funnel-stage {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .funnel-stage:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .funnel-stage .step {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .funnel-stage h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    color: var(--espresso);
+    margin-bottom: 0.6rem;
+  }
+  .funnel-stage p {
+    font-size: 0.92rem;
+    color: var(--ink);
+    opacity: 0.72;
+    line-height: 1.55;
+  }
+  .funnel-stage:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.7rem;
+    height: 1px;
+    background: var(--gold);
+    z-index: 2;
+  }
+  .funnel-stage:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    right: -1rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    z-index: 3;
+  }
+  @media (max-width: 900px) {
+    .funnel-flow { grid-template-columns: 1fr; }
+    .funnel-stage:not(:last-child)::after,
+    .funnel-stage:not(:last-child)::before { display: none; }
+  }
+
+  /* ---------- Two column layout ---------- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(201, 169, 110, 0.15);
+  }
+  .card-cream {
+    background: var(--cream-deep);
+    border-radius: 16px;
+    padding: 2.25rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+  }
+  .card h3, .card-cream h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.55rem;
+    color: var(--espresso);
+    margin-bottom: 1rem;
+  }
+  .card p, .card-cream p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.82;
+  }
+
+  /* ---------- Bullet lists ---------- */
+  .clean-list {
+    list-style: none;
+    padding: 0;
+  }
+  .clean-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    font-size: 1rem;
+    color: var(--ink);
+    opacity: 0.85;
+    padding-left: 1.6rem;
+    position: relative;
+  }
+  .clean-list li:last-child { border-bottom: none; }
+  .clean-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.4rem;
+    width: 8px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .clean-list strong {
+    color: var(--espresso);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ---------- Placeholder boxes ---------- */
+  .placeholder-box {
+    aspect-ratio: 16 / 10;
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    border: 1.5px dashed rgba(201, 169, 110, 0.4);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  .placeholder-box .label {
+    margin-bottom: 0.5rem;
+  }
+  .placeholder-box .placeholder-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--gold-deep);
+    margin-bottom: 0.4rem;
+  }
+  .placeholder-box .placeholder-sub {
+    font-size: 0.88rem;
+    color: var(--ink);
+    opacity: 0.55;
+  }
+
+  /* ---------- GHL section ---------- */
+  .ghl-section { background: var(--white); }
+
+  .pipeline-bar {
+    display: flex;
+    gap: 0;
+    margin-top: 1.5rem;
+    border-radius: 999px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .pipeline-stage {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    background: var(--cream-deep);
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--espresso);
+    border-right: 1px solid rgba(201, 169, 110, 0.3);
+    transition: background 0.3s ease;
+  }
+  .pipeline-stage:last-child { border-right: none; }
+  .pipeline-stage:nth-child(1) { background: var(--gold-soft); }
+  .pipeline-stage:nth-child(2) { background: var(--gold); color: var(--white); }
+  .pipeline-stage:nth-child(3) { background: var(--gold-deep); color: var(--white); }
+  .pipeline-stage:nth-child(4) { background: var(--teal); color: var(--white); }
+  .pipeline-stage:nth-child(5) { background: var(--espresso); color: var(--cream); }
+
+  /* ---------- Integration flow ---------- */
+  .integration-section { background: var(--cream); }
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .flow-step {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .flow-step .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .flow-step h4 {
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--espresso);
+    margin-bottom: 0.4rem;
+  }
+  .flow-step p {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.7;
+    line-height: 1.55;
+  }
+  @media (max-width: 800px) {
+    .flow-steps { grid-template-columns: 1fr 1fr; }
+  }
+
+  .key-insight {
+    margin-top: 3.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--teal);
+    color: var(--cream);
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  .key-insight .label {
+    color: var(--gold-soft);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .key-insight .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  /* ---------- IW → Pulver ---------- */
+  .iw-pulver-section { background: var(--white); }
+  .relationship-diagram {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .relationship-card {
+    background: var(--cream);
+    padding: 3rem 2.25rem;
+    border-radius: 16px;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    text-align: center;
+  }
+  .relationship-card .label {
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .relationship-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.85rem;
+    color: var(--espresso);
+    margin-bottom: 0.75rem;
+  }
+  .relationship-card p {
+    color: var(--ink);
+    opacity: 0.75;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .relationship-card.engine {
+    background: var(--espresso);
+    color: var(--cream);
+    border: none;
+  }
+  .relationship-card.engine h3 { color: var(--gold); }
+  .relationship-card.engine p { color: rgba(247, 242, 236, 0.78); opacity: 1; }
+  .relationship-card.engine .label { color: var(--gold-soft); }
+
+  .arrow-connector {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1;
+  }
+  .arrow-connector .arrow-line {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-style: normal;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 800px) {
+    .relationship-diagram { grid-template-columns: 1fr; }
+    .arrow-connector { transform: rotate(90deg); padding: 1rem 0; }
+  }
+
+  .positioning-line {
+    margin-top: 3rem;
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(201, 169, 110, 0.3);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+  }
+  .positioning-line p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    color: var(--espresso);
+    line-height: 1.5;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .positioning-line em {
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+
+  /* ---------- Meta Ads ---------- */
+  .meta-section { background: var(--cream); }
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 800px) {
+    .three-col { grid-template-columns: 1fr; }
+  }
+
+  .creative-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 800px) {
+    .creative-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ---------- Challenges (priority section) ---------- */
+  .challenges-section {
+    background: var(--espresso);
+    color: var(--cream);
+  }
+  .challenges-section .section-num,
+  .challenges-section .label { color: var(--gold-soft); }
+  .challenges-section .section-header h2 { color: var(--cream); }
+  .challenges-section .section-header p.lede {
+    color: rgba(247, 242, 236, 0.78);
+    opacity: 1;
+  }
+
+  .insight-banner {
+    background: var(--teal);
+    border-radius: 16px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 3.5rem;
+    border-left: 4px solid var(--gold);
+  }
+  .insight-banner .label {
+    color: var(--gold-soft);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .insight-banner h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+  .insight-banner h3 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  @media (max-width: 800px) {
+    .challenge-grid { grid-template-columns: 1fr; }
+  }
+
+  .challenges-section .clean-list li {
+    color: rgba(247, 242, 236, 0.85);
+    border-bottom-color: rgba(201, 169, 110, 0.2);
+  }
+  .challenges-section .clean-list strong { color: var(--cream); }
+  .challenges-section .clean-list li::before { background: var(--gold); }
+
+  .question-card {
+    background: rgba(247, 242, 236, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .question-card .label {
+    color: var(--gold-soft);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .question-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .question-card li {
+    padding: 0.7rem 0;
+    color: rgba(247, 242, 236, 0.88);
+    font-size: 0.98rem;
+    line-height: 1.55;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  }
+  .question-card li:last-child { border-bottom: none; }
+  .question-card li::before {
+    content: '?';
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    margin-right: 0.6rem;
+    font-size: 1.1rem;
+  }
+
+  .highlight-box {
+    margin-top: 4rem;
+    padding: 3rem 3.5rem;
+    background: var(--gold);
+    color: var(--espresso);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 16px 40px rgba(201, 169, 110, 0.18);
+  }
+  .highlight-box .label {
+    color: var(--espresso);
+    opacity: 0.7;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .highlight-box p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.85rem;
+    font-style: italic;
+    color: var(--espresso);
+    line-height: 1.4;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Satellite ---------- */
+  .satellite-section { background: var(--cream); }
+  .satellite-visual {
+    margin-top: 3rem;
+    padding: 4rem 2rem;
+    background: var(--white);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .satellite-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    text-align: center;
+    align-items: center;
+  }
+  .satellite-node {
+    padding: 1.5rem 1rem;
+  }
+  .satellite-node .dot {
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.18);
+  }
+  .satellite-node.center .dot {
+    width: 20px;
+    height: 20px;
+    background: var(--teal);
+    box-shadow: 0 0 0 8px rgba(36, 92, 92, 0.18);
+  }
+  .satellite-node h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--espresso);
+    margin-bottom: 0.4rem;
+  }
+  .satellite-node p {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.65;
+  }
+  @media (max-width: 800px) {
+    .satellite-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Michigan Pitch ---------- */
+  .michigan-section { background: var(--white); }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  @media (max-width: 800px) {
+    .pillar-grid { grid-template-columns: 1fr; }
+  }
+  .pillar {
+    background: var(--cream);
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(201, 169, 110, 0.18);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gold);
+  }
+  .pillar:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background: var(--cream-deep);
+  }
+  .pillar .pillar-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--gold-deep);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+  .pillar h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.65rem;
+    color: var(--espresso);
+    margin-bottom: 1.25rem;
+  }
+  .pillar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .pillar li {
+    padding: 0.55rem 0;
+    color: var(--ink);
+    opacity: 0.78;
+    font-size: 0.95rem;
+    padding-left: 1.2rem;
+    position: relative;
+  }
+  .pillar li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 6px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ---------- Next Steps ---------- */
+  .next-section {
+    background: var(--espresso);
+    color: var(--cream);
+    padding-bottom: 9rem;
+  }
+  .next-section .section-num,
+  .next-section .label { color: var(--gold-soft); }
+  .next-section .section-header h2 { color: var(--cream); }
+  .next-section .section-header p.lede {
+    color: rgba(247, 242, 236, 0.78);
+    opacity: 1;
+  }
+
+  .next-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 3rem;
+    counter-reset: nextcount;
+  }
+  .next-list li {
+    counter-increment: nextcount;
+    padding: 1.75rem 0 1.75rem 4rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .next-list li::before {
+    content: counter(nextcount, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 1.85rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    color: var(--gold);
+  }
+  .next-list li:last-child { border-bottom: none; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: rgba(247, 242, 236, 0.6);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  footer .gold { color: var(--gold); }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > * {
+    animation: fadeUp 0.9s ease-out backwards;
+  }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.55s; }
+
+  @media (max-width: 700px) {
+    section { padding: 5rem 1.5rem; }
+    .hero { padding: 6rem 1.5rem 5rem; }
+    .nav-inner { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="top">
+  <div class="nav-inner">
+    <div class="brand-cluster">
+      <div class="monogram">IW</div>
+      <div class="brand-name">
+        Implanted Wisdom
+        <span>Internal Strategy</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#funnel">Funnel</a></li>
+      <li><a href="#landing">Landing</a></li>
+      <li><a href="#ghl">CRM</a></li>
+      <li><a href="#ads">Ads</a></li>
+      <li><a href="#challenges">Gaps</a></li>
+      <li><a href="#michigan">Michigan</a></li>
+      <li><a href="#next">Next</a></li>
+    </ul>
+    <div class="nav-meta">CONFIDENTIAL · v1</div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="label">Internal Strategy Overview · Implanted Wisdom / Pulver Oral Surgery</span>
+    <h1 class="display">Building a Scalable <em>Full-Arch</em> Patient Acquisition System</h1>
+    <p class="subhead">We've built the foundation of a full-funnel system to generate, qualify, nurture, and convert full-arch implant patients. Now the focus is identifying where leads break, where friction exists, and how to scale the system more effectively.</p>
+    <div class="hero-meta-row">
+      <div class="hero-meta-item">
+        <span class="label">Prepared For</span>
+        <span class="value">Jim — Strategy Conversation</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Front-End Brand</span>
+        <span class="value">Implanted Wisdom</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Clinical Delivery</span>
+        <span class="value">Pulver Oral Surgery</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 02 FUNNEL ============ -->
+<section id="funnel" class="funnel-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">02 · System Architecture</span>
+      <h2 class="display">Full Funnel <em class="display-italic">Breakdown</em></h2>
+      <p class="lede">A connected system from cold ad impression to confirmed surgery. Each stage exists to qualify deeper, reduce friction, and protect the value of the next.</p>
+    </div>
+
+    <div class="funnel-flow">
+      <div class="funnel-stage">
+        <span class="step">Stage 01 · Traffic</span>
+        <h3>Traffic</h3>
+        <p>Meta Ads driving interest from cold and warm audiences.</p>
+      </div>
+      <div class="funnel-stage">
+        <span class="step">Stage 02 · Conversion</span>
+        <h3>Conversion</h3>
+        <p>Landing page converts visitors with trust + clarity.</p>
+      </div>
+      <div class="funnel-stage">
+        <span class="step">Stage 03 · Capture</span>
+        <h3>Capture</h3>
+        <p>Survey form pushes qualified leads into Go High Level.</p>
+      </div>
+      <div class="funnel-stage">
+        <span class="step">Stage 04 · Nurture</span>
+        <h3>Nurture</h3>
+        <p>Automations + human follow-up keep leads warm and moving.</p>
+      </div>
+      <div class="funnel-stage">
+        <span class="step">Stage 05 · Close</span>
+        <h3>Close</h3>
+        <p>Consultation books surgery — the moment that defines ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 LANDING PAGE ============ -->
+<section id="landing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03 · Conversion Surface</span>
+      <h2 class="display">Landing Page <em class="display-italic">Strategy</em></h2>
+      <p class="lede">The landing page is the single most important conversion surface in the funnel. Its job is to translate a 3-second scroll on Instagram into a qualified inquiry.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <ul class="clean-list">
+          <li><strong>Purpose</strong>Convert cold traffic into qualified leads who self-identify as ready to explore full-arch implants.</li>
+          <li><strong>Trust Building</strong>Doctor authority, credentials, before/after imagery, real patient stories.</li>
+          <li><strong>Messaging</strong>Emotional hook (life impact) paired with logical proof (process, expertise, outcome).</li>
+          <li><strong>A/B Testing</strong>Short-form vs long-form layouts. Hook variations. Headline tone shifts.</li>
+          <li><strong>Open Positioning Question</strong>Premium / concierge experience vs. accessible / approachable. The answer changes everything downstream.</li>
+        </ul>
+      </div>
+      <div class="placeholder-box">
+        <span class="label">Visual Reference</span>
+        <span class="placeholder-title">Landing Page Screenshot</span>
+        <span class="placeholder-sub">implanted-wisdom-landing.vercel.app</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 GHL ============ -->
+<section id="ghl" class="ghl-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04 · Operating System</span>
+      <h2 class="display">CRM &amp; <em class="display-italic">Automation</em></h2>
+      <p class="lede">Go High Level is the operating layer of the funnel. Every lead, every text, every reminder, every internal task lives here. It is what makes the system run without falling through the cracks.</p>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 class="display" style="font-size: 1.6rem; color: var(--espresso); margin-bottom: 1rem;">Pipeline Stages</h3>
+        <div class="pipeline-bar">
+          <div class="pipeline-stage">New Lead</div>
+          <div class="pipeline-stage">Contacted</div>
+          <div class="pipeline-stage">Booked</div>
+          <div class="pipeline-stage">Consulted</div>
+          <div class="pipeline-stage">Closed</div>
+        </div>
+
+        <h3 class="display" style="font-size: 1.6rem; color: var(--espresso); margin-top: 2.5rem; margin-bottom: 0.75rem;">Core Workflows</h3>
+        <ul class="clean-list">
+          <li><strong>WF · New Lead Intake</strong>Instant SMS + email + internal task on form submit.</li>
+          <li><strong>WF · No-Answer Follow-Up</strong>Multi-touch sequence to recover unresponsive leads.</li>
+          <li><strong>WF · Appointment Confirmation</strong>Reminders, prep instructions, calendar holds.</li>
+          <li><strong>WF · No-Show Recovery</strong>Re-engagement automation to win back drop-offs.</li>
+        </ul>
+      </div>
+      <div class="placeholder-box">
+        <span class="label">Visual Reference</span>
+        <span class="placeholder-title">GHL Pipeline Screenshot</span>
+        <span class="placeholder-sub">Live pipeline + workflow view</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 INTEGRATION ============ -->
+<section id="integration" class="integration-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">05 · Connective Tissue</span>
+      <h2 class="display">Landing Page → <em class="display-italic">CRM Integration</em></h2>
+      <p class="lede">The handoff between the landing page and the CRM is where most acquisition systems quietly leak. Ours is wired tight.</p>
+    </div>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">i.</div>
+        <h4>Form Submission</h4>
+        <p>Visitor completes the survey form on the landing page.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">ii.</div>
+        <h4>Contact Created</h4>
+        <p>GHL contact record auto-generated with all field data.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">iii.</div>
+        <h4>Opportunity Opened</h4>
+        <p>Drops into the correct stage of the sales pipeline.</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">iv.</div>
+        <h4>Workflows Trigger</h4>
+        <p>SMS, email, internal tasks, follow-ups all fire automatically.</p>
+      </div>
+    </div>
+
+    <div class="key-insight">
+      <span class="label">Core Principle</span>
+      <p class="quote">"Speed + consistency = higher conversion."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 IW → PULVER ============ -->
+<section id="iw-pulver" class="iw-pulver-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">06 · Brand Architecture</span>
+      <h2 class="display">Implanted Wisdom <em class="display-italic">as Funnel Engine</em></h2>
+      <p class="lede">Two distinct brands, one connected purpose. Each plays a clearly defined role in the patient journey — and that separation is intentional.</p>
+    </div>
+
+    <div class="relationship-diagram">
+      <div class="relationship-card engine">
+        <span class="label">Front-End Engine</span>
+        <h3>Implanted Wisdom</h3>
+        <p>The acquisition system. Brand, ads, landing page, automation — designed to attract, qualify, and warm the right patient.</p>
+      </div>
+      <div class="arrow-connector">
+        <span class="arrow-line">Patient Flow</span>
+        →
+      </div>
+      <div class="relationship-card">
+        <span class="label">Clinical Delivery</span>
+        <h3>Pulver Oral Surgery</h3>
+        <p>Where care happens. Surgical expertise, patient experience, treatment delivery — protected by upstream qualification.</p>
+      </div>
+    </div>
+
+    <div class="positioning-line">
+      <p>Using IW as a <em>testing and scaling funnel</em> to drive qualified patients into Pulver Oral Surgery.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 META ADS ============ -->
+<section id="ads" class="meta-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">07 · Paid Acquisition</span>
+      <h2 class="display">Meta Ads <em class="display-italic">Strategy</em></h2>
+      <p class="lede">Meta is the demand engine. Facebook and Instagram give us the targeting, the volume, and the creative flexibility to reach full-arch candidates at scale.</p>
+    </div>
+
+    <div class="three-col">
+      <div class="card">
+        <span class="label">Approach 01</span>
+        <h3 style="margin-top: 0.75rem;">Creative Testing</h3>
+        <p>Continuously test new ad creatives, formats, and angles to find what resonates and what tires out.</p>
+      </div>
+      <div class="card">
+        <span class="label">Approach 02</span>
+        <h3 style="margin-top: 0.75rem;">Hook Strategy</h3>
+        <p>Three core emotional levers — fear of staying stuck, trust in the doctor, authority of the practice.</p>
+      </div>
+      <div class="card">
+        <span class="label">Approach 03</span>
+        <h3 style="margin-top: 0.75rem;">Retargeting</h3>
+        <p>Warm audiences receive a second-touch sequence designed to overcome hesitation and build conviction.</p>
+      </div>
+    </div>
+
+    <div class="creative-grid">
+      <div class="placeholder-box">
+        <span class="label">Creative 01</span>
+        <span class="placeholder-title">Ad Creative Example</span>
+      </div>
+      <div class="placeholder-box">
+        <span class="label">Creative 02</span>
+        <span class="placeholder-title">Ad Creative Example</span>
+      </div>
+      <div class="placeholder-box">
+        <span class="label">Creative 03</span>
+        <span class="placeholder-title">Ad Creative Example</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 CHALLENGES ============ -->
+<section id="challenges" class="challenges-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">08 · Honest Diagnostic</span>
+      <h2 class="display">Where the <em class="display-italic">Funnel Breaks</em></h2>
+      <p class="lede">This is the section we most want your eyes on. We have a working system. We do not yet have a system that consistently produces the right patient at the right cost.</p>
+    </div>
+
+    <div class="insight-banner">
+      <span class="label">The Core Insight</span>
+      <h3>The biggest problem is not lead volume — it is <em>qualified leads.</em></h3>
+    </div>
+
+    <div class="challenge-grid">
+      <div>
+        <ul class="clean-list">
+          <li><strong>Affordability</strong>Many leads cannot finance treatment at the price point required.</li>
+          <li><strong>Readiness</strong>Some are educated and intrigued, but not yet ready to commit.</li>
+          <li><strong>Friction Drop-Off</strong>Others fall out of the funnel due to fear, confusion, or process friction.</li>
+        </ul>
+      </div>
+      <div class="question-card">
+        <span class="label">Open Questions for Jim</span>
+        <ul>
+          <li>Where exactly are we losing qualified patients?</li>
+          <li>Are we attracting the wrong audience entirely?</li>
+          <li>Are we filtering too early — or not early enough?</li>
+          <li>Should we position more premium, or more accessible?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <span class="label">The Question Underneath All The Others</span>
+      <p>"How do we attract and convert the <em>right</em> patient — without adding too much friction?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 SATELLITE ============ -->
+<section id="satellite" class="satellite-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">09 · Future State</span>
+      <h2 class="display">Satellite <em class="display-italic">Model</em></h2>
+      <p class="lede">Once the funnel produces consistent, qualified, profitable patient flow, the system becomes replicable. The acquisition engine is the asset.</p>
+    </div>
+
+    <div class="satellite-visual">
+      <div class="satellite-grid">
+        <div class="satellite-node">
+          <div class="dot"></div>
+          <h4>Market 02</h4>
+          <p>Replicated funnel, local creative.</p>
+        </div>
+        <div class="satellite-node center">
+          <div class="dot"></div>
+          <h4>IW Acquisition Engine</h4>
+          <p>Centralized brand, system, infrastructure.</p>
+        </div>
+        <div class="satellite-node">
+          <div class="dot"></div>
+          <h4>Market 03</h4>
+          <p>Replicated funnel, local creative.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem; max-width: 720px;">
+      <ul class="clean-list">
+        <li><strong>Replicate the funnel</strong>Drop the proven system into new geographic markets.</li>
+        <li><strong>Scale a single brand</strong>IW becomes a national-grade acquisition layer.</li>
+        <li><strong>Multi-location volume</strong>Drive qualified patient flow into multiple clinical sites.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 MICHIGAN ============ -->
+<section id="michigan" class="michigan-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">10 · Strategic Pitch</span>
+      <h2 class="display">IW Platform <em class="display-italic">Opportunity</em></h2>
+      <p class="lede">The vision for Michigan: IW as a four-pillar platform that combines marketing, digital workflow, clinical training, and a referral economy into one cohesive offering.</p>
+    </div>
+
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pillar-letter">A.</div>
+        <h3>Marketing System</h3>
+        <ul>
+          <li>Landing page</li>
+          <li>CRM (Go High Level)</li>
+          <li>Funnel architecture</li>
+          <li>Training + enablement</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-letter">B.</div>
+        <h3>Digital Workflow</h3>
+        <ul>
+          <li>Photogrammetry</li>
+          <li>3D printing</li>
+          <li>Delivery + work-up systems</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-letter">C.</div>
+        <h3>Clinical Training</h3>
+        <ul>
+          <li>Surgery-based training</li>
+          <li>Documented protocols</li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar-letter">D.</div>
+        <h3>Referral Economy</h3>
+        <ul>
+          <li>New referral-based relationships</li>
+          <li>Network-driven growth model</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 NEXT STEPS ============ -->
+<section id="next" class="next-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">11 · Conversation Goal</span>
+      <h2 class="display">What We Need <em class="display-italic">From This Conversation</em></h2>
+      <p class="lede">A focused, working session — not a presentation. Five things we genuinely need your perspective on.</p>
+    </div>
+
+    <ol class="next-list">
+      <li>Identify the biggest gaps in our current funnel.</li>
+      <li>Validate (or challenge) our strategy against the ClearChoice model.</li>
+      <li>Improve our qualification process — earlier, smarter, less friction.</li>
+      <li>Refine positioning: premium concierge vs. accessible mass-market.</li>
+      <li>Determine the next highest-leverage system improvements.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div>Implanted Wisdom <span class="gold">·</span> Pulver Oral Surgery <span class="gold">·</span> Internal Strategy Document <span class="gold">·</span> Confidential</div>
+</footer>
+
+</body>
+</html>

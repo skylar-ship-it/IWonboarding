@@ -500,6 +500,48 @@
   .funnel-shape .mobile-desc { display: none; }
 
   /* Stage detail panel — sits below a funnel row */
+  .funnel-detail-toggle-wrap {
+    max-width: 640px;
+    margin: 0.5rem auto 0;
+    text-align: center;
+  }
+  .funnel-detail-toggle {
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.35);
+    color: var(--gold-deep);
+    padding: 0.55rem 1.25rem 0.55rem 1.25rem;
+    border-radius: 999px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .funnel-detail-toggle:hover {
+    border-color: var(--gold);
+    color: var(--espresso);
+    background: var(--cream);
+  }
+  .funnel-detail-toggle .chevron {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+    margin-bottom: 3px;
+  }
+  .funnel-detail-toggle.open .chevron {
+    transform: rotate(-135deg);
+    margin-bottom: -2px;
+  }
+
   .funnel-detail {
     max-width: 640px;
     margin: 1rem auto 1.5rem;
@@ -509,6 +551,26 @@
     padding: 1.75rem 2rem;
     box-shadow: var(--shadow-sm);
     position: relative;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 auto;
+    border-color: transparent;
+    box-shadow: none;
+    transition:
+      max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.4s ease,
+      margin 0.4s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .funnel-detail.open {
+    max-height: 800px;
+    padding: 1.75rem 2rem;
+    margin: 1rem auto 1.5rem;
+    border-color: rgba(201, 169, 110, 0.22);
+    box-shadow: var(--shadow-sm);
   }
   .funnel-detail::before {
     content: '';
@@ -521,7 +583,10 @@
     background: var(--white);
     border-top: 1px solid rgba(201, 169, 110, 0.22);
     border-left: 1px solid rgba(201, 169, 110, 0.22);
+    opacity: 0;
+    transition: opacity 0.3s ease 0.15s;
   }
+  .funnel-detail.open::before { opacity: 1; }
   .funnel-detail-label {
     font-family: 'Courier Prime', monospace;
     font-size: 0.65rem;
@@ -573,7 +638,7 @@
     display: inline-block;
   }
   @media (max-width: 700px) {
-    .funnel-detail { padding: 1.25rem 1.25rem; margin: 0.5rem auto 1rem; }
+    .funnel-detail.open { padding: 1.25rem 1.25rem; margin: 0.5rem auto 1rem; }
     .funnel-detail::before { display: none; }
     .funnel-detail-list li {
       flex-direction: column;
@@ -1505,7 +1570,14 @@
         <div class="funnel-desc right">Meta Ads · cold + warm audiences driving interest</div>
       </div>
 
-      <div class="funnel-detail">
+      <div class="funnel-detail-toggle-wrap">
+        <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="trafficDetail" data-target="trafficDetail">
+          <span class="toggle-text">See Details</span>
+          <span class="chevron"></span>
+        </button>
+      </div>
+
+      <div class="funnel-detail" id="trafficDetail" aria-hidden="true">
         <span class="funnel-detail-label">Stage 01 · Paid Acquisition Detail</span>
         <ul class="funnel-detail-list">
           <li>
@@ -1944,6 +2016,24 @@
     links.forEach(a => a.addEventListener('click', closeMenu));
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+    });
+  })();
+
+  // ====== Funnel detail toggles ======
+  (function() {
+    const toggles = document.querySelectorAll('.funnel-detail-toggle');
+    toggles.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const panel = document.getElementById(targetId);
+        if (!panel) return;
+        const isOpen = btn.classList.toggle('open');
+        panel.classList.toggle('open', isOpen);
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+        const text = btn.querySelector('.toggle-text');
+        if (text) text.textContent = isOpen ? 'Hide Details' : 'See Details';
+      });
     });
   })();
 </script>

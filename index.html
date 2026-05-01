@@ -865,6 +865,215 @@
     .discussion-question-final p { font-size: 1.1rem; }
   }
 
+  /* ---------- Capture detail (Stage 03) ---------- */
+  .capture-intro {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink);
+    opacity: 0.85;
+    margin-bottom: 1.75rem;
+  }
+  .capture-paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 700px) {
+    .capture-paths { grid-template-columns: 1fr; }
+  }
+  .capture-path {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    display: flex;
+    flex-direction: column;
+  }
+  .capture-path.high {
+    background: linear-gradient(180deg, #fdfaf3 0%, var(--cream) 100%);
+    border-color: var(--gold);
+  }
+  .capture-path.low {
+    background: linear-gradient(180deg, #f3f7f7 0%, var(--cream) 100%);
+    border-color: rgba(36, 92, 92, 0.3);
+  }
+  .capture-path-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .capture-path-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    align-self: flex-start;
+  }
+  .capture-path-tag.high {
+    background: rgba(201, 169, 110, 0.22);
+    color: var(--gold-deep);
+  }
+  .capture-path-tag.low {
+    background: rgba(36, 92, 92, 0.12);
+    color: var(--teal);
+  }
+  .capture-dashboard-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--espresso);
+    font-weight: 700;
+    padding-left: 0.1rem;
+  }
+  .capture-path-purpose {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold-deep);
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+  .capture-data-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1rem;
+  }
+  .capture-data-list li {
+    font-size: 0.9rem;
+    color: var(--ink);
+    opacity: 0.85;
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.4;
+  }
+  .capture-data-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 6px;
+    height: 1px;
+    background: var(--gold);
+  }
+  @media (max-width: 500px) {
+    .capture-data-list { grid-template-columns: 1fr; }
+  }
+  .capture-shared-note {
+    text-align: center;
+    padding: 1rem 1.25rem;
+    background: rgba(201, 169, 110, 0.08);
+    border-radius: 10px;
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .capture-shared-note strong {
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .capture-shared-note em {
+    font-style: italic;
+    color: var(--gold-deep);
+  }
+
+  /* Automation flow */
+  .automation-flow-block {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .automation-flow-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .automation-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.4rem;
+    justify-content: center;
+  }
+  .auto-step {
+    background: var(--white);
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    border-radius: 10px;
+    padding: 0.85rem 0.85rem 0.95rem;
+    flex: 1 1 130px;
+    min-width: 130px;
+    max-width: 165px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease;
+  }
+  .auto-step:hover { transform: translateY(-2px); }
+  .auto-step.highlighted {
+    background: linear-gradient(180deg, var(--espresso) 0%, var(--ink) 100%);
+    border-color: var(--gold);
+    color: var(--cream);
+  }
+  .auto-step.highlighted h5 { color: var(--gold); }
+  .auto-step.highlighted p { color: rgba(247, 242, 236, 0.78); }
+  .auto-step.highlighted .auto-step-num { color: var(--gold-soft); }
+  .auto-step-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .auto-step h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--espresso);
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  .auto-step p {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+  .auto-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  @media (max-width: 700px) {
+    .automation-flow {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.3rem;
+    }
+    .auto-step { max-width: 100%; }
+    .auto-arrow { transform: rotate(90deg); padding: 0.15rem 0; }
+  }
+
   /* ---------- Funnel: Tablet ---------- */
   @media (max-width: 900px) {
     .funnel-row {
@@ -1926,6 +2135,101 @@
           <p class="mobile-desc">Survey form pushes qualified leads into Go High Level.</p>
         </div>
         <div class="funnel-desc right">Form submissions push qualified leads into GHL</div>
+      </div>
+
+      <div class="funnel-detail-toggle-wrap">
+        <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="captureDetail" data-target="captureDetail">
+          <span class="toggle-text">See Details</span>
+          <span class="chevron"></span>
+        </button>
+      </div>
+
+      <div class="funnel-detail" id="captureDetail" aria-hidden="true">
+        <span class="funnel-detail-label">Stage 03 · Capture &amp; Segmentation</span>
+
+        <p class="capture-intro">Form submissions captured and segmented into Go High Level via a custom-built Zapier integration. Each path collects different data, lands as a different lead type in the CRM, and triggers a different automation sequence.</p>
+
+        <!-- Path comparison -->
+        <div class="capture-paths">
+          <div class="capture-path high">
+            <div class="capture-path-header">
+              <span class="capture-path-tag high">High Intent · Full Assessment</span>
+              <span class="capture-dashboard-tag">→ "New High Intent Lead"</span>
+            </div>
+            <p class="capture-path-purpose">Designed to identify ready-to-act, financially viable patients.</p>
+            <ul class="capture-data-list">
+              <li>Treatment timeline</li>
+              <li>Financing openness</li>
+              <li>Credit estimate</li>
+              <li>Medical history</li>
+              <li>Travel ability</li>
+              <li>Prior consults</li>
+            </ul>
+          </div>
+          <div class="capture-path low">
+            <div class="capture-path-header">
+              <span class="capture-path-tag low">Low Intent · Quick Call</span>
+              <span class="capture-dashboard-tag">→ "New Lead"</span>
+            </div>
+            <p class="capture-path-purpose">Designed to capture early-stage and price-shopping leads without friction.</p>
+            <ul class="capture-data-list">
+              <li>Contact information</li>
+              <li>Interest level</li>
+              <li>Basic financial openness</li>
+              <li>Urgency</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="capture-shared-note"><strong>Both paths</strong> standardize lead data inside GHL and enable prioritization + routing <em>before</em> the first human contact.</p>
+
+        <!-- Automation flow -->
+        <div class="automation-flow-block">
+          <span class="automation-flow-label">The 30-Second Handoff · What Happens Automatically</span>
+          <div class="automation-flow">
+            <div class="auto-step">
+              <span class="auto-step-num">01</span>
+              <h5>Lead Submission</h5>
+              <p>Form fires to Zapier, syncs to GHL.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step">
+              <span class="auto-step-num">02</span>
+              <h5>Duplicate Check</h5>
+              <p>System checks for existing contact records.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step">
+              <span class="auto-step-num">03</span>
+              <h5>Route by Source</h5>
+              <p>High-intent vs low-intent path determines workflow.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step">
+              <span class="auto-step-num">04</span>
+              <h5>Welcome Sequence</h5>
+              <p>Branded SMS + email fire to the patient instantly.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step">
+              <span class="auto-step-num">05</span>
+              <h5>Opportunity Created</h5>
+              <p>Pipeline record opens in the correct stage.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step">
+              <span class="auto-step-num">06</span>
+              <h5>DND Check</h5>
+              <p>Validates that the contact is reachable.</p>
+            </div>
+            <div class="auto-arrow">→</div>
+            <div class="auto-step highlighted">
+              <span class="auto-step-num">07</span>
+              <h5>Karen Notified</h5>
+              <p>Call task created on her dashboard. Human handoff begins.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="funnel-row funnel-row-4">

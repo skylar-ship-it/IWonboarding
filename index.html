@@ -566,7 +566,7 @@
       box-shadow 0.3s ease;
   }
   .funnel-detail.open {
-    max-height: 4000px;
+    max-height: 6000px;
     padding: 1.75rem 2rem;
     margin: 1rem auto 1.5rem;
     border-color: rgba(201, 169, 110, 0.22);
@@ -1072,6 +1072,229 @@
     }
     .auto-step { max-width: 100%; }
     .auto-arrow { transform: rotate(90deg); padding: 0.15rem 0; }
+  }
+
+  /* ---------- Nurture detail (Stage 04) ---------- */
+  .nurture-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+  @media (max-width: 600px) {
+    .nurture-stats { grid-template-columns: 1fr; }
+  }
+  .nurture-stat {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .nurture-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.5rem;
+    color: var(--gold-deep);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .nurture-stat-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.7;
+  }
+
+  /* Email previews grid */
+  .email-previews {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .email-previews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 600px) {
+    .email-previews-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Safeguard callout */
+  .safeguard-callout {
+    margin-top: 2rem;
+    padding: 1.5rem 1.75rem;
+    background: linear-gradient(135deg, #f3f7f7 0%, var(--cream) 100%);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .safeguard-icon {
+    font-size: 1.5rem;
+    color: var(--teal);
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 4px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(36, 92, 92, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .safeguard-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .safeguard-text {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+
+  /* Compliance block */
+  .compliance-block {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .compliance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 800px) {
+    .compliance-grid { grid-template-columns: 1fr; }
+  }
+  .compliance-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .compliance-card-header {
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  }
+  .compliance-status {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    background: rgba(36, 92, 92, 0.15);
+    color: var(--teal);
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+  .compliance-status.pending-status {
+    background: rgba(201, 169, 110, 0.18);
+    color: var(--gold-deep);
+  }
+  .compliance-status.active-status {
+    background: rgba(168, 88, 78, 0.15);
+    color: #a85847;
+  }
+  .compliance-card h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--espresso);
+    line-height: 1.25;
+  }
+  .compliance-card p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.78;
+  }
+
+  /* Deliverability prompt */
+  .deliverability-prompt {
+    margin-top: 2rem;
+    padding: 1.75rem 2rem;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .deliverability-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--espresso);
+    line-height: 1.3;
+    margin: 0.5rem 0 1rem;
+  }
+  .deliverability-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.82;
+    margin-bottom: 1rem;
+  }
+  .deliverability-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem 0;
+  }
+  .deliverability-list li {
+    padding: 0.7rem 0 0.7rem 1.6rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .deliverability-list li:last-child { border-bottom: none; }
+  .deliverability-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 10px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .deliverability-list strong {
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  .deliverability-close {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold-deep);
+    line-height: 1.5;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  @media (max-width: 700px) {
+    .deliverability-prompt { padding: 1.25rem 1.4rem; }
+    .deliverability-q { font-size: 1.2rem; }
   }
 
   /* ---------- Funnel: Tablet ---------- */
@@ -2240,6 +2463,141 @@
           <p class="mobile-desc">Automations + human follow-up keep leads warm and moving.</p>
         </div>
         <div class="funnel-desc right">SMS, email, tasks — keep leads warm and moving</div>
+      </div>
+
+      <div class="funnel-detail-toggle-wrap">
+        <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="nurtureDetail" data-target="nurtureDetail">
+          <span class="toggle-text">See Details</span>
+          <span class="chevron"></span>
+        </button>
+      </div>
+
+      <div class="funnel-detail" id="nurtureDetail" aria-hidden="true">
+        <span class="funnel-detail-label">Stage 04 · Nurture System</span>
+
+        <p class="capture-intro">A 30-day drip nurture sequence runs across SMS and email — over 30 custom-coded HTML email templates designed in the Implanted Wisdom brand palette (espresso, gold, teal, cream). All sequences pause the moment a lead replies, so no one receives an automated message after they've engaged.</p>
+
+        <!-- Stat strip -->
+        <div class="nurture-stats">
+          <div class="nurture-stat">
+            <div class="nurture-stat-num">30+</div>
+            <div class="nurture-stat-label">Branded Email Templates</div>
+          </div>
+          <div class="nurture-stat">
+            <div class="nurture-stat-num">30</div>
+            <div class="nurture-stat-label">Day Drip Sequence</div>
+          </div>
+          <div class="nurture-stat">
+            <div class="nurture-stat-num">100%</div>
+            <div class="nurture-stat-label">Pause-on-Reply Logic</div>
+          </div>
+        </div>
+
+        <!-- Email previews -->
+        <div class="email-previews">
+          <span class="survey-screenshots-label">Email Template Previews</span>
+          <p class="benchmark-context">Branded HTML emails built around the Implanted Wisdom palette and typography. Designed for inbox readability first, with mobile rendering tested across major clients.</p>
+          <div class="email-previews-grid">
+            <figure class="survey-shot">
+              <div class="survey-shot-imgwrap">
+                <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/email1.png"
+                     alt="Implanted Wisdom branded email — template 01"
+                     loading="lazy">
+              </div>
+              <figcaption>
+                <span class="survey-tag high">Template · 01</span>
+                <span class="survey-caption">Welcome / first-touch sequence</span>
+              </figcaption>
+            </figure>
+            <figure class="survey-shot">
+              <div class="survey-shot-imgwrap">
+                <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/email2.png"
+                     alt="Implanted Wisdom branded email — template 02"
+                     loading="lazy">
+              </div>
+              <figcaption>
+                <span class="survey-tag high">Template · 02</span>
+                <span class="survey-caption">Mid-sequence nurture</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Pause-on-reply callout -->
+        <div class="safeguard-callout">
+          <span class="safeguard-icon">✓</span>
+          <div>
+            <span class="safeguard-label">Critical Safeguard · Built In</span>
+            <p class="safeguard-text">All sequences stop the instant a lead replies. If someone texts or emails us back, the automation halts immediately — they get a human, not another scheduled message.</p>
+          </div>
+        </div>
+
+        <!-- Discussion prompt -->
+        <div class="discussion-prompt">
+          <span class="discussion-prompt-label">Open Discussion · For Jim</span>
+          <h4 class="discussion-prompt-q">How aggressive should our automation cadence be?</h4>
+          <p class="discussion-prompt-body">A 30-day drip is the industry baseline — but for a $25K–$50K decision, more touches risk fatigue while fewer touches risk the lead going cold. Two ways to read this:</p>
+          <div class="discussion-tradeoff">
+            <div class="tradeoff-side">
+              <span class="tradeoff-label wider">More Touches</span>
+              <p class="tradeoff-text">Higher message frequency keeps us top-of-mind for leads with longer decision cycles. <em>Upside:</em> better recall when the patient is finally ready. <em>Risk:</em> automation fatigue, unsubscribes, brand signal of desperation rather than authority.</p>
+            </div>
+            <div class="tradeoff-side">
+              <span class="tradeoff-label deeper">Fewer, Sharper Touches</span>
+              <p class="tradeoff-text">Lower volume, higher signal — each message has to earn its place. <em>Upside:</em> protects brand premium positioning, fewer unsubscribes, more trust. <em>Risk:</em> long-cycle leads forget us, competitors with louder cadence win the recall battle.</p>
+            </div>
+          </div>
+          <div class="discussion-question-final">
+            <span class="discussion-q-label">The Underlying Question</span>
+            <p>If our purple cow is <em>warmth and continuity</em> — does aggressive automation contradict the brand we're trying to build? Or is it the only way to stay present long enough to convert?</p>
+          </div>
+        </div>
+
+        <!-- Compliance + Deliverability dashboard -->
+        <div class="compliance-block">
+          <span class="automation-flow-label">Compliance &amp; Deliverability Status</span>
+
+          <div class="compliance-grid">
+            <div class="compliance-card complete">
+              <div class="compliance-card-header">
+                <span class="compliance-status">✓ Complete</span>
+                <h5>A2P 10DLC Registration</h5>
+              </div>
+              <p>Brand and campaign approved with carriers. Our SMS automation is fully compliant with US carrier regulations for application-to-person messaging.</p>
+            </div>
+
+            <div class="compliance-card pending">
+              <div class="compliance-card-header">
+                <span class="compliance-status pending-status">◐ In Progress</span>
+                <h5>Toll-Free Number Port</h5>
+              </div>
+              <p>Final step before the 866-IMPLANT line goes live. Awaiting toll-free SMS verification to complete the 866-467-5268 port from Weave to GHL.</p>
+            </div>
+
+            <div class="compliance-card active">
+              <div class="compliance-card-header">
+                <span class="compliance-status active-status">⟳ Active Warmup</span>
+                <h5>Email Deliverability</h5>
+              </div>
+              <p>Sender domain authenticated. Currently warming sender reputation with daily volume to protect against spam folder placement at scale.</p>
+            </div>
+          </div>
+
+          <!-- Deliverability discussion -->
+          <div class="deliverability-prompt">
+            <span class="discussion-q-label">Open Question · Email Warmup</span>
+            <h4 class="deliverability-q">How should we accelerate sender reputation?</h4>
+            <p class="deliverability-body">Current approach: daily test sends to internal addresses to build sending pattern. It works, but slowly. Worth exploring with the team:</p>
+            <ul class="deliverability-list">
+              <li><strong>Warmup tools.</strong> Services like Mailwarm, Warmup Inbox, or Lemwarm automate engagement signals (opens, replies, clicks) at scale.</li>
+              <li><strong>Gradual volume ramp.</strong> Start at 20–50 sends/day, increase ~20% weekly. Avoid sudden spikes that trigger spam filters.</li>
+              <li><strong>Engagement-first content.</strong> The first 30 days should prioritize emails that get replies — not just opens. Replies are the strongest deliverability signal.</li>
+              <li><strong>Authentication audit.</strong> Verify SPF, DKIM, and DMARC records are correctly configured on the sending domain (not just the GHL subdomain).</li>
+              <li><strong>List hygiene.</strong> Suppress unengaged contacts after 60–90 days to keep open rates high — engagement metrics are what mailbox providers actually score.</li>
+            </ul>
+            <p class="deliverability-close">Worth getting Jim's perspective on what worked at scale at ClearChoice. Email is still our highest-leverage nurture channel, but only if it lands in the inbox.</p>
+          </div>
+        </div>
       </div>
 
       <div class="funnel-row funnel-row-5">

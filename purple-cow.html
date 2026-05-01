@@ -720,6 +720,254 @@
     line-height: 1.6;
   }
 
+  /* ---------- AI Context Block (PickFu #2) ---------- */
+  .ai-context-block {
+    margin: 0 0 2rem;
+    padding: 2rem 2.25rem;
+    background: linear-gradient(180deg, #f3f7f7 0%, var(--cream) 100%);
+    border-radius: 14px;
+    border-left: 4px solid var(--teal);
+  }
+  .ai-context-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 0.85rem;
+    font-weight: 700;
+  }
+  .ai-context-lede {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--espresso);
+    margin-bottom: 1.5rem;
+  }
+  .ai-context-lede strong {
+    color: var(--teal);
+    font-weight: 500;
+  }
+  .ai-credentials-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem 1.5rem;
+  }
+  .ai-credentials-list li {
+    padding: 0.6rem 0 0.6rem 1.4rem;
+    border-bottom: 1px solid rgba(36, 92, 92, 0.15);
+    position: relative;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .ai-credentials-list li:last-child,
+  .ai-credentials-list li:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .ai-credentials-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.95rem;
+    width: 9px;
+    height: 1px;
+    background: var(--teal);
+  }
+  .ai-credentials-list strong {
+    display: block;
+    color: var(--teal);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .ai-reframe {
+    padding: 1.5rem 1.75rem;
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid rgba(36, 92, 92, 0.2);
+  }
+  .ai-reframe-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+  }
+  .ai-reframe p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink);
+    opacity: 0.88;
+  }
+  .ai-reframe p em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .ai-context-block { padding: 1.5rem 1.4rem; }
+    .ai-context-lede { font-size: 1.15rem; }
+    .ai-credentials-list { grid-template-columns: 1fr; }
+    .ai-reframe { padding: 1.25rem; }
+  }
+
+  /* ---------- Case Study (GPS BoneProtect) ---------- */
+  .case-study-section { background: var(--white); }
+
+  .case-study-card {
+    margin-top: 3rem;
+    background: var(--cream);
+    border-radius: 18px;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .case-study-screenshot {
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    padding: 2rem 2rem 1.25rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    text-align: center;
+    position: relative;
+  }
+  .case-study-screenshot img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(30, 22, 18, 0.12), 0 2px 8px rgba(30, 22, 18, 0.06);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .case-study-source {
+    display: inline-block;
+    margin-top: 0.85rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    opacity: 0.7;
+  }
+  .case-study-header {
+    padding: 2.5rem 2.5rem 2rem;
+    background: linear-gradient(135deg, #fdfaf3 0%, var(--cream) 100%);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+    text-align: center;
+  }
+  .case-study-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    background: rgba(201, 169, 110, 0.18);
+    padding: 5px 12px;
+    border-radius: 999px;
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+  }
+  .case-study-claim {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.6rem;
+    color: var(--espresso);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .case-study-claim sup {
+    font-size: 1.1rem;
+    color: var(--gold-deep);
+    vertical-align: super;
+    margin-left: 4px;
+  }
+  .case-study-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold-deep);
+    line-height: 1.55;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .case-study-breakdown {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .case-study-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+  }
+  .case-study-list li {
+    padding: 0.75rem 0 0.75rem 1.5rem;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .case-study-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 10px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .case-study-list strong {
+    display: block;
+    color: var(--espresso);
+    font-weight: 500;
+    margin-bottom: 3px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--gold-deep);
+  }
+  .case-study-mirror {
+    padding: 2rem 2.5rem;
+    background: var(--espresso);
+    color: var(--cream);
+  }
+  .case-study-mirror .ai-reframe-label {
+    color: var(--gold);
+  }
+  .case-study-mirror p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--cream);
+    margin-top: 0.5rem;
+  }
+  .case-study-mirror p strong {
+    color: var(--gold);
+    font-weight: 500;
+    font-style: italic;
+  }
+  @media (max-width: 700px) {
+    .case-study-screenshot { padding: 1.25rem 1rem 1rem; }
+    .case-study-header { padding: 1.75rem 1.5rem 1.5rem; }
+    .case-study-claim { font-size: 1.85rem; }
+    .case-study-tagline { font-size: 1.05rem; }
+    .case-study-breakdown,
+    .case-study-mirror { padding: 1.5rem; }
+    .case-study-list { grid-template-columns: 1fr; gap: 0.5rem; }
+    .case-study-mirror p { font-size: 1.1rem; }
+  }
+
   /* ---------- Agency Audit (current ads) ---------- */
   .agency-section { background: var(--white); }
   .agency-warning {
@@ -1345,6 +1593,7 @@
       <li><a href="#concept">The Concept</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#synthesis">Synthesis</a></li>
+      <li><a href="#case-study">GPS Example</a></li>
       <li><a href="#agency-audit">Current Ads</a></li>
       <li><a href="#brainstorm">Brainstorm</a></li>
       <li><a href="#builder">Builder</a></li>
@@ -1364,6 +1613,7 @@
     <li><a href="#concept" class="mobile-link">The Concept</a></li>
     <li><a href="#research" class="mobile-link">PickFu Research</a></li>
     <li><a href="#synthesis" class="mobile-link">Synthesis</a></li>
+    <li><a href="#case-study" class="mobile-link">GPS Case Study</a></li>
     <li><a href="#agency-audit" class="mobile-link">Current Agency Ads</a></li>
     <li><a href="#brainstorm" class="mobile-link">Brainstorm Activity</a></li>
     <li><a href="#builder" class="mobile-link">Sentence Builder</a></li>
@@ -1497,6 +1747,21 @@
         </div>
       </div>
 
+      <div class="ai-context-block">
+        <span class="ai-context-label">Important Context · Why We Tested AI</span>
+        <p class="ai-context-lede">This wasn't a marketing flourish. <strong>Dr. Pulver is genuinely a category leader in dental AI.</strong> We thought it was our biggest differentiator. The poll told us something more nuanced.</p>
+        <ul class="ai-credentials-list">
+          <li><strong>Chief Dental Officer of Denti.AI</strong>A cloud-based AI clinical decision support platform delivering auto-charting, diagnostics, and workflow standardization to dental practices nationwide.</li>
+          <li><strong>ADA Standards Committee · Co-Chair on AI</strong>Co-chairs the subsection on the future benefits and workflow of AI for the American Dental Association's white paper on AI in dentistry.</li>
+          <li><strong>National &amp; International Lecturer on AI</strong>Speaks regularly on artificial intelligence in oral healthcare, virtual dentistry, and digital workflow integration.</li>
+          <li><strong>Startup Mentor &amp; Advisor</strong>Mentor for healthtech accelerators including Matter Health, mHub, and Smile Health (CareQuest).</li>
+        </ul>
+        <div class="ai-reframe">
+          <span class="ai-reframe-label">The Real Insight</span>
+          <p>The result is not that <em>AI isn't our advantage.</em> The result is that <em>"AI" as a hero word doesn't work on this audience.</em> They didn't reject the capability. They rejected the framing. The patients in this demographic associate "AI" with replacement of human judgment — exactly the opposite of what Dr. Pulver actually does. The question is not whether to drop AI as a differentiator. The question is whether to <em>name it differently</em> — to talk about precision, planning, and accuracy that the surgeon controls, without making the technology the headline.</p>
+        </div>
+      </div>
+
       <div class="vs-grid">
         <div class="vs-card">
           <div class="vs-card-image">
@@ -1532,6 +1797,12 @@
           <h4 class="vs-title">One Surgeon, No Handoffs</h4>
           <p class="vs-quote">"One surgeon. Every step. No handoffs. From consultation to placement to follow-up — the same hands."</p>
           <div class="vs-themes">Continuity · Trust · Accountability</div>
+          <div class="vs-respondent">
+            <span class="vs-respondent-label">Respondents · in their own words</span>
+            <p class="vs-respondent-text">"I am not comfortable with AI for health procedures."</p>
+            <p class="vs-respondent-text" style="margin-top: 0.6rem;">"I would not go to a surgeon that uses AI."</p>
+            <p class="vs-respondent-text" style="margin-top: 0.6rem;">"AI is a turn off, advanced or not. I think de-emphasizing that is a good idea."</p>
+          </div>
         </div>
       </div>
 
@@ -1581,6 +1852,46 @@
 
     <div class="key-statement" style="margin-top: 4rem;">
       <p>The opportunity: take "one surgeon, no handoffs" — and make it <em>uncopyable.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDY: GPS BONEPROTECT ============ -->
+<section id="case-study" class="case-study-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">03b · Case Study</span>
+      <h2 class="display">How GPS Dental Did <em class="display-italic">Exactly This.</em></h2>
+      <p class="lede">A concrete example worth studying. Bone preservation during implant surgery is something most full-arch surgeons do. GPS Dental Implants took the same generic capability — and made it the entire story. They named it. They trademarked it. They built the brand around it.</p>
+    </div>
+
+    <div class="case-study-card">
+      <div class="case-study-screenshot">
+        <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/gpsboneprotect.png"
+             alt="GPS Dental Implants website header — GPS BoneProtect™ campaign"
+             loading="lazy">
+        <span class="case-study-source">Source · dentalimplantsgps.com</span>
+      </div>
+      <div class="case-study-header">
+        <span class="case-study-tag">Their Purple Cow</span>
+        <h3 class="case-study-claim">GPS BoneProtect<sup>™</sup></h3>
+        <p class="case-study-tagline">"Protect your jawbone from a corporate one-size-fits-all plan. GPS BoneProtect™ preserves your natural bone with specialist-led planning by board-certified oral surgeons and prosthodontists."</p>
+      </div>
+
+      <div class="case-study-breakdown">
+        <span class="ai-context-label">Why This Worked</span>
+        <ul class="case-study-list">
+          <li><strong>They named a generic capability.</strong>Bone preservation is something every competent oral surgeon does. By giving it a brand name with a trademark, they made it look proprietary.</li>
+          <li><strong>They positioned against ClearChoice without saying ClearChoice.</strong>"Corporate one-size-fits-all" is the implicit enemy. Patients who feel suspicious of franchised dental immediately know whose side GPS is on.</li>
+          <li><strong>They translated a clinical concept into patient anxiety.</strong>"Bone preservation" is a surgeon's word. "Protect your jawbone" is a patient's fear. They moved the language down a level.</li>
+          <li><strong>They went all in.</strong>It is not a feature on their site. It is the centerpiece. Their entire marketing engine points back to BoneProtect.</li>
+        </ul>
+      </div>
+
+      <div class="case-study-mirror">
+        <span class="ai-reframe-label">What This Means For Us</span>
+        <p>Dr. Pulver has at least three capabilities that map to this exact playbook. <strong>AI-guided implant planning.</strong> <strong>"All on Everyday" — his own surgical protocol.</strong> <strong>The continuity of a single surgeon for the life of the implant.</strong> Each one is a generic capability in someone else's hands. In ours, with the right naming, framing, and full commitment — any of them could become our BoneProtect.</p>
+      </div>
     </div>
   </div>
 </section>

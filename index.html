@@ -388,30 +388,29 @@
   .funnel-section { background: var(--cream); }
   .funnel-diagram {
     margin-top: 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
   .funnel-row {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr minmax(280px, 600px) 1fr;
+    gap: 1.5rem;
     align-items: center;
-    width: 100%;
   }
+  /* Funnel shape baseline */
   .funnel-shape {
-    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
     color: var(--espresso);
-    padding: 1.5rem 2rem;
+    padding: 1.6rem 2rem;
     text-align: center;
     box-shadow: var(--shadow-sm);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
+    border-radius: 6px;
     position: relative;
+    margin: 0 auto;
   }
   .funnel-shape:hover {
     transform: translateY(-2px);
@@ -419,50 +418,77 @@
   }
   .funnel-shape .step {
     font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--espresso);
-    opacity: 0.65;
+    opacity: 0.7;
     display: block;
     margin-bottom: 0.4rem;
   }
   .funnel-shape h3 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    font-size: 1.5rem;
-    color: var(--espresso);
+    font-size: 1.55rem;
     line-height: 1.1;
   }
 
-  /* Tapering widths via clip-path trapezoids */
-  .funnel-row-1 .funnel-shape { width: 100%; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); padding: 1.75rem 2rem; }
-  .funnel-row-2 .funnel-shape { width: 88%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%); color: var(--white); }
-  .funnel-row-2 .funnel-shape h3, .funnel-row-2 .funnel-shape .step { color: var(--white); }
-  .funnel-row-2 .funnel-shape .step { opacity: 0.75; }
-  .funnel-row-3 .funnel-shape { width: 76%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%); background: linear-gradient(135deg, var(--gold-deep) 0%, var(--teal-soft) 100%); color: var(--white); }
-  .funnel-row-3 .funnel-shape h3, .funnel-row-3 .funnel-shape .step { color: var(--white); }
-  .funnel-row-3 .funnel-shape .step { opacity: 0.78; }
-  .funnel-row-4 .funnel-shape { width: 62%; margin: 0 auto; clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%); background: linear-gradient(135deg, var(--teal-soft) 0%, var(--teal) 100%); color: var(--white); }
-  .funnel-row-4 .funnel-shape h3, .funnel-row-4 .funnel-shape .step { color: var(--white); }
-  .funnel-row-4 .funnel-shape .step { opacity: 0.78; }
-  .funnel-row-5 .funnel-shape { width: 46%; margin: 0 auto; background: var(--espresso); color: var(--cream); border-radius: 0 0 50% 50% / 0 0 100% 100%; padding: 2rem 1.5rem 2.5rem; }
-  .funnel-row-5 .funnel-shape h3, .funnel-row-5 .funnel-shape .step { color: var(--cream); }
+  /* Tapering widths — applied to the middle grid column's content */
+  /* Row 1: widest (top of funnel) */
+  .funnel-row-1 .funnel-shape {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-soft) 0%, var(--gold) 100%);
+    clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
+    padding: 1.75rem 2.5rem;
+  }
+  .funnel-row-2 .funnel-shape {
+    width: 86%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+  }
+  .funnel-row-3 .funnel-shape {
+    width: 72%;
+    background: linear-gradient(135deg, var(--gold-deep) 0%, var(--teal-soft) 100%);
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
+  }
+  .funnel-row-4 .funnel-shape {
+    width: 58%;
+    background: linear-gradient(135deg, var(--teal-soft) 0%, var(--teal) 100%);
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+  }
+  .funnel-row-5 .funnel-shape {
+    width: 44%;
+    background: var(--espresso);
+    color: var(--cream);
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+    padding: 1.75rem 1.5rem 2.25rem;
+  }
+
+  /* Color overrides for inverted text */
+  .funnel-row-2 .funnel-shape h3,
+  .funnel-row-3 .funnel-shape h3,
+  .funnel-row-4 .funnel-shape h3 { color: var(--white); }
+  .funnel-row-2 .funnel-shape .step,
+  .funnel-row-3 .funnel-shape .step,
+  .funnel-row-4 .funnel-shape .step { color: var(--white); opacity: 0.75; }
+  .funnel-row-5 .funnel-shape h3 { color: var(--cream); }
   .funnel-row-5 .funnel-shape .step { color: var(--gold-soft); opacity: 1; }
 
+  /* Side descriptions */
   .funnel-desc {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--ink);
     opacity: 0.72;
     line-height: 1.5;
-    padding: 0 0.5rem;
   }
-  .funnel-desc.left { text-align: right; }
-  .funnel-desc.right { text-align: left; }
+  .funnel-desc.left { text-align: right; padding-right: 0.5rem; }
+  .funnel-desc.right { text-align: left; padding-left: 0.5rem; }
   .funnel-desc strong {
     display: block;
     font-family: 'Courier Prime', monospace;
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--gold-deep);
@@ -470,37 +496,46 @@
     font-weight: 700;
   }
 
+  /* Hide mobile desc on desktop */
+  .funnel-shape .mobile-desc { display: none; }
+
+  /* ---------- Funnel: Tablet ---------- */
+  @media (max-width: 900px) {
+    .funnel-row {
+      grid-template-columns: 1fr minmax(260px, 480px) 1fr;
+      gap: 1rem;
+    }
+    .funnel-desc { font-size: 0.8rem; }
+    .funnel-shape h3 { font-size: 1.35rem; }
+  }
+
+  /* ---------- Funnel: Mobile ---------- */
   @media (max-width: 768px) {
     .funnel-diagram { gap: 0.4rem; }
     .funnel-row {
       grid-template-columns: 1fr;
-      gap: 0.6rem;
+      gap: 0;
     }
     .funnel-desc { display: none; }
     .funnel-row-1 .funnel-shape,
     .funnel-row-2 .funnel-shape,
     .funnel-row-3 .funnel-shape,
-    .funnel-row-4 .funnel-shape {
+    .funnel-row-4 .funnel-shape,
+    .funnel-row-5 .funnel-shape {
       width: 100%;
       clip-path: none;
       border-radius: 8px;
     }
-    .funnel-row-5 .funnel-shape {
-      width: 100%;
-      border-radius: 0 0 16px 16px;
-    }
     .funnel-shape { padding: 1.2rem 1.25rem; }
     .funnel-shape h3 { font-size: 1.25rem; }
-    /* Show descriptions inside the shape on mobile */
     .funnel-shape .mobile-desc {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       margin-top: 0.5rem;
       opacity: 0.85;
       line-height: 1.45;
     }
   }
-  .funnel-shape .mobile-desc { display: none; }
 
   /* ---------- Two column layout ---------- */
   .two-col {
@@ -686,6 +721,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
+    align-items: stretch;
   }
   .flow-step {
     background: var(--white);
@@ -693,6 +729,8 @@
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   .flow-step .step-num {
     font-family: 'Cormorant Garamond', serif;
@@ -747,7 +785,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 2rem;
-    align-items: center;
+    align-items: stretch;
     margin-top: 3rem;
   }
   .relationship-card {
@@ -756,6 +794,9 @@
     border-radius: 16px;
     border: 1px solid rgba(201, 169, 110, 0.22);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .relationship-card .label {
     margin-bottom: 1rem;
@@ -833,6 +874,11 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
+    align-items: stretch;
+  }
+  .three-col .card {
+    display: flex;
+    flex-direction: column;
   }
   @media (max-width: 800px) {
     .three-col { grid-template-columns: 1fr; }
@@ -975,9 +1021,28 @@
     gap: 2rem;
     text-align: center;
     align-items: center;
+    position: relative;
+  }
+  /* Connecting line behind nodes on desktop */
+  .satellite-grid::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 16.66%;
+    right: 16.66%;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%,
+      var(--gold-soft) 20%,
+      var(--gold) 50%,
+      var(--gold-soft) 80%,
+      transparent 100%);
+    z-index: 0;
   }
   .satellite-node {
     padding: 1.5rem 1rem;
+    position: relative;
+    z-index: 1;
   }
   .satellite-node .dot {
     width: 14px;
@@ -985,13 +1050,15 @@
     background: var(--gold);
     border-radius: 50%;
     margin: 0 auto 1rem;
-    box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.18);
+    box-shadow: 0 0 0 6px var(--white), 0 0 0 7px rgba(201, 169, 110, 0.4);
+    position: relative;
   }
   .satellite-node.center .dot {
     width: 20px;
     height: 20px;
     background: var(--teal);
-    box-shadow: 0 0 0 8px rgba(36, 92, 92, 0.18);
+    box-shadow: 0 0 0 6px var(--white), 0 0 0 7px rgba(36, 92, 92, 0.4);
+    margin-top: -3px;
   }
   .satellite-node h4 {
     font-family: 'Cormorant Garamond', serif;
@@ -1007,6 +1074,7 @@
   }
   @media (max-width: 800px) {
     .satellite-grid { grid-template-columns: 1fr; }
+    .satellite-grid::before { display: none; }
   }
 
   /* ---------- Michigan Pitch ---------- */
@@ -1016,6 +1084,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
+    align-items: stretch;
   }
   @media (max-width: 800px) {
     .pillar-grid { grid-template-columns: 1fr; }
@@ -1028,6 +1097,8 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .pillar::before {
     content: '';

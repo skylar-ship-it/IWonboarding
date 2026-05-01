@@ -457,6 +457,29 @@
     display: flex;
     flex-direction: column;
   }
+  .vs-card-image {
+    margin: -2rem -2rem 1.5rem -2rem;
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    padding: 1.5rem;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .vs-card-image img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(30, 22, 18, 0.10);
+  }
+  .vs-card.winner .vs-card-image {
+    background: linear-gradient(135deg, #f7eed4 0%, #fdfaf3 100%);
+  }
   .vs-card.winner {
     border-color: var(--gold);
     background: linear-gradient(180deg, var(--white) 0%, #fdfaf3 100%);
@@ -1199,6 +1222,8 @@
     .pickfu-header h3 { font-size: 1.4rem; }
     .pickfu-meta { text-align: left; }
     .vs-card { padding: 1.5rem; }
+    .vs-card-image { margin: -1.5rem -1.5rem 1.25rem -1.5rem; padding: 1rem; }
+    .vs-card-image img { max-height: 220px; }
     .vs-quote { font-size: 1.05rem; }
     .key-statement { padding: 1.75rem 1.5rem; }
     .key-statement p { font-size: 1.4rem; }
@@ -1381,6 +1406,11 @@
 
       <div class="vs-grid">
         <div class="vs-card">
+          <div class="vs-card-image">
+            <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/A_AI.png"
+                 alt="Landing page version A — AI-Powered Precision (shown in PickFu poll)"
+                 loading="lazy">
+          </div>
           <div class="vs-letter">A.</div>
           <div class="vs-title">"AI-Powered Precision"</div>
           <p class="vs-quote">"The first surgeon to bring AI into full-spectrum implant planning for an unmatched, precise fit."</p>
@@ -1391,6 +1421,11 @@
         </div>
         <div class="vs-divider">vs.</div>
         <div class="vs-card winner">
+          <div class="vs-card-image">
+            <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/B_onesurgeon.png"
+                 alt="Landing page version B — One Surgeon, No Handoffs (shown in PickFu poll)"
+                 loading="lazy">
+          </div>
           <div class="vs-letter">B.</div>
           <div class="vs-title">"One Surgeon, No Handoffs"</div>
           <p class="vs-quote">"One surgeon. Every step. No handoffs. From consultation to placement to follow-up — the same hands."</p>

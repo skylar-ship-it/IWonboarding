@@ -566,7 +566,7 @@
       box-shadow 0.3s ease;
   }
   .funnel-detail.open {
-    max-height: 800px;
+    max-height: 1800px;
     padding: 1.75rem 2rem;
     margin: 1rem auto 1.5rem;
     border-color: rgba(201, 169, 110, 0.22);
@@ -647,6 +647,91 @@
       padding: 0.75rem 0;
     }
     .funnel-detail-list .lead { min-width: 0; }
+  }
+
+  /* Survey screenshots inside detail panel */
+  .survey-screenshots {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .survey-screenshots-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .survey-screenshots-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .survey-shot {
+    margin: 0;
+    background: var(--cream);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .survey-shot:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .survey-shot-imgwrap {
+    background: var(--cream-deep);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .survey-shot-imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .survey-shot figcaption {
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .survey-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .survey-tag.high {
+    background: rgba(201, 169, 110, 0.18);
+    color: var(--gold-deep);
+  }
+  .survey-tag.low {
+    background: rgba(36, 92, 92, 0.1);
+    color: var(--teal);
+  }
+  .survey-caption {
+    font-size: 0.82rem;
+    color: var(--ink);
+    opacity: 0.75;
+    line-height: 1.3;
+  }
+  @media (max-width: 600px) {
+    .survey-screenshots-grid { grid-template-columns: 1fr; gap: 1rem; }
   }
 
   /* ---------- Funnel: Tablet ---------- */
@@ -1600,13 +1685,70 @@
       </div>
 
       <div class="funnel-row funnel-row-2">
-        <div class="funnel-desc left"><strong>Click-Through</strong>Landing page does the persuading</div>
+        <div class="funnel-desc left"><strong>Click-Through</strong>Landing page filters traffic by intent</div>
         <div class="funnel-shape">
           <span class="step">Stage 02</span>
-          <h3>Conversion</h3>
-          <p class="mobile-desc">Landing page converts visitors with trust + clarity.</p>
+          <h3>Lead Qualification</h3>
+          <p class="mobile-desc">Landing page surveys filter traffic into segmented intent levels.</p>
         </div>
-        <div class="funnel-desc right">Trust + clarity convert scrollers into form-fillers</div>
+        <div class="funnel-desc right">Survey paths sort high-intent from price-shoppers</div>
+      </div>
+
+      <div class="funnel-detail-toggle-wrap">
+        <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="qualificationDetail" data-target="qualificationDetail">
+          <span class="toggle-text">See Details</span>
+          <span class="chevron"></span>
+        </button>
+      </div>
+
+      <div class="funnel-detail" id="qualificationDetail" aria-hidden="true">
+        <span class="funnel-detail-label">Stage 02 · Survey-Based Qualification</span>
+        <ul class="funnel-detail-list">
+          <li>
+            <span class="lead">Full Assessment</span>
+            <span class="desc">Primary path · 5 minutes · for high-intent leads ready to commit.</span>
+          </li>
+          <li>
+            <span class="lead">Quick Call</span>
+            <span class="desc">Secondary path · 2 minutes · for low-intent leads and price shoppers.</span>
+          </li>
+          <li>
+            <span class="lead">Self-Selection</span>
+            <span class="desc">Patients choose their level of commitment — we don't force the qualification.</span>
+          </li>
+          <li>
+            <span class="lead">CRM Routing</span>
+            <span class="desc">High-intent submissions auto-tag as "High Intent Lead" in Go High Level.</span>
+          </li>
+        </ul>
+
+        <div class="survey-screenshots">
+          <span class="survey-screenshots-label">Survey Path Screenshots</span>
+          <div class="survey-screenshots-grid">
+            <figure class="survey-shot">
+              <div class="survey-shot-imgwrap">
+                <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/highintent.png"
+                     alt="High-intent survey path — Full Patient Assessment screen"
+                     loading="lazy">
+              </div>
+              <figcaption>
+                <span class="survey-tag high">High Intent</span>
+                <span class="survey-caption">Full Patient Assessment · 5 min</span>
+              </figcaption>
+            </figure>
+            <figure class="survey-shot">
+              <div class="survey-shot-imgwrap">
+                <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/lowintent.png"
+                     alt="Low-intent survey path — Quick Call screen"
+                     loading="lazy">
+              </div>
+              <figcaption>
+                <span class="survey-tag low">Low Intent</span>
+                <span class="survey-caption">Quick Call · 2 min</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
 
       <div class="funnel-row funnel-row-3">

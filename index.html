@@ -601,6 +601,53 @@
     opacity: 0.55;
   }
 
+  /* ---------- Landing page video ---------- */
+  .landing-video-wrap {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--cream-deep);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .landing-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--espresso);
+  }
+  .landing-video-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to top, rgba(30, 22, 18, 0.85) 0%, rgba(30, 22, 18, 0) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    pointer-events: none;
+  }
+  .landing-video-caption .label {
+    color: var(--gold-soft);
+    font-size: 0.65rem;
+  }
+  .landing-video-caption .caption-url {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    color: rgba(247, 242, 236, 0.8);
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 600px) {
+    .landing-video-caption {
+      padding: 0.75rem 1rem;
+    }
+    .landing-video-caption .caption-url {
+      font-size: 0.62rem;
+    }
+  }
+
   /* ---------- GHL section ---------- */
   .ghl-section { background: var(--white); }
 
@@ -1364,10 +1411,22 @@
           <li><strong>Open Positioning Question</strong>Premium / concierge experience vs. accessible / approachable. The answer changes everything downstream.</li>
         </ul>
       </div>
-      <div class="placeholder-box">
-        <span class="label">Visual Reference</span>
-        <span class="placeholder-title">Landing Page Screenshot</span>
-        <span class="placeholder-sub">implanted-wisdom-landing.vercel.app</span>
+      <div class="landing-video-wrap">
+        <video class="landing-video"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="metadata"
+               poster=""
+               aria-label="Implanted Wisdom landing page demo">
+          <source src="IW2.mp4" type="video/mp4">
+          Your browser doesn't support embedded video.
+        </video>
+        <div class="landing-video-caption">
+          <span class="label">Live Landing Page</span>
+          <span class="caption-url">implanted-wisdom-landing.vercel.app</span>
+        </div>
       </div>
     </div>
   </div>

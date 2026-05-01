@@ -2209,6 +2209,380 @@
     background: var(--gold);
   }
 
+  /* ---------- Positioning Matrix ---------- */
+  .positioning-section {
+    background: var(--cream);
+  }
+  .positioning-board {
+    margin-top: 3rem;
+    position: relative;
+    padding: 2.75rem 2.75rem 2.75rem 2.75rem;
+    background: var(--white);
+    border-radius: 18px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(201, 169, 110, 0.22);
+  }
+  .positioning-axis-label {
+    position: absolute;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .positioning-axis-label.y-top {
+    top: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .positioning-axis-label.y-bottom {
+    bottom: 0.85rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .positioning-axis-label.x-left {
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transform-origin: left center;
+    white-space: nowrap;
+  }
+  .positioning-axis-label.x-right {
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: right center;
+    white-space: nowrap;
+  }
+  .positioning-grid {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.4 / 1;
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-deep) 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .positioning-crosshair-x {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: rgba(201, 169, 110, 0.35);
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .positioning-crosshair-y {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(201, 169, 110, 0.35);
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Quadrant labels */
+  .quadrant {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    padding: 1.25rem;
+    pointer-events: none;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .quadrant.q-tl { top: 0; left: 0; align-items: flex-start; }
+  .quadrant.q-tr { top: 0; right: 0; align-items: flex-end; text-align: right; }
+  .quadrant.q-bl { bottom: 0; left: 0; align-items: flex-start; justify-content: flex-end; }
+  .quadrant.q-br { bottom: 0; right: 0; align-items: flex-end; text-align: right; justify-content: flex-end; }
+  .quadrant span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--gold-deep);
+    opacity: 0.65;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+  .quadrant em {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.4;
+    font-style: normal;
+    line-height: 1.4;
+  }
+
+  /* Competitor dots */
+  .competitor-dot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    cursor: grab;
+    touch-action: none;
+  }
+  .competitor-dot:active { cursor: grabbing; }
+  .competitor-dot.dragging { z-index: 8; }
+  .competitor-dot.dragging .dot-tooltip { opacity: 0 !important; }
+  .competitor-dot .dot {
+    display: block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--white);
+    box-shadow: 0 2px 8px rgba(36, 92, 92, 0.35);
+    margin: 0 auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .competitor-dot.competitor:hover .dot {
+    transform: scale(1.25);
+    box-shadow: 0 4px 14px rgba(36, 92, 92, 0.5);
+  }
+  .competitor-dot .dot-label {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--espresso);
+    margin-top: 0.5rem;
+    white-space: nowrap;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2px 8px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .competitor-dot .dot-tooltip {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    background: var(--espresso);
+    color: var(--cream);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 0.85rem 1rem;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+  }
+  .competitor-dot .dot-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--espresso);
+  }
+  .competitor-dot.competitor:hover .dot-tooltip { opacity: 1; }
+
+  /* The IW dot — gold, the focal point */
+  .competitor-dot.us {
+    z-index: 6;
+  }
+  .competitor-dot.us.dragging { z-index: 9; }
+  .competitor-dot.us .dot {
+    width: 26px;
+    height: 26px;
+    background: var(--gold);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.18), 0 4px 14px rgba(168, 136, 79, 0.3);
+    animation: iwPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes iwPulse {
+    0%, 100% { box-shadow: 0 0 0 6px rgba(201, 169, 110, 0.18), 0 4px 14px rgba(168, 136, 79, 0.3); }
+    50% { box-shadow: 0 0 0 12px rgba(201, 169, 110, 0.05), 0 4px 14px rgba(168, 136, 79, 0.4); }
+  }
+  .competitor-dot.us .dot-label {
+    color: var(--white);
+    background: var(--espresso);
+    border-color: var(--gold);
+    font-weight: 500;
+    padding: 3px 10px;
+  }
+  .competitor-dot.us.dragging .dot { animation: none; transform: scale(1.15); }
+
+  /* Readout panel */
+  .positioning-readout {
+    margin-top: 2rem;
+    padding: 1.75rem 2rem;
+    background: var(--espresso);
+    color: var(--cream);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 1fr 2fr auto;
+    gap: 2rem;
+    align-items: center;
+  }
+  .readout-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .readout-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    font-weight: 700;
+  }
+  .readout-coords {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .readout-axis {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: var(--gold);
+    font-style: italic;
+  }
+  .readout-key {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247, 242, 236, 0.6);
+    font-weight: 700;
+    margin-right: 0.4rem;
+    font-style: normal;
+  }
+  .readout-strategy {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--cream);
+  }
+  .readout-strategy em {
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .readout-reset {
+    background: transparent;
+    border: 1px solid rgba(201, 169, 110, 0.5);
+    color: var(--gold);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 700;
+  }
+  .readout-reset:hover {
+    background: var(--gold);
+    color: var(--espresso);
+  }
+
+  /* Discussion prompt for matrix */
+  .positioning-discussion {
+    margin-top: 2.5rem;
+    padding: 2rem 2.5rem;
+    background: var(--cream-deep);
+    border-radius: 14px;
+    border: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .discussion-prompt-label-light {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.85rem;
+    font-weight: 700;
+  }
+  .positioning-discussion-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.65rem;
+    color: var(--espresso);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .positioning-discussion-body {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.82;
+    margin-bottom: 1rem;
+  }
+  .positioning-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .positioning-options li {
+    padding: 0.85rem 0 0.85rem 1.5rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    position: relative;
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .positioning-options li:last-child { border-bottom: none; }
+  .positioning-options li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.15rem;
+    width: 9px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .positioning-options strong {
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 800px) {
+    .positioning-board { padding: 2rem 1.5rem; }
+    .positioning-grid { aspect-ratio: 1 / 1.1; }
+    .quadrant { padding: 0.85rem; }
+    .quadrant span { font-size: 0.92rem; }
+    .quadrant em { font-size: 0.55rem; }
+    .competitor-dot .dot-label { font-size: 0.7rem; padding: 1px 6px; }
+    .competitor-dot .dot-tooltip { width: 180px; font-size: 0.75rem; }
+    .positioning-axis-label { font-size: 0.6rem; }
+    .positioning-readout {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem;
+    }
+    .positioning-discussion { padding: 1.5rem 1.4rem; }
+    .positioning-discussion-q { font-size: 1.3rem; }
+  }
+  @media (max-width: 500px) {
+    .competitor-dot .dot { width: 14px; height: 14px; }
+    .competitor-dot.us .dot { width: 22px; height: 22px; }
+    .competitor-dot .dot-label { font-size: 0.62rem; }
+  }
+
   /* ---------- Next Steps ---------- */
   .next-section {
     background: var(--espresso);
@@ -2390,6 +2764,7 @@
       <li><a href="#ads">Ads</a></li>
       <li><a href="#challenges">Gaps</a></li>
       <li><a href="#michigan">Michigan</a></li>
+      <li><a href="#positioning">Positioning</a></li>
       <li><a href="#next">Next</a></li>
       <li><a href="purple-cow.html" style="color: var(--gold-deep); font-weight: 500;">Purple Cow →</a></li>
     </ul>
@@ -2412,6 +2787,7 @@
     <li><a href="#challenges" class="mobile-link">Where We Break</a></li>
     <li><a href="#satellite" class="mobile-link">Satellite Model</a></li>
     <li><a href="#michigan" class="mobile-link">Michigan Pitch</a></li>
+    <li><a href="#positioning" class="mobile-link">Competitive Positioning</a></li>
     <li><a href="#next" class="mobile-link">Next Steps</a></li>
     <li><a href="purple-cow.html" class="mobile-link feature">Purple Cow Workshop →</a></li>
   </ul>
@@ -3310,11 +3686,105 @@
   </div>
 </section>
 
-<!-- ============ 10 NEXT STEPS ============ -->
+<!-- ============ 10 POSITIONING MATRIX ============ -->
+<section id="positioning" class="positioning-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">10 · Competitive Positioning</span>
+      <h2 class="display">Where Do We <em class="display-italic">Belong on the Map?</em></h2>
+      <p class="lede">A live, interactive 2×2. Five competitors plotted on quality of care versus price — drag any dot to test new positioning hypotheses. The gold IW marker drives the live strategy readout below. Positions save automatically.</p>
+    </div>
+
+    <div class="positioning-board">
+      <!-- Axes labels & matrix -->
+      <div class="positioning-axis-label y-top">↑ Higher Perceived Quality of Care</div>
+      <div class="positioning-axis-label y-bottom">↓ Lower Perceived Quality of Care</div>
+      <div class="positioning-axis-label x-left">← Lower Price</div>
+      <div class="positioning-axis-label x-right">Higher Price →</div>
+
+      <div class="positioning-grid" id="positioningGrid">
+        <!-- Quadrant labels -->
+        <div class="quadrant q-tl"><span>Premium Value</span><em>High quality, lower price</em></div>
+        <div class="quadrant q-tr"><span>Concierge / Luxury</span><em>High quality, premium price</em></div>
+        <div class="quadrant q-bl"><span>Discount</span><em>Lower quality, lower price</em></div>
+        <div class="quadrant q-br"><span>Overpriced</span><em>Lower quality, premium price</em></div>
+
+        <!-- Center crosshair -->
+        <div class="positioning-crosshair-x"></div>
+        <div class="positioning-crosshair-y"></div>
+
+        <!-- Competitor dots — positioned in % from top-left of grid. All are draggable. -->
+        <div class="competitor-dot competitor" data-name="Nuvia" style="left: 86%; top: 12%;" tabindex="0" role="button" aria-label="Drag Nuvia">
+          <span class="dot"></span>
+          <span class="dot-label">Nuvia</span>
+          <div class="dot-tooltip">Premium pricing. "Permanent teeth in 24 hours" backed by a decade of R&D. Owns the speed claim.</div>
+        </div>
+        <div class="competitor-dot competitor" data-name="ClearChoice" style="left: 78%; top: 38%;" tabindex="0" role="button" aria-label="Drag ClearChoice">
+          <span class="dot"></span>
+          <span class="dot-label">ClearChoice</span>
+          <div class="dot-tooltip">$45K+ per arch. Once the category leader. Now closing locations as competitors copied "teeth in a day."</div>
+        </div>
+        <div class="competitor-dot competitor" data-name="GPS Dental" style="left: 56%; top: 22%;" tabindex="0" role="button" aria-label="Drag GPS Dental">
+          <span class="dot"></span>
+          <span class="dot-label">GPS Dental</span>
+          <div class="dot-tooltip">Mid-premium. Specialist-led. Built BoneProtect™ as their purple cow — bone preservation as the entire story.</div>
+        </div>
+        <div class="competitor-dot competitor" data-name="Aria Dental" style="left: 38%; top: 52%;" tabindex="0" role="button" aria-label="Drag Aria Dental">
+          <span class="dot"></span>
+          <span class="dot-label">Aria Dental</span>
+          <div class="dot-tooltip">Phoenix-based. Competes visibly on price. Generic positioning — "specialists, in-house lab" — typical brown cow.</div>
+        </div>
+        <div class="competitor-dot competitor" data-name="New Life" style="left: 14%; top: 42%;" tabindex="0" role="button" aria-label="Drag New Life">
+          <span class="dot"></span>
+          <span class="dot-label">New Life</span>
+          <div class="dot-tooltip">$9,990 per arch on the homepage. The disruptor. In-house Zirkor milling makes the price structurally defensible.</div>
+        </div>
+
+        <!-- IW dot — gold, the focal point -->
+        <div class="competitor-dot us" id="iwDot" data-name="Implanted Wisdom" style="left: 50%; top: 50%;" tabindex="0" role="button" aria-label="Drag Implanted Wisdom">
+          <span class="dot"></span>
+          <span class="dot-label">Implanted Wisdom</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live position readout -->
+    <div class="positioning-readout">
+      <div class="readout-block">
+        <span class="readout-label">Current IW Position</span>
+        <div class="readout-coords" id="readoutCoords">
+          <span class="readout-axis"><span class="readout-key">Quality:</span> <span id="readoutY">Mid</span></span>
+          <span class="readout-axis"><span class="readout-key">Price:</span> <span id="readoutX">Mid</span></span>
+        </div>
+      </div>
+      <div class="readout-block">
+        <span class="readout-label">Implied Strategy</span>
+        <p class="readout-strategy" id="readoutStrategy">Drag the IW dot to a quadrant to see the implied positioning narrative.</p>
+      </div>
+      <div class="readout-controls">
+        <button class="readout-reset" id="readoutReset">Reset to Center</button>
+      </div>
+    </div>
+
+    <!-- Discussion prompt -->
+    <div class="positioning-discussion">
+      <span class="discussion-prompt-label-light">Discussion · For the Meeting</span>
+      <h3 class="positioning-discussion-q">Where should we plant our flag — and where can we credibly defend it?</h3>
+      <p class="positioning-discussion-body">Three positions worth pressure-testing:</p>
+      <ul class="positioning-options">
+        <li><strong>Top-Left · Premium Value.</strong> Specialist-level care without the corporate markup. Anti-ClearChoice positioning. Risk: requires either a real cost advantage (we don't have one) or a hero who is willing to charge less than the market.</li>
+        <li><strong>Top-Right · Concierge.</strong> The Nuvia move. Charge premium, deliver something nobody else can — your surgeon's personal cell, the 35-year promise, "All on Everyday." Risk: requires the operational backbone to defend the price.</li>
+        <li><strong>Top-Center · Trusted Specialist.</strong> Slightly above-mid price, clearly above-mid quality. Lean on credentials, continuity, and surgeon-led care. Lowest-risk position. Highest-risk in five years if the market polarizes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 NEXT STEPS ============ -->
 <section id="next" class="next-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">10 · Conversation Goal</span>
+      <span class="section-num">11 · Conversation Goal</span>
       <h2 class="display">What We Need <em class="display-italic">From This Conversation</em></h2>
       <p class="lede">A focused, working session — not a presentation. Five things we genuinely need your perspective on.</p>
     </div>
@@ -3383,6 +3853,182 @@
         if (text) text.textContent = isOpen ? 'Hide Details' : 'See Details';
       });
     });
+  })();
+
+  // ====== Positioning Matrix — all dots draggable ======
+  (function() {
+    const grid = document.getElementById('positioningGrid');
+    const iwDot = document.getElementById('iwDot');
+    const resetBtn = document.getElementById('readoutReset');
+    const xOut = document.getElementById('readoutX');
+    const yOut = document.getElementById('readoutY');
+    const stratOut = document.getElementById('readoutStrategy');
+    if (!grid || !iwDot) return;
+
+    const allDots = grid.querySelectorAll('.competitor-dot');
+    const STORAGE_KEY = 'iwPositioningMatrix_v1';
+
+    // Capture default positions on load (before any localStorage override)
+    const defaults = {};
+    allDots.forEach(d => {
+      defaults[d.dataset.name] = { left: d.style.left, top: d.style.top };
+    });
+
+    // Load persisted positions
+    function loadPositions() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        allDots.forEach(d => {
+          const s = saved[d.dataset.name];
+          if (s && s.left && s.top) {
+            d.style.left = s.left;
+            d.style.top = s.top;
+          }
+        });
+      } catch (e) { /* ignore */ }
+    }
+
+    function savePositions() {
+      try {
+        const out = {};
+        allDots.forEach(d => {
+          out[d.dataset.name] = { left: d.style.left, top: d.style.top };
+        });
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(out));
+      } catch (e) { /* ignore */ }
+    }
+
+    // Map x,y percentages of IW dot only -> readout
+    function describePosition(xPct, yPct) {
+      let xLabel = 'Mid';
+      if (xPct < 25) xLabel = 'Disruptor (Low)';
+      else if (xPct < 45) xLabel = 'Accessible';
+      else if (xPct < 60) xLabel = 'Mid-Market';
+      else if (xPct < 80) xLabel = 'Premium';
+      else xLabel = 'Concierge (High)';
+
+      let yLabel = 'Mid';
+      if (yPct < 20) yLabel = 'Specialist (Highest)';
+      else if (yPct < 40) yLabel = 'Above-Market';
+      else if (yPct < 60) yLabel = 'Mid-Market';
+      else if (yPct < 80) yLabel = 'Below-Market';
+      else yLabel = 'Discount Tier';
+
+      let strat = '';
+      const isHighQ = yPct < 50;
+      const isHighP = xPct >= 50;
+      if (isHighQ && isHighP) {
+        strat = '<em>Concierge / Luxury.</em> Compete with Nuvia and ClearChoice on premium positioning. Requires a defensible differentiator that justifies the price.';
+      } else if (isHighQ && !isHighP) {
+        strat = '<em>Premium Value.</em> Specialist-level care without the corporate markup. Anti-ClearChoice positioning. Demands a real cost advantage.';
+      } else if (!isHighQ && isHighP) {
+        strat = '<em>Overpriced Quadrant.</em> Hardest place to defend. The market punishes practices charging premium prices without premium proof.';
+      } else {
+        strat = '<em>Discount.</em> Compete on price like New Life. Requires lean operations and structurally lower variable cost — not just cheaper marketing.';
+      }
+      if (xPct >= 40 && xPct <= 60 && yPct >= 35 && yPct <= 65) {
+        strat = '<em>Trusted Specialist · safest position.</em> Slightly above-market quality, mid-market price. Lean on credentials and continuity. Lowest risk today, highest risk if the market polarizes.';
+      }
+      return { xLabel, yLabel, strat };
+    }
+
+    function updateReadout() {
+      const left = parseFloat(iwDot.style.left);
+      const top = parseFloat(iwDot.style.top);
+      const { xLabel, yLabel, strat } = describePosition(left, top);
+      xOut.textContent = xLabel;
+      yOut.textContent = yLabel;
+      stratOut.innerHTML = strat;
+    }
+
+    function setDotPosition(dot, clientX, clientY) {
+      const rect = grid.getBoundingClientRect();
+      let x = ((clientX - rect.left) / rect.width) * 100;
+      let y = ((clientY - rect.top) / rect.height) * 100;
+      x = Math.max(2, Math.min(98, x));
+      y = Math.max(3, Math.min(97, y));
+      dot.style.left = x + '%';
+      dot.style.top = y + '%';
+    }
+
+    // ---- Drag wiring (mouse + touch) — applies to every dot ----
+    let activeDot = null;
+
+    allDots.forEach(dot => {
+      dot.addEventListener('mousedown', e => {
+        activeDot = dot;
+        dot.classList.add('dragging');
+        e.preventDefault();
+      });
+      dot.addEventListener('touchstart', e => {
+        activeDot = dot;
+        dot.classList.add('dragging');
+      }, { passive: true });
+
+      // Keyboard arrow nudging on focused dot
+      dot.addEventListener('keydown', e => {
+        const left = parseFloat(dot.style.left);
+        const top = parseFloat(dot.style.top);
+        const step = e.shiftKey ? 5 : 2;
+        let nx = left, ny = top;
+        if (e.key === 'ArrowLeft') nx = Math.max(2, left - step);
+        else if (e.key === 'ArrowRight') nx = Math.min(98, left + step);
+        else if (e.key === 'ArrowUp') ny = Math.max(3, top - step);
+        else if (e.key === 'ArrowDown') ny = Math.min(97, top + step);
+        else return;
+        e.preventDefault();
+        dot.style.left = nx + '%';
+        dot.style.top = ny + '%';
+        if (dot === iwDot) updateReadout();
+        savePositions();
+      });
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (!activeDot) return;
+      setDotPosition(activeDot, e.clientX, e.clientY);
+      if (activeDot === iwDot) updateReadout();
+    });
+    document.addEventListener('mouseup', () => {
+      if (activeDot) {
+        activeDot.classList.remove('dragging');
+        savePositions();
+        activeDot = null;
+      }
+    });
+    document.addEventListener('touchmove', e => {
+      if (!activeDot) return;
+      const t = e.touches[0];
+      setDotPosition(activeDot, t.clientX, t.clientY);
+      if (activeDot === iwDot) updateReadout();
+      e.preventDefault();
+    }, { passive: false });
+    document.addEventListener('touchend', () => {
+      if (activeDot) {
+        activeDot.classList.remove('dragging');
+        savePositions();
+        activeDot = null;
+      }
+    });
+
+    // Reset all dots to defaults
+    resetBtn.addEventListener('click', () => {
+      allDots.forEach(d => {
+        const def = defaults[d.dataset.name];
+        if (def) {
+          d.style.left = def.left;
+          d.style.top = def.top;
+        }
+      });
+      try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      updateReadout();
+    });
+
+    // Init
+    loadPositions();
+    updateReadout();
   })();
 </script>
 

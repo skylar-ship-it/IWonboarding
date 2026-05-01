@@ -566,7 +566,7 @@
       box-shadow 0.3s ease;
   }
   .funnel-detail.open {
-    max-height: 2400px;
+    max-height: 4000px;
     padding: 1.75rem 2rem;
     margin: 1rem auto 1.5rem;
     border-color: rgba(201, 169, 110, 0.22);
@@ -734,6 +734,135 @@
   }
   @media (max-width: 600px) {
     .survey-screenshots-grid { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  /* Agency benchmark comparison */
+  .benchmark-comparison {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .benchmark-context {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink);
+    opacity: 0.78;
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 1.5rem;
+  }
+  .benchmark-shot {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .survey-tag.agency {
+    background: rgba(168, 88, 78, 0.15);
+    color: #a85847;
+  }
+
+  /* Discussion prompt block */
+  .discussion-prompt {
+    margin-top: 2.5rem;
+    padding: 2rem 2.25rem;
+    background: var(--espresso);
+    color: var(--cream);
+    border-radius: 14px;
+    border-left: 4px solid var(--gold);
+  }
+  .discussion-prompt-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    display: block;
+    margin-bottom: 0.85rem;
+  }
+  .discussion-prompt-q {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.65rem;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 1.25rem;
+  }
+  .discussion-prompt-body {
+    color: rgba(247, 242, 236, 0.78);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .discussion-tradeoff {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .tradeoff-side {
+    background: rgba(247, 242, 236, 0.04);
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+  }
+  .tradeoff-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.85rem;
+  }
+  .tradeoff-label.wider {
+    background: rgba(201, 169, 110, 0.18);
+    color: var(--gold);
+  }
+  .tradeoff-label.deeper {
+    background: rgba(58, 120, 120, 0.25);
+    color: #8fb8b8;
+  }
+  .tradeoff-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: rgba(247, 242, 236, 0.85);
+  }
+  .tradeoff-text em {
+    color: var(--cream);
+    font-style: normal;
+    font-weight: 500;
+  }
+  .discussion-question-final {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .discussion-q-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+  .discussion-question-final p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    line-height: 1.45;
+  }
+  .discussion-question-final p em {
+    color: var(--cream);
+    font-style: italic;
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .discussion-prompt { padding: 1.5rem 1.4rem; }
+    .discussion-prompt-q { font-size: 1.4rem; }
+    .discussion-tradeoff { grid-template-columns: 1fr; gap: 1rem; }
+    .discussion-question-final p { font-size: 1.1rem; }
   }
 
   /* ---------- Funnel: Tablet ---------- */
@@ -1749,6 +1878,42 @@
                 <span class="survey-caption">Quick Call · 2 min</span>
               </figcaption>
             </figure>
+          </div>
+        </div>
+
+        <div class="benchmark-comparison">
+          <span class="survey-screenshots-label">Agency Benchmark · For Reference</span>
+          <p class="benchmark-context">For comparison, here is the form Progressive Agency runs on their lead-gen pages for a similar full-arch practice. Notably shorter — a single page, single CTA, minimal filtering.</p>
+          <figure class="survey-shot benchmark-shot">
+            <div class="survey-shot-imgwrap">
+              <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/agencysurvey.png"
+                   alt="Progressive Agency benchmark survey form"
+                   loading="lazy">
+            </div>
+            <figcaption>
+              <span class="survey-tag agency">Agency Benchmark</span>
+              <span class="survey-caption">Progressive · single-page form</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="discussion-prompt">
+          <span class="discussion-prompt-label">Open Discussion · For Jim</span>
+          <h4 class="discussion-prompt-q">Should we widen the funnel — or hold the qualification line?</h4>
+          <p class="discussion-prompt-body">Two directions to weigh against each other:</p>
+          <div class="discussion-tradeoff">
+            <div class="tradeoff-side">
+              <span class="tradeoff-label wider">Wider Funnel</span>
+              <p class="tradeoff-text">Shorten the low-intent survey further, or add a third ultra-short path. <em>Upside:</em> more raw lead volume, lower CPL, faster Meta optimization. <em>Risk:</em> qualification work shifts to the sales team, which is already capacity-constrained. CAC stays low on paper but rises in human hours.</p>
+            </div>
+            <div class="tradeoff-side">
+              <span class="tradeoff-label deeper">Deeper Qualification</span>
+              <p class="tradeoff-text">Hold the current two-tier structure (or tighten it further). <em>Upside:</em> every lead arrives with intent data, the team works the right list first, conversion-to-consult ratio climbs. <em>Risk:</em> fewer raw leads, slower learning signal for Meta, higher reported CPL even if true ROI is better.</p>
+            </div>
+          </div>
+          <div class="discussion-question-final">
+            <span class="discussion-q-label">The Real Question</span>
+            <p>Are we optimizing for <em>cost per lead</em> — or <em>cost per qualified consult?</em> The two answers send us down very different roads.</p>
           </div>
         </div>
       </div>

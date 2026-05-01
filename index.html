@@ -1484,33 +1484,248 @@
   /* ---------- GHL section ---------- */
   .ghl-section { background: var(--white); }
 
-  .pipeline-bar {
+  /* Pipeline architecture overview */
+  .pipeline-architecture {
+    margin-top: 3rem;
+    padding: 2.5rem;
+    background: var(--cream);
+    border-radius: 18px;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .pipeline-flow {
     display: flex;
-    gap: 0;
-    margin-top: 1.5rem;
-    border-radius: 999px;
-    overflow: hidden;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .pipeline-node {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(201, 169, 110, 0.25);
     box-shadow: var(--shadow-sm);
-  }
-  .pipeline-stage {
-    flex: 1;
-    padding: 1rem 1.25rem;
-    background: var(--cream-deep);
+    flex: 1 1 160px;
+    min-width: 160px;
+    max-width: 200px;
     text-align: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--espresso);
-    border-right: 1px solid rgba(201, 169, 110, 0.3);
-    transition: background 0.3s ease;
+    transition: transform 0.25s ease;
   }
-  .pipeline-stage:last-child { border-right: none; }
-  .pipeline-stage:nth-child(1) { background: var(--gold-soft); }
-  .pipeline-stage:nth-child(2) { background: var(--gold); color: var(--white); }
-  .pipeline-stage:nth-child(3) { background: var(--gold-deep); color: var(--white); }
-  .pipeline-stage:nth-child(4) { background: var(--teal); color: var(--white); }
-  .pipeline-stage:nth-child(5) { background: var(--espresso); color: var(--cream); }
+  .pipeline-node:hover { transform: translateY(-2px); }
+  .pipeline-node.sub {
+    background: linear-gradient(180deg, #f3f7f7 0%, var(--cream) 100%);
+    border-color: rgba(36, 92, 92, 0.3);
+  }
+  .pipeline-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+  }
+  .pipeline-node h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+  .pipeline-node p {
+    font-size: 0.78rem;
+    color: var(--ink);
+    opacity: 0.7;
+    line-height: 1.4;
+  }
+  .pipeline-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .pipeline-arrow.side {
+    color: var(--teal);
+  }
+  .pipeline-flow-note {
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.82;
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .pipeline-flow-note em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .pipeline-architecture { padding: 1.5rem 1.25rem; }
+    .pipeline-flow {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.4rem;
+    }
+    .pipeline-node {
+      max-width: 100%;
+      flex: 1 1 100%;
+    }
+    .pipeline-arrow { transform: rotate(90deg); padding: 0.15rem 0; }
+    .pipeline-arrow.side { transform: rotate(0); }
+  }
+
+  /* Pipeline cards grid */
+  .pipelines-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) {
+    .pipelines-grid { grid-template-columns: 1fr; }
+  }
+  .pipeline-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pipeline-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .pipeline-card-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .pipeline-card-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .pipeline-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.65rem;
+    color: var(--espresso);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+  .pipeline-card-purpose {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.78;
+  }
+  .pipeline-stages-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .stage-chip {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--ink);
+    border: 1px solid transparent;
+  }
+  /* Chip color system — matches GHL screenshot palette */
+  .stage-chip.stage-new {
+    background: rgba(180, 220, 180, 0.45);
+    color: #2d5a2d;
+  }
+  .stage-chip.stage-attempt {
+    background: rgba(180, 195, 230, 0.45);
+    color: #353f6b;
+  }
+  .stage-chip.stage-warning {
+    background: rgba(240, 195, 195, 0.55);
+    color: #7a3838;
+  }
+  .stage-chip.stage-nurture {
+    background: rgba(245, 200, 220, 0.55);
+    color: #803b5c;
+  }
+  .stage-chip.stage-win {
+    background: rgba(180, 220, 180, 0.45);
+    color: #2d5a2d;
+  }
+  .stage-chip.stage-cold {
+    background: rgba(200, 200, 200, 0.5);
+    color: #555;
+  }
+
+  /* Workflows grid */
+  .workflows-section {
+    margin-top: 4rem;
+  }
+  .workflows-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 900px) {
+    .workflows-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .workflows-grid { grid-template-columns: 1fr; }
+  }
+  .workflow-tile {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.4rem 1.25rem;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  .workflow-tile:hover {
+    transform: translateY(-2px);
+    background: var(--cream-deep);
+  }
+  .workflow-tile-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--gold-deep);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .workflow-tile h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--espresso);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .workflow-tile p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--ink);
+    opacity: 0.72;
+  }
 
   /* ---------- Integration flow ---------- */
   .integration-section { background: var(--cream); }
@@ -1684,12 +1899,57 @@
 
   .creative-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     margin-top: 3rem;
   }
-  @media (max-width: 800px) {
-    .creative-grid { grid-template-columns: 1fr 1fr; }
+  .creative-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .creative-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .creative-card-imgwrap {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    overflow: hidden;
+  }
+  .creative-card-imgwrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .creative-card:hover .creative-card-imgwrap img { transform: scale(1.03); }
+  .creative-card-meta {
+    padding: 0.85rem 1rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .creative-card-id {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+  }
+  @media (max-width: 1000px) {
+    .creative-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 700px) {
+    .creative-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  }
+  @media (max-width: 420px) {
+    .creative-grid { grid-template-columns: 1fr; }
   }
 
   /* ---------- Challenges (priority section) ---------- */
@@ -2048,19 +2308,6 @@
     .relationship-card { padding: 2rem 1.5rem; }
     .relationship-card h3 { font-size: 1.5rem; }
 
-    /* Pipeline bar - stack vertically on mobile */
-    .pipeline-bar {
-      flex-direction: column;
-      border-radius: 12px;
-    }
-    .pipeline-stage {
-      border-right: none;
-      border-bottom: 1px solid rgba(201, 169, 110, 0.25);
-      padding: 0.85rem 1rem;
-      font-size: 0.68rem;
-    }
-    .pipeline-stage:last-child { border-bottom: none; }
-
     /* Flow steps - stack to single column */
     .flow-steps { grid-template-columns: 1fr; gap: 1rem; }
     .flow-step { padding: 1.5rem 1.25rem; }
@@ -2098,9 +2345,6 @@
     /* Placeholder boxes */
     .placeholder-box { aspect-ratio: 4 / 3; padding: 1.5rem; }
     .placeholder-box .placeholder-title { font-size: 1.15rem; }
-
-    /* Creative grid */
-    .creative-grid { grid-template-columns: 1fr; gap: 0.75rem; }
 
     /* Satellite */
     .satellite-visual { padding: 2.5rem 1.5rem; }
@@ -2163,7 +2407,6 @@
     <li><a href="#funnel" class="mobile-link">Full Funnel</a></li>
     <li><a href="#landing" class="mobile-link">Landing Page</a></li>
     <li><a href="#ghl" class="mobile-link">CRM &amp; Automation</a></li>
-    <li><a href="#integration" class="mobile-link">Integration</a></li>
     <li><a href="#iw-pulver" class="mobile-link">IW → Pulver</a></li>
     <li><a href="#ads" class="mobile-link">Meta Ads</a></li>
     <li><a href="#challenges" class="mobile-link">Where We Break</a></li>
@@ -2659,81 +2902,177 @@
     <div class="section-header">
       <span class="section-num">04 · Operating System</span>
       <h2 class="display">CRM &amp; <em class="display-italic">Automation</em></h2>
-      <p class="lede">Go High Level is the operating layer of the funnel. Every lead, every text, every reminder, every internal task lives here. It is what makes the system run without falling through the cracks.</p>
+      <p class="lede">Go High Level is the operating layer of the funnel. Rather than one giant pipeline trying to do everything, leads flow across four purpose-built pipelines — each with its own stages, automations, and team responsibilities.</p>
     </div>
 
-    <div class="two-col">
-      <div>
-        <h3 class="display" style="font-size: 1.6rem; color: var(--espresso); margin-bottom: 1rem;">Pipeline Stages</h3>
-        <div class="pipeline-bar">
-          <div class="pipeline-stage">New Lead</div>
-          <div class="pipeline-stage">Contacted</div>
-          <div class="pipeline-stage">Booked</div>
-          <div class="pipeline-stage">Consulted</div>
-          <div class="pipeline-stage">Closed</div>
+    <!-- Pipeline architecture overview -->
+    <div class="pipeline-architecture">
+      <div class="pipeline-flow">
+        <div class="pipeline-node">
+          <span class="pipeline-num">01</span>
+          <h4>Implant Leads</h4>
+          <p>Intake &amp; first contact</p>
         </div>
-
-        <h3 class="display" style="font-size: 1.6rem; color: var(--espresso); margin-top: 2.5rem; margin-bottom: 0.75rem;">Core Workflows</h3>
-        <ul class="clean-list">
-          <li><strong>WF · New Lead Intake</strong>Instant SMS + email + internal task on form submit.</li>
-          <li><strong>WF · No-Answer Follow-Up</strong>Multi-touch sequence to recover unresponsive leads.</li>
-          <li><strong>WF · Appointment Confirmation</strong>Reminders, prep instructions, calendar holds.</li>
-          <li><strong>WF · No-Show Recovery</strong>Re-engagement automation to win back drop-offs.</li>
-        </ul>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node">
+          <span class="pipeline-num">02</span>
+          <h4>Appointments</h4>
+          <p>Consult lifecycle</p>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-node">
+          <span class="pipeline-num">03</span>
+          <h4>Treatment &amp; Revenue</h4>
+          <p>Close tracking</p>
+        </div>
+        <div class="pipeline-arrow side">↓</div>
+        <div class="pipeline-node sub">
+          <span class="pipeline-num">03a</span>
+          <h4>Decision Pending</h4>
+          <p>Objection handling</p>
+        </div>
       </div>
-      <div class="placeholder-box">
-        <span class="label">Visual Reference</span>
-        <span class="placeholder-title">GHL Pipeline Screenshot</span>
-        <span class="placeholder-sub">Live pipeline + workflow view</span>
+      <p class="pipeline-flow-note">Patients move forward through the main flow, with <em>Decision Pending</em> as a working list for anyone who's been presented treatment but hasn't decided. This separation keeps Karen's daily call list clean — she never has to scroll past stalled deals to find fresh leads.</p>
+    </div>
+
+    <!-- Four pipeline cards -->
+    <div class="pipelines-grid">
+
+      <!-- Pipeline 01 -->
+      <div class="pipeline-card">
+        <div class="pipeline-card-header">
+          <span class="pipeline-card-num">Pipeline · 01</span>
+          <h3>Implant Leads</h3>
+          <p class="pipeline-card-purpose">Top of funnel. Every new lead lands here and works through to a booked consultation — or falls into nurture.</p>
+        </div>
+        <div class="pipeline-stages-list">
+          <span class="stage-chip stage-new">NEW HIGH INTENT LEAD!</span>
+          <span class="stage-chip stage-new">New Lead</span>
+          <span class="stage-chip stage-attempt">Attempt 1 No Answer</span>
+          <span class="stage-chip stage-attempt">Attempt 2 No Answer</span>
+          <span class="stage-chip stage-attempt">Attempt 3 No Answer</span>
+          <span class="stage-chip stage-attempt">Connected — No Appointment</span>
+          <span class="stage-chip stage-nurture">Nurture Marketing Trail</span>
+          <span class="stage-chip stage-win">Booked Consultation</span>
+          <span class="stage-chip stage-win">Showed Up To Consult!</span>
+          <span class="stage-chip stage-cold">No Response</span>
+          <span class="stage-chip stage-cold">Lost</span>
+        </div>
+      </div>
+
+      <!-- Pipeline 02 -->
+      <div class="pipeline-card">
+        <div class="pipeline-card-header">
+          <span class="pipeline-card-num">Pipeline · 02</span>
+          <h3>Appointments</h3>
+          <p class="pipeline-card-purpose">Once an appointment is on the books, the operational risk shifts — confirmation, no-shows, rebooking. This pipeline manages the lifecycle of each scheduled consult.</p>
+        </div>
+        <div class="pipeline-stages-list">
+          <span class="stage-chip stage-attempt">Booked Appointment</span>
+          <span class="stage-chip stage-attempt">Confirmed</span>
+          <span class="stage-chip stage-warning">Needs Confirmation</span>
+          <span class="stage-chip stage-warning">Cancelled → Rebook</span>
+          <span class="stage-chip stage-warning">No Show → Follow Up</span>
+          <span class="stage-chip stage-cold">No Show — Unresponsive</span>
+          <span class="stage-chip stage-win">Responded — Reschedule Needed</span>
+          <span class="stage-chip stage-attempt">Completed</span>
+        </div>
+      </div>
+
+      <!-- Pipeline 03 -->
+      <div class="pipeline-card">
+        <div class="pipeline-card-header">
+          <span class="pipeline-card-num">Pipeline · 03</span>
+          <h3>Treatment &amp; Revenue</h3>
+          <p class="pipeline-card-purpose">Post-consult. This is where the actual money moves — treatment presented, decision made, financing resolved, revenue recorded.</p>
+        </div>
+        <div class="pipeline-stages-list">
+          <span class="stage-chip stage-attempt">Treatment Presented</span>
+          <span class="stage-chip stage-attempt">Decision Pending</span>
+          <span class="stage-chip stage-attempt">Financing Needed</span>
+          <span class="stage-chip stage-warning">Financing Denied</span>
+          <span class="stage-chip stage-win">Ready to Proceed</span>
+          <span class="stage-chip stage-win">WON 💰</span>
+          <span class="stage-chip stage-cold">LOST</span>
+          <span class="stage-chip stage-cold">Triaged</span>
+        </div>
+      </div>
+
+      <!-- Pipeline 04 -->
+      <div class="pipeline-card">
+        <div class="pipeline-card-header">
+          <span class="pipeline-card-num">Pipeline · 03a</span>
+          <h3>Decision Pending</h3>
+          <p class="pipeline-card-purpose">A working list for patients between "treatment presented" and "treatment closed." Each stage is a specific objection — so the team knows exactly what to address.</p>
+        </div>
+        <div class="pipeline-stages-list">
+          <span class="stage-chip stage-attempt">Yet to decide</span>
+          <span class="stage-chip stage-warning">💰 Price Concern</span>
+          <span class="stage-chip stage-attempt">💑 Needs Spouse Approval</span>
+          <span class="stage-chip stage-attempt">📚 Wants More Info</span>
+          <span class="stage-chip stage-warning">💳 Needs Financing</span>
+          <span class="stage-chip stage-win">Approved — Ready to Schedule</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Core workflows section -->
+    <div class="workflows-section">
+      <h3 class="display" style="font-size: 1.85rem; color: var(--espresso); margin-bottom: 0.5rem;">Core <em class="display-italic">Workflows</em></h3>
+      <p style="color: var(--ink); opacity: 0.78; margin-bottom: 2rem; max-width: 640px;">Eight automation workflows (WF1–WF8) move leads through the pipelines. Every stage transition can trigger one — a text, an internal task, an email, a calendar hold.</p>
+
+      <div class="workflows-grid">
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF1</span>
+          <h5>New Lead Intake</h5>
+          <p>Instant SMS + email + internal task on form submit.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF2</span>
+          <h5>No-Answer Follow-Up</h5>
+          <p>Multi-touch sequence across attempts 1–3.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF3</span>
+          <h5>Appointment Confirmation</h5>
+          <p>Reminders, prep instructions, calendar holds.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF4</span>
+          <h5>Cancellation Recovery</h5>
+          <p>Re-engagement after a cancelled appointment.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF5</span>
+          <h5>No-Show Recovery</h5>
+          <p>Same-day + multi-day win-back automation.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF6</span>
+          <h5>Treatment Plan Delivery</h5>
+          <p>Three-part safety net: push, task, hour reminder.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF7</span>
+          <h5>Decision Nurture</h5>
+          <p>Objection-specific follow-up by Decision Pending stage.</p>
+        </div>
+        <div class="workflow-tile">
+          <span class="workflow-tile-num">WF8</span>
+          <h5>Won / Lost Tracking</h5>
+          <p>Final stage routing, review request, archive.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 05 INTEGRATION ============ -->
-<section id="integration" class="integration-section">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-num">05 · Connective Tissue</span>
-      <h2 class="display">Landing Page → <em class="display-italic">CRM Integration</em></h2>
-      <p class="lede">The handoff between the landing page and the CRM is where most acquisition systems quietly leak. Ours is wired tight.</p>
-    </div>
-
-    <div class="flow-steps">
-      <div class="flow-step">
-        <div class="step-num">i.</div>
-        <h4>Form Submission</h4>
-        <p>Visitor completes the survey form on the landing page.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">ii.</div>
-        <h4>Contact Created</h4>
-        <p>GHL contact record auto-generated with all field data.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">iii.</div>
-        <h4>Opportunity Opened</h4>
-        <p>Drops into the correct stage of the sales pipeline.</p>
-      </div>
-      <div class="flow-step">
-        <div class="step-num">iv.</div>
-        <h4>Workflows Trigger</h4>
-        <p>SMS, email, internal tasks, follow-ups all fire automatically.</p>
-      </div>
-    </div>
-
-    <div class="key-insight">
-      <span class="label">Core Principle</span>
-      <p class="quote">"Speed + consistency = higher conversion."</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 06 IW → PULVER ============ -->
+<!-- ============ 05 IW → PULVER ============ -->
 <section id="iw-pulver" class="iw-pulver-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">06 · Brand Architecture</span>
+      <span class="section-num">05 · Brand Architecture</span>
       <h2 class="display">Implanted Wisdom <em class="display-italic">as Funnel Engine</em></h2>
       <p class="lede">Two distinct brands, one connected purpose. Each plays a clearly defined role in the patient journey — and that separation is intentional.</p>
     </div>
@@ -2761,11 +3100,11 @@
   </div>
 </section>
 
-<!-- ============ 07 META ADS ============ -->
+<!-- ============ 06 META ADS ============ -->
 <section id="ads" class="meta-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">07 · Paid Acquisition</span>
+      <span class="section-num">06 · Paid Acquisition</span>
       <h2 class="display">Meta Ads <em class="display-italic">Strategy</em></h2>
       <p class="lede">Meta is the demand engine. Facebook and Instagram give us the targeting, the volume, and the creative flexibility to reach full-arch candidates at scale.</p>
     </div>
@@ -2789,27 +3128,65 @@
     </div>
 
     <div class="creative-grid">
-      <div class="placeholder-box">
-        <span class="label">Creative 01</span>
-        <span class="placeholder-title">Ad Creative Example</span>
+      <div class="creative-card">
+        <div class="creative-card-imgwrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/AD1.png"
+               alt="Live Meta ad creative — variant 01"
+               loading="lazy">
+        </div>
+        <div class="creative-card-meta">
+          <span class="creative-card-id">Creative · 01</span>
+        </div>
       </div>
-      <div class="placeholder-box">
-        <span class="label">Creative 02</span>
-        <span class="placeholder-title">Ad Creative Example</span>
+      <div class="creative-card">
+        <div class="creative-card-imgwrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/AD2.png"
+               alt="Live Meta ad creative — variant 02"
+               loading="lazy">
+        </div>
+        <div class="creative-card-meta">
+          <span class="creative-card-id">Creative · 02</span>
+        </div>
       </div>
-      <div class="placeholder-box">
-        <span class="label">Creative 03</span>
-        <span class="placeholder-title">Ad Creative Example</span>
+      <div class="creative-card">
+        <div class="creative-card-imgwrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/AD3.png"
+               alt="Live Meta ad creative — variant 03"
+               loading="lazy">
+        </div>
+        <div class="creative-card-meta">
+          <span class="creative-card-id">Creative · 03</span>
+        </div>
+      </div>
+      <div class="creative-card">
+        <div class="creative-card-imgwrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/AD4.png"
+               alt="Live Meta ad creative — variant 04"
+               loading="lazy">
+        </div>
+        <div class="creative-card-meta">
+          <span class="creative-card-id">Creative · 04</span>
+        </div>
+      </div>
+      <div class="creative-card">
+        <div class="creative-card-imgwrap">
+          <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/AD5.png"
+               alt="Live Meta ad creative — variant 05"
+               loading="lazy">
+        </div>
+        <div class="creative-card-meta">
+          <span class="creative-card-id">Creative · 05</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 08 CHALLENGES ============ -->
+<!-- ============ 07 CHALLENGES ============ -->
 <section id="challenges" class="challenges-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">08 · Honest Diagnostic</span>
+      <span class="section-num">07 · Honest Diagnostic</span>
       <h2 class="display">Where the <em class="display-italic">Funnel Breaks</em></h2>
       <p class="lede">This is the section we most want your eyes on. We have a working system. We do not yet have a system that consistently produces the right patient at the right cost.</p>
     </div>
@@ -2845,11 +3222,11 @@
   </div>
 </section>
 
-<!-- ============ 09 SATELLITE ============ -->
+<!-- ============ 08 SATELLITE ============ -->
 <section id="satellite" class="satellite-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">09 · Future State</span>
+      <span class="section-num">08 · Future State</span>
       <h2 class="display">Satellite <em class="display-italic">Model</em></h2>
       <p class="lede">Once the funnel produces consistent, qualified, profitable patient flow, the system becomes replicable. The acquisition engine is the asset.</p>
     </div>
@@ -2884,11 +3261,11 @@
   </div>
 </section>
 
-<!-- ============ 10 MICHIGAN ============ -->
+<!-- ============ 09 MICHIGAN ============ -->
 <section id="michigan" class="michigan-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">10 · Strategic Pitch</span>
+      <span class="section-num">09 · Strategic Pitch</span>
       <h2 class="display">IW Platform <em class="display-italic">Opportunity</em></h2>
       <p class="lede">The vision for Michigan: IW as a four-pillar platform that combines marketing, digital workflow, clinical training, and a referral economy into one cohesive offering.</p>
     </div>
@@ -2933,11 +3310,11 @@
   </div>
 </section>
 
-<!-- ============ 11 NEXT STEPS ============ -->
+<!-- ============ 10 NEXT STEPS ============ -->
 <section id="next" class="next-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">11 · Conversation Goal</span>
+      <span class="section-num">10 · Conversation Goal</span>
       <h2 class="display">What We Need <em class="display-italic">From This Conversation</em></h2>
       <p class="lede">A focused, working session — not a presentation. Five things we genuinely need your perspective on.</p>
     </div>

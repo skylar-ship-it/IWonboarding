@@ -617,6 +617,205 @@
     line-height: 1.6;
   }
 
+  /* ---------- Agency Audit (current ads) ---------- */
+  .agency-section { background: var(--white); }
+  .agency-warning {
+    margin-top: 2rem;
+    padding: 2rem 2.5rem;
+    background: var(--cream-deep);
+    border-left: 4px solid var(--gold-deep);
+    border-radius: 0 12px 12px 0;
+  }
+  .agency-warning .label {
+    color: var(--gold-deep);
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .agency-warning p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--espresso);
+    line-height: 1.5;
+  }
+  .agency-warning p em { color: var(--gold-deep); font-style: italic; }
+
+  .ad-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin: 3rem 0 2rem;
+  }
+  .ad-card {
+    background: var(--cream);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .ad-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .ad-card .ad-image-wrap {
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--cream) 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .ad-card .ad-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .ad-card:hover .ad-image-wrap img { transform: scale(1.03); }
+  .ad-card .ad-meta {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .ad-card .ad-id {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .ad-card .ad-tag {
+    font-size: 0.85rem;
+    color: var(--ink);
+    opacity: 0.75;
+    line-height: 1.4;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  .pattern-callout {
+    margin-top: 3rem;
+    background: var(--espresso);
+    color: var(--cream);
+    padding: 3rem;
+    border-radius: 18px;
+    box-shadow: var(--shadow-md);
+  }
+  .pattern-callout h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+  }
+  .pattern-callout h3 em { color: var(--gold); font-style: italic; }
+  .pattern-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.5rem 2rem;
+    margin-top: 1.5rem;
+  }
+  .pattern-list li {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+    color: rgba(247, 242, 236, 0.85);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .pattern-list li::before {
+    content: '✕';
+    position: absolute;
+    left: 0;
+    top: 0.85rem;
+    color: var(--gold-deep);
+    font-size: 0.9rem;
+  }
+  .pattern-list strong {
+    display: block;
+    color: var(--cream);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  /* Rewrite — brown to purple */
+  .rewrite-grid {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .rewrite-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .rewrite-card {
+    padding: 2rem;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .rewrite-card.brown {
+    background: var(--cream-deep);
+    border: 1px solid rgba(168, 136, 79, 0.25);
+  }
+  .rewrite-card.purple {
+    background: linear-gradient(135deg, #fdfaf3 0%, var(--white) 100%);
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 1px var(--gold), 0 8px 24px rgba(201, 169, 110, 0.12);
+  }
+  .rewrite-card .label {
+    margin-bottom: 0.85rem;
+    display: block;
+  }
+  .rewrite-card.brown .label { color: var(--gold-deep); opacity: 0.7; }
+  .rewrite-card.purple .label { color: var(--gold-deep); }
+  .rewrite-card .rewrite-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    line-height: 1.45;
+    color: var(--espresso);
+  }
+  .rewrite-card.brown .rewrite-quote {
+    color: var(--ink);
+    opacity: 0.7;
+    font-style: italic;
+  }
+  .rewrite-card.purple .rewrite-quote em {
+    color: var(--gold-deep);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .rewrite-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    min-width: 40px;
+  }
+  @media (max-width: 800px) {
+    .rewrite-row {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .rewrite-arrow {
+      transform: rotate(90deg);
+      padding: 0.25rem 0;
+    }
+  }
+
   /* ---------- The Brainstorm Activity (interactive) ---------- */
   .brainstorm-section {
     background: var(--espresso);
@@ -1038,6 +1237,7 @@
       <li><a href="#concept">The Concept</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#synthesis">Synthesis</a></li>
+      <li><a href="#agency-audit">Current Ads</a></li>
       <li><a href="#brainstorm">Brainstorm</a></li>
       <li><a href="#builder">Builder</a></li>
       <li><a href="iw-strategy.html">← Back to Strategy</a></li>
@@ -1056,6 +1256,7 @@
     <li><a href="#concept" class="mobile-link">The Concept</a></li>
     <li><a href="#research" class="mobile-link">PickFu Research</a></li>
     <li><a href="#synthesis" class="mobile-link">Synthesis</a></li>
+    <li><a href="#agency-audit" class="mobile-link">Current Agency Ads</a></li>
     <li><a href="#brainstorm" class="mobile-link">Brainstorm Activity</a></li>
     <li><a href="#builder" class="mobile-link">Sentence Builder</a></li>
     <li><a href="iw-strategy.html" class="mobile-link feature">← Back to Strategy</a></li>
@@ -1250,11 +1451,135 @@
   </div>
 </section>
 
+<!-- ============ AGENCY AUDIT ============ -->
+<section id="agency-audit" class="agency-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">04 · Current Agency Output</span>
+      <h2 class="display">What Progressive <em class="display-italic">Is Running for Us Right Now.</em></h2>
+      <p class="lede">Five live ads from our current agency. The work is competent and well-produced — but read these honestly against the competitive audit. They could have been written for any full-arch practice in the country.</p>
+    </div>
+
+    <div class="agency-warning">
+      <span class="label">Important Framing</span>
+      <p>This is not about replacing the agency or rejecting their work. It's about <em>arming them with a sharper brief.</em> If we hand them a real purple cow, they can produce ads only we could run.</p>
+    </div>
+
+    <div class="ad-gallery">
+      <div class="ad-card">
+        <div class="ad-image-wrap"><img src="AD1.png" alt="Current agency ad creative — variant 01" loading="lazy"></div>
+        <div class="ad-meta">
+          <span class="ad-id">Creative · 01</span>
+          <div class="ad-tag">Live · Progressive Agency</div>
+        </div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-image-wrap"><img src="AD2.png" alt="Current agency ad creative — variant 02" loading="lazy"></div>
+        <div class="ad-meta">
+          <span class="ad-id">Creative · 02</span>
+          <div class="ad-tag">Live · Progressive Agency</div>
+        </div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-image-wrap"><img src="AD3.png" alt="Current agency ad creative — variant 03" loading="lazy"></div>
+        <div class="ad-meta">
+          <span class="ad-id">Creative · 03</span>
+          <div class="ad-tag">Live · Progressive Agency</div>
+        </div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-image-wrap"><img src="AD4.png" alt="Current agency ad creative — variant 04" loading="lazy"></div>
+        <div class="ad-meta">
+          <span class="ad-id">Creative · 04</span>
+          <div class="ad-tag">Live · Progressive Agency</div>
+        </div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-image-wrap"><img src="AD5.png" alt="Current agency ad creative — variant 05" loading="lazy"></div>
+        <div class="ad-meta">
+          <span class="ad-id">Creative · 05</span>
+          <div class="ad-tag">Live · Progressive Agency</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pattern-callout">
+      <h3>The Pattern: Every Brown Cow <em>Says the Same Six Things.</em></h3>
+      <p style="color: rgba(247,242,236,0.78); line-height: 1.7; max-width: 720px; margin-bottom: 1rem;">From the workshop deck — the six interchangeable phrases claimed by virtually every full-arch practice in the audit. If our ads echo any of these, we are renting attention we cannot keep.</p>
+      <ul class="pattern-list">
+        <li><strong>"Specialists"</strong>Claimed by 6 of the audited 17 sites.</li>
+        <li><strong>"In-house lab"</strong>Claimed by 6 of 17.</li>
+        <li><strong>"Same-day teeth"</strong>Claimed by 6 of 17.</li>
+        <li><strong>"Zirconia"</strong>Claimed by 6 of 17.</li>
+        <li><strong>"Transparent pricing"</strong>Claimed by 6 of 17.</li>
+        <li><strong>"Lifetime warranty"</strong>Claimed by 6 of 17.</li>
+      </ul>
+    </div>
+
+    <div class="section-header" style="margin-top: 5rem; margin-bottom: 2rem;">
+      <span class="section-num">04b · The Rewrite</span>
+      <h2 class="display" style="font-size: clamp(1.85rem, 3.6vw, 2.6rem);">Brown Claim → <em class="display-italic">Purple Rewrite.</em></h2>
+      <p class="lede">Here's how the agency's current message frame gets rewritten the moment we have a real differentiator. Same media plan. Same budget. Different signal.</p>
+    </div>
+
+    <div class="rewrite-grid">
+      <div class="rewrite-row">
+        <div class="rewrite-card brown">
+          <span class="label">Brown · Today</span>
+          <p class="rewrite-quote">"Same-day teeth. Permanent results. Schedule your free consultation."</p>
+        </div>
+        <div class="rewrite-arrow">→</div>
+        <div class="rewrite-card purple">
+          <span class="label">Purple · Possible</span>
+          <p class="rewrite-quote">"Same-day teeth from a surgeon who'll <em>still answer the phone</em> in 2040."</p>
+        </div>
+      </div>
+      <div class="rewrite-row">
+        <div class="rewrite-card brown">
+          <span class="label">Brown · Today</span>
+          <p class="rewrite-quote">"Trust your smile to specialists with decades of experience and proven results."</p>
+        </div>
+        <div class="rewrite-arrow">→</div>
+        <div class="rewrite-card purple">
+          <span class="label">Purple · Possible</span>
+          <p class="rewrite-quote">"35 years. 15,000 implants. <em>One surgeon</em> from your consult to your follow-up in 2050."</p>
+        </div>
+      </div>
+      <div class="rewrite-row">
+        <div class="rewrite-card brown">
+          <span class="label">Brown · Today</span>
+          <p class="rewrite-quote">"Premium full-arch implants with personalized care."</p>
+        </div>
+        <div class="rewrite-arrow">→</div>
+        <div class="rewrite-card purple">
+          <span class="label">Purple · Possible</span>
+          <p class="rewrite-quote">"The only oral surgeon in the Midwest <em>who'll make you laugh</em> through the most serious decision of your life."</p>
+        </div>
+      </div>
+      <div class="rewrite-row">
+        <div class="rewrite-card brown">
+          <span class="label">Brown · Today</span>
+          <p class="rewrite-quote">"Restore your smile. Restore your confidence. Book a consultation today."</p>
+        </div>
+        <div class="rewrite-arrow">→</div>
+        <div class="rewrite-card purple">
+          <span class="label">Purple · Possible</span>
+          <p class="rewrite-quote">"Your surgeon's <em>personal cell phone</em> — for the next 20 years. We do not have a call center."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-statement" style="margin-top: 4rem;">
+      <p>Before we ask the agency to make better ads, we have to give them a <em>better claim to make.</em></p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ BRAINSTORM ACTIVITY ============ -->
 <section id="brainstorm" class="brainstorm-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">04 · Workshop Activity</span>
+      <span class="section-num">05 · Workshop Activity</span>
       <h2 class="display">Eight Candidate <em class="display-italic">Purple Cows.</em></h2>
       <p class="lede">Below are eight differentiator concepts ranging from safe to bold, each built from the research above and stress-tested against the workshop's three criteria: testable, defensible, owned. Shortlist the strongest. Eliminate the weakest. Add your own notes. Your selections save automatically.</p>
     </div>
@@ -1287,7 +1612,7 @@
 <section id="builder" class="builder-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">05 · Sentence Builder</span>
+      <span class="section-num">06 · Sentence Builder</span>
       <h2 class="display">Write Our <em class="display-italic">Sentence.</em></h2>
       <p class="lede">Once a direction emerges, draft the actual claim. The template is from Dr. Baker's workshop deck. Type your version below — you'll see it formatted as a homepage hero might read.</p>
     </div>

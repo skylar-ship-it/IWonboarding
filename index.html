@@ -2353,6 +2353,318 @@
     background: var(--gold);
   }
 
+  /* ---------- SEO Section ---------- */
+  .seo-section { background: var(--white); }
+
+  .seo-compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 800px) {
+    .seo-compare-grid { grid-template-columns: 1fr; }
+  }
+  .seo-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .seo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .seo-card-iw {
+    background: linear-gradient(180deg, #fdfaf3 0%, var(--cream) 100%);
+    border-color: var(--gold);
+  }
+  .seo-card-pulver {
+    background: linear-gradient(180deg, #f3f7f7 0%, var(--cream) 100%);
+    border-color: rgba(36, 92, 92, 0.3);
+  }
+  .seo-card-top {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.22);
+  }
+  .seo-card-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+  .seo-card-iw .seo-card-tag {
+    background: rgba(201, 169, 110, 0.22);
+    color: var(--gold-deep);
+  }
+  .seo-card-pulver .seo-card-tag {
+    background: rgba(36, 92, 92, 0.15);
+    color: var(--teal);
+  }
+  .seo-card h3 {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--espresso);
+    letter-spacing: 0.04em;
+  }
+  .seo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  @media (max-width: 500px) {
+    .seo-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem 0.75rem; }
+  }
+  .seo-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+    padding: 0.85rem 0.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+  }
+  .seo-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--espresso);
+    line-height: 1;
+  }
+  .seo-stat-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.65;
+    line-height: 1.3;
+  }
+  .seo-stat-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-top: 0.15rem;
+  }
+  .seo-stat-tag.good {
+    background: rgba(95, 145, 95, 0.18);
+    color: #3a6a3a;
+  }
+  .seo-stat-tag.pending {
+    background: rgba(180, 180, 180, 0.3);
+    color: #555;
+  }
+  .seo-stat-tag.building {
+    background: rgba(201, 169, 110, 0.22);
+    color: var(--gold-deep);
+  }
+
+  /* SEO detail panel */
+  .seo-screenshots {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .seo-reading {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .seo-reading-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  @media (max-width: 800px) {
+    .seo-reading-grid { grid-template-columns: 1fr; }
+  }
+  .seo-reading-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .seo-reading-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .seo-reading-card h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--espresso);
+    margin-bottom: 0.6rem;
+    line-height: 1.25;
+  }
+  .seo-reading-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.82;
+  }
+
+  .seo-priorities {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .seo-priority-list {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 1rem;
+  }
+  @media (max-width: 700px) {
+    .seo-priority-list { grid-template-columns: 1fr; }
+  }
+
+  /* SEO Checklist (What IW Has Built) */
+  .seo-checklist-block {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .seo-checklist-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 1.5rem;
+  }
+  .seo-checklist-header .label {
+    margin-bottom: 0.85rem;
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(95, 145, 95, 0.15);
+    border-radius: 999px;
+    color: #3a6a3a;
+  }
+  .seo-checklist-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+  }
+  .seo-checklist-lede {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.78;
+  }
+
+  /* Categories grid */
+  .seo-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  @media (max-width: 800px) {
+    .seo-categories { grid-template-columns: 1fr; }
+  }
+  .seo-category {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .seo-category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.85rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.18);
+  }
+  .seo-category-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    color: var(--gold-deep);
+    font-weight: 700;
+    background: rgba(201, 169, 110, 0.2);
+    padding: 3px 7px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .seo-category-header h5 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--espresso);
+    line-height: 1.2;
+    flex: 1;
+  }
+  .seo-category-count {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.55;
+    flex-shrink: 0;
+  }
+  .seo-category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .seo-category-list li {
+    padding: 0.45rem 0 0.45rem 1.4rem;
+    position: relative;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .seo-category-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    color: #5a8a5a;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .seo-checklist-summary {
+    margin-top: 1.75rem;
+    padding: 1.25rem 1.75rem;
+    background: linear-gradient(135deg, #f3f7f7 0%, var(--cream) 100%);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 12px 12px 0;
+  }
+  .seo-checklist-summary p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--espresso);
+  }
+  .seo-checklist-summary p em {
+    font-style: italic;
+    color: var(--teal);
+    font-weight: 500;
+  }
+
   /* ---------- Positioning Matrix ---------- */
   .positioning-section {
     background: var(--cream);
@@ -2908,6 +3220,7 @@
       <li><a href="#ads">Ads</a></li>
       <li><a href="#challenges">Gaps</a></li>
       <li><a href="#michigan">Michigan</a></li>
+      <li><a href="#seo">SEO</a></li>
       <li><a href="#positioning">Positioning</a></li>
       <li><a href="#next">Next</a></li>
       <li><a href="purple-cow.html" style="color: var(--gold-deep); font-weight: 500;">Purple Cow →</a></li>
@@ -2931,6 +3244,7 @@
     <li><a href="#challenges" class="mobile-link">Where We Break</a></li>
     <li><a href="#satellite" class="mobile-link">Satellite Model</a></li>
     <li><a href="#michigan" class="mobile-link">Michigan Pitch</a></li>
+    <li><a href="#seo" class="mobile-link">SEO Baseline</a></li>
     <li><a href="#positioning" class="mobile-link">Competitive Positioning</a></li>
     <li><a href="#next" class="mobile-link">Next Steps</a></li>
     <li><a href="purple-cow.html" class="mobile-link feature">Purple Cow Workshop →</a></li>
@@ -3886,11 +4200,344 @@
   </div>
 </section>
 
-<!-- ============ 10 POSITIONING MATRIX ============ -->
+<!-- ============ 10 SEO BASELINE ============ -->
+<section id="seo" class="seo-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-num">10 · Discoverability</span>
+      <h2 class="display">Where We Stand <em class="display-italic">on SEO.</em></h2>
+      <p class="lede">A side-by-side baseline of both domains. The new IW site has cleaner technical SEO — but zero organic footprint. Pulver Oral Surgery has slightly looser technical hygiene but real traffic from years of indexed presence plus active Google Ads. Both stories matter for different reasons.</p>
+    </div>
+
+    <!-- Quick comparison cards -->
+    <div class="seo-compare-grid">
+      <div class="seo-card seo-card-iw">
+        <div class="seo-card-top">
+          <span class="seo-card-tag">New Site · Building</span>
+          <h3>implantedwisdom.com</h3>
+        </div>
+        <div class="seo-stats-grid">
+          <div class="seo-stat">
+            <span class="seo-stat-num">95</span>
+            <span class="seo-stat-label">On-Page Score</span>
+            <span class="seo-stat-tag good">Great</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">0</span>
+            <span class="seo-stat-label">Monthly Traffic</span>
+            <span class="seo-stat-tag pending">Pending</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">0</span>
+            <span class="seo-stat-label">Keywords</span>
+            <span class="seo-stat-tag pending">Pending</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">24</span>
+            <span class="seo-stat-label">Backlinks</span>
+            <span class="seo-stat-tag building">Building</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="seo-card seo-card-pulver">
+        <div class="seo-card-top">
+          <span class="seo-card-tag">Live · Established</span>
+          <h3>pulveroralsurgery.com</h3>
+        </div>
+        <div class="seo-stats-grid">
+          <div class="seo-stat">
+            <span class="seo-stat-num">80</span>
+            <span class="seo-stat-label">On-Page Score</span>
+            <span class="seo-stat-tag good">Great</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">197</span>
+            <span class="seo-stat-label">Monthly Traffic</span>
+            <span class="seo-stat-tag good">Great</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">96</span>
+            <span class="seo-stat-label">Keywords</span>
+            <span class="seo-stat-tag good">Great</span>
+          </div>
+          <div class="seo-stat">
+            <span class="seo-stat-num">262</span>
+            <span class="seo-stat-label">Backlinks</span>
+            <span class="seo-stat-tag good">Great</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What IW already has built -->
+    <div class="seo-checklist-block">
+      <div class="seo-checklist-header">
+        <span class="label">What's Already Built · IW</span>
+        <h3 class="seo-checklist-title">40+ SEO Elements <em class="display-italic">In Place.</em></h3>
+        <p class="seo-checklist-lede">The 95 score isn't accidental. The site was built SEO-clean from day one. Here's what's already wired in — grouped into the nine categories that matter for organic discoverability.</p>
+      </div>
+
+      <div class="funnel-detail-toggle-wrap">
+        <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="seoChecklist" data-target="seoChecklist">
+          <span class="toggle-text">See What We Have Built</span>
+          <span class="chevron"></span>
+        </button>
+      </div>
+
+      <div class="funnel-detail" id="seoChecklist" aria-hidden="true">
+        <span class="funnel-detail-label">IW SEO Inventory · By Category</span>
+
+        <div class="seo-categories">
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">01</span>
+              <h5>Technical Files</h5>
+              <span class="seo-category-count">5 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>XML sitemap (sitemap.xml)</li>
+              <li>Robots.txt</li>
+              <li>Custom branded 404 page (gold + warm-ink palette, CTAs, helpful nav, phone)</li>
+              <li>Favicon (full set: .ico, Apple touch icon 180×180, 32×32, 16×16)</li>
+              <li>Web manifest (site.webmanifest)</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">02</span>
+              <h5>On-Page Meta Tags</h5>
+              <span class="seo-category-count">7 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Title tag — under 60 chars, keyword + location + brand</li>
+              <li>Meta description — 158 chars with keyword, trust signal, CTA phone</li>
+              <li>Canonical URL (prevents Vercel duplicate content penalty)</li>
+              <li>Robots meta (index, follow, rich snippet permissions)</li>
+              <li>Keywords meta tag (30+ zip codes + service variations)</li>
+              <li>Author tag (Dr. Eric Pulver, DDS attribution)</li>
+              <li>Charset + responsive viewport</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">03</span>
+              <h5>Local SEO &amp; Geo-Targeting</h5>
+              <span class="seo-category-count">6 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Geo region meta (US-IN)</li>
+              <li>Geo placename (Highland, Indiana)</li>
+              <li>Geo position (GPS coordinates)</li>
+              <li>ICBM coordinates</li>
+              <li>NAP consistency (Name, Address, Phone match across header, footer, schema)</li>
+              <li>30+ zip codes targeted across NW Indiana + Chicago South/Southwest suburbs</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">04</span>
+              <h5>Structured Data · Schema Markup</h5>
+              <span class="seo-category-count">6 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>MedicalBusiness schema (NAP, hours, geo, price range, 5★ aggregate rating, 600 reviews)</li>
+              <li>Physician schema (Dr. Pulver credentials, specialty, alma maters)</li>
+              <li>MedicalProcedure schema (Full Arch / All-on-4 / All-on-X)</li>
+              <li>FAQPage schema (5 Q&amp;As eligible for rich snippets)</li>
+              <li>WebSite schema</li>
+              <li>areaServed array (every zip code mapped to City schema)</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">05</span>
+              <h5>Social &amp; Open Graph</h5>
+              <span class="seo-category-count">3 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Open Graph tags (title, description, image 1200×630, URL, locale)</li>
+              <li>Twitter Card (large image card with optimized copy)</li>
+              <li>sameAs links (Facebook, Instagram, YouTube)</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">06</span>
+              <h5>Content Structure</h5>
+              <span class="seo-category-count">5 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Single H1 with keyword focus</li>
+              <li>Proper H2/H3/H4 hierarchy throughout</li>
+              <li>All images have descriptive, keyword-rich alt text (13 alt tags total)</li>
+              <li>Internal linking (homepage ↔ FAQ page)</li>
+              <li>Long-tail keyword variations: teeth in a day, permanent dentures, implant-supported dentures, All-on-4, All-on-X, same-day implants</li>
+              <li>FAQ page with 10+ detailed Q&amp;As (cost, candidacy, recovery, denture comparison)</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">07</span>
+              <h5>Trust Signals · E-E-A-T</h5>
+              <span class="seo-category-count">4 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Aggregate rating in schema (5★, 600 reviews)</li>
+              <li>Author authority signals (Dr. Pulver credentials, ADA committee, NHL Blackhawks history)</li>
+              <li>University affiliations listed (Toronto, Northwestern, Chicago, Indiana University)</li>
+              <li>Patient testimonials with names + locations (Nick/Highland, Susan/Schererville, Jimmy/Munster)</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">08</span>
+              <h5>Performance &amp; Technical</h5>
+              <span class="seo-category-count">4 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Mobile-responsive viewport</li>
+              <li>Font preconnect (Google Fonts preconnected)</li>
+              <li>WebP images for patient before/afters (modern, smaller, faster)</li>
+              <li>Modern font stack with proper font loading</li>
+            </ul>
+          </div>
+
+          <div class="seo-category">
+            <div class="seo-category-header">
+              <span class="seo-category-num">09</span>
+              <h5>Tracking &amp; Compliance</h5>
+              <span class="seo-category-count">5 items</span>
+            </div>
+            <ul class="seo-category-list">
+              <li>Meta Pixel installed (Facebook Pixel ID active)</li>
+              <li>Google Tag Manager connected</li>
+              <li>Privacy Policy</li>
+              <li>Terms of Service</li>
+              <li>Legal Compliance page</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="seo-checklist-summary">
+          <p>The technical foundation is finished. The remaining work is what comes <em>after</em> launch — content depth, backlink earning, and time on the index. SEO is now a waiting game with maintenance, not a build sprint.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle for full breakdown -->
+    <div class="funnel-detail-toggle-wrap">
+      <button class="funnel-detail-toggle" aria-expanded="false" aria-controls="seoDetail" data-target="seoDetail">
+        <span class="toggle-text">See Audit Details</span>
+        <span class="chevron"></span>
+      </button>
+    </div>
+
+    <div class="funnel-detail" id="seoDetail" aria-hidden="true">
+      <span class="funnel-detail-label">SEO Audit · Side-by-Side Read</span>
+
+      <p class="capture-intro">The numbers tell two different stories. One site is technically clean but invisible. The other is visible but technically older. Each tells us something useful about where to invest next.</p>
+
+      <!-- Audit screenshots -->
+      <div class="seo-screenshots">
+        <span class="survey-screenshots-label">Audit Screenshots · Ubersuggest</span>
+        <div class="survey-screenshots-grid">
+          <figure class="survey-shot">
+            <div class="survey-shot-imgwrap">
+              <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/IW-SEO.png"
+                   alt="Implanted Wisdom SEO audit — 95 score, 0 traffic, 24 backlinks"
+                   loading="lazy">
+            </div>
+            <figcaption>
+              <span class="survey-tag high">implantedwisdom.com</span>
+              <span class="survey-caption">95 score · new site baseline</span>
+            </figcaption>
+          </figure>
+          <figure class="survey-shot">
+            <div class="survey-shot-imgwrap">
+              <img src="https://raw.githubusercontent.com/skylar-ship-it/IWonboarding/main/pulver-seo.png"
+                   alt="Pulver Oral Surgery SEO audit — 80 score, 197 traffic, 262 backlinks"
+                   loading="lazy">
+            </div>
+            <figcaption>
+              <span class="survey-tag low">pulveroralsurgery.com</span>
+              <span class="survey-caption">80 score · 197 monthly · live</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- Reading the data -->
+      <div class="seo-reading">
+        <span class="automation-flow-label">How to Read This</span>
+        <div class="seo-reading-grid">
+          <div class="seo-reading-card">
+            <span class="seo-reading-letter">A.</span>
+            <h5>IW · Strong Foundation, Zero Reach</h5>
+            <p>The 95 score means the site is technically clean — meta tags, headings, page speed, schema, mobile-friendliness all healthy. But traffic and keywords sit at zero because Google needs time to index and rank a new domain, and we have not yet driven backlinks or organic content that signals authority.</p>
+          </div>
+          <div class="seo-reading-card">
+            <span class="seo-reading-letter">B.</span>
+            <h5>Pulver · Real Visibility, Older Tech</h5>
+            <p>The 80 score is still strong but reflects the older architecture. The 197 monthly visitors and 96 ranking keywords are the result of years of indexed presence plus active Google Ads buying additional visibility. 262 backlinks is a meaningful authority signal Google has been building trust on for years.</p>
+          </div>
+          <div class="seo-reading-card">
+            <span class="seo-reading-letter">C.</span>
+            <h5>The Strategic Gap</h5>
+            <p>IW will only inherit Pulver's discoverability if we deliberately route some of that authority across the brands — internal links, shared content, possibly a 301 strategy on legacy pages. Otherwise the new site stays invisible while the old site keeps doing the heavy lifting.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action priorities -->
+      <div class="seo-priorities">
+        <span class="automation-flow-label">What We Should Be Doing Next</span>
+        <ul class="capture-data-list seo-priority-list">
+          <li>Build out IW content — surgeon bio pages, treatment explainers, FAQ, location pages</li>
+          <li>Earn backlinks from credible dental, healthcare, and local Indiana publications</li>
+          <li>Audit Pulver's existing keyword wins and map them onto IW pages</li>
+          <li>Set up Google Search Console + GA4 on IW so we can measure indexing weekly</li>
+          <li>Consider whether to cross-link strategically between the two domains</li>
+          <li>Schema markup for the practice, the surgeon, and procedures (LocalBusiness, Person, MedicalProcedure)</li>
+        </ul>
+      </div>
+
+      <!-- Discussion -->
+      <div class="discussion-prompt">
+        <span class="discussion-prompt-label">Open Discussion · For Jim</span>
+        <h4 class="discussion-prompt-q">How should we sequence SEO investment against paid acquisition?</h4>
+        <p class="discussion-prompt-body">Two ways to think about the timing:</p>
+        <div class="discussion-tradeoff">
+          <div class="tradeoff-side">
+            <span class="tradeoff-label wider">Lean Into Paid First</span>
+            <p class="tradeoff-text">Meta and Google Ads can buy us visibility while SEO builds. <em>Upside:</em> immediate flow, faster learning. <em>Risk:</em> we are renting traffic forever instead of building an asset that compounds.</p>
+          </div>
+          <div class="tradeoff-side">
+            <span class="tradeoff-label deeper">Invest Now in Organic</span>
+            <p class="tradeoff-text">Content, backlinks, and technical depth take six to twelve months but eventually drive traffic at near-zero marginal cost. <em>Upside:</em> a real moat. <em>Risk:</em> the team has to fund an investment that won't pay for itself for a year.</p>
+          </div>
+        </div>
+        <div class="discussion-question-final">
+          <span class="discussion-q-label">The Real Question</span>
+          <p>At ClearChoice, did organic traffic ever become a meaningful share of consults — or was the brand so paid-acquisition-driven that <em>SEO was a rounding error?</em> The answer changes how we sequence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 POSITIONING MATRIX ============ -->
 <section id="positioning" class="positioning-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">10 · Competitive Positioning</span>
+      <span class="section-num">11 · Competitive Positioning</span>
       <h2 class="display">Where Do We <em class="display-italic">Belong on the Map?</em></h2>
       <p class="lede">A live, interactive 2×2. Five competitors plotted on quality of care versus price — drag any dot to test new positioning hypotheses. The gold IW marker drives the live strategy readout below. Positions save automatically.</p>
     </div>
@@ -3984,7 +4631,7 @@
 <section id="next" class="next-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-num">11 · Conversation Goal</span>
+      <span class="section-num">12 · Conversation Goal</span>
       <h2 class="display">What We Need <em class="display-italic">From This Conversation</em></h2>
       <p class="lede">A focused, working session — not a presentation. Five things we genuinely need your perspective on.</p>
     </div>

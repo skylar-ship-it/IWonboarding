@@ -1727,6 +1727,148 @@
     opacity: 0.72;
   }
 
+  /* ---------- HubSpot vs GHL Comparison ---------- */
+  .crm-comparison {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(201, 169, 110, 0.25);
+  }
+  .crm-comparison-header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 2rem;
+  }
+  .crm-comparison-header .label {
+    margin-bottom: 0.85rem;
+    display: inline-block;
+  }
+  .crm-comparison-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--espresso);
+    line-height: 1.2;
+    margin-bottom: 0.85rem;
+  }
+  .crm-comparison-lede {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    opacity: 0.78;
+  }
+  .crm-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 800px) {
+    .crm-comparison-grid { grid-template-columns: 1fr; }
+  }
+  .crm-platform {
+    background: var(--cream);
+    border-radius: 14px;
+    padding: 2rem;
+    border: 1px solid rgba(201, 169, 110, 0.22);
+  }
+  .crm-hubspot {
+    background: linear-gradient(180deg, #f3f7f7 0%, var(--cream) 100%);
+    border-color: rgba(36, 92, 92, 0.3);
+  }
+  .crm-ghl {
+    background: linear-gradient(180deg, #fdfaf3 0%, var(--cream) 100%);
+    border-color: var(--gold);
+  }
+  .crm-platform-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  }
+  .crm-platform-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 0.7rem;
+  }
+  .crm-platform-tag.hubspot {
+    background: rgba(36, 92, 92, 0.15);
+    color: var(--teal);
+  }
+  .crm-platform-tag.ghl {
+    background: rgba(201, 169, 110, 0.22);
+    color: var(--gold-deep);
+  }
+  .crm-platform-header h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--espresso);
+    line-height: 1.3;
+    font-style: italic;
+  }
+  .crm-platform-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .crm-platform-list li {
+    padding: 0.7rem 0 0.7rem 1.4rem;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink);
+    opacity: 0.85;
+  }
+  .crm-platform-list li:last-child { border-bottom: none; }
+  .crm-platform-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.05rem;
+    width: 9px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .crm-platform-list strong {
+    display: block;
+    color: var(--espresso);
+    font-weight: 500;
+    margin-bottom: 2px;
+    font-size: 0.95rem;
+  }
+  .crm-comparison-takeaway {
+    padding: 1.75rem 2rem;
+    background: var(--espresso);
+    color: var(--cream);
+    border-radius: 12px;
+  }
+  .crm-comparison-takeaway .ai-reframe-label {
+    color: var(--gold);
+    margin-bottom: 0.85rem;
+  }
+  .crm-comparison-takeaway p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--cream);
+  }
+  .crm-comparison-takeaway p em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  @media (max-width: 700px) {
+    .crm-platform { padding: 1.5rem; }
+    .crm-comparison-takeaway { padding: 1.5rem; }
+    .crm-comparison-takeaway p { font-size: 1.05rem; }
+  }
+
   /* ---------- Integration flow ---------- */
   .integration-section { background: var(--cream); }
   .flow-steps {
@@ -3897,6 +4039,50 @@
           <h5>Won / Lost Tracking</h5>
           <p>Final stage routing, review request, archive.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- HubSpot vs GHL context for Jim -->
+    <div class="crm-comparison">
+      <div class="crm-comparison-header">
+        <span class="label">For Context · You Used HubSpot at ClearChoice</span>
+        <h3 class="crm-comparison-title">How GHL <em class="display-italic">Differs from HubSpot.</em></h3>
+        <p class="crm-comparison-lede">Different tools for different jobs. They overlap heavily on surface — both run pipelines, automation, email — but the architecture underneath solves different problems. Quick read so you have the right mental model when you look at what we have built.</p>
+      </div>
+
+      <div class="crm-comparison-grid">
+        <div class="crm-platform crm-hubspot">
+          <div class="crm-platform-header">
+            <span class="crm-platform-tag hubspot">HubSpot</span>
+            <h4>Centralized customer data engine</h4>
+          </div>
+          <ul class="crm-platform-list">
+            <li><strong>Modular hub structure.</strong>Marketing, Sales, Service, Content, Operations sold as separate hubs. You buy what you need, layer them as you scale.</li>
+            <li><strong>Free tier exists.</strong>Up to a million contacts on the free CRM. Real ramp path before you pay.</li>
+            <li><strong>Deep CRM customization.</strong>Custom properties, lifecycle stages, lead scoring, advanced filtering. Built for B2B with long, multi-stakeholder sales cycles.</li>
+            <li><strong>Reporting is enterprise-grade.</strong>1,700+ native integrations. Dashboards engineered for executive lifecycle attribution.</li>
+            <li><strong>Pricing scales fast.</strong>Marketing Hub Pro starts around $890/mo. A 10-person team easily lands at $2,200/mo before onboarding fees of $3,500–$7,000 per hub.</li>
+          </ul>
+        </div>
+
+        <div class="crm-platform crm-ghl">
+          <div class="crm-platform-header">
+            <span class="crm-platform-tag ghl">Go High Level (Ours)</span>
+            <h4>Execution and automation engine</h4>
+          </div>
+          <ul class="crm-platform-list">
+            <li><strong>All-in-one, flat pricing.</strong>$97 / $297 / $497 per month. CRM, SMS, email, funnels, calendars, automation — one bill.</li>
+            <li><strong>Unlimited users + contacts.</strong>Team grows, list grows, the bill stays the same. No per-seat or per-contact tax.</li>
+            <li><strong>Agency-built, multi-account.</strong>Designed for repeatable systems — workflows can be cloned across locations or brands.</li>
+            <li><strong>SMS-native.</strong>Texting, calling, voicemail drops, A2P compliance built in. HubSpot leans email; GHL is conversation-first.</li>
+            <li><strong>Trade-offs to be honest about.</strong>CRM customization is shallower than HubSpot. Reporting is less polished. Metered usage (SMS, email, calls) adds 30–50% on top of the base fee.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="crm-comparison-takeaway">
+        <span class="ai-reframe-label">Why GHL Fits This Practice</span>
+        <p>HubSpot solves the problem of <em>centralizing customer data across teams.</em> That matters when you have ten people in three departments needing one source of truth. We have one location, one surgeon, one practice manager, one patient journey. What we need is <em>execution speed and repeatable automation</em> — which is what GHL is engineered for. Flat pricing also lets us invest in marketing without the bill scaling with success. If we ever expand to multiple locations, the multi-account architecture is already there.</p>
       </div>
     </div>
   </div>
